@@ -12,7 +12,7 @@ module.exports = (function() {
   };
 
   utils.forEachAM(function(module) {
-    if (!utils.includesFileType(module.files, /.scss$/)) return;
+    if (!module.hasSCSS) return;
 
     var src = module.dest + '/' + module.name + '.css';
     var dest = module.dest + '/' + module.name + '.css';

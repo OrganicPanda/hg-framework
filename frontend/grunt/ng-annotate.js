@@ -8,7 +8,7 @@ module.exports = (function() {
   };
 
   utils.forEachAM(function(module) {
-    if (!utils.includesFileType(module.files, /.js$/)) return;
+    if (!module.hasJS) return;
 
     var src = module.src + '/**/*.js';
     var dest = module.dest + '/' + module.name + '.js';

@@ -24,7 +24,7 @@ module.exports = (function() {
   };
 
   utils.forEachAM(function(module) {
-    if (!utils.includesFileType(module.files, /.html$/)) return;
+    if (!module.hasHTML) return;
 
     var src = module.src + '/**/*.html';
     var dest = module.dest + '/' + module.name + '-tpl.js';

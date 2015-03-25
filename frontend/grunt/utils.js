@@ -52,6 +52,9 @@ function forEachAM(cb, wd) {
       data.src = moduleCwd;
       data.dest = conf.locations.dest + '/' + folder + '/' + module;
       data.files = fs.readdirSync(moduleCwd);
+      data.hasHTML = includesFileType(data.files, /.html$/);
+      data.hasJS = includesFileType(data.files, /.js$/);
+      data.hasSCSS = includesFileType(data.files, /.scss$/);
 
       cb(data);
     });
@@ -62,7 +65,7 @@ function forEachAM(cb, wd) {
  *
  */
 function includesFileType(files, match) {
-  return files.filter(function(file) {
+  return !!files.filter(function(file) {
     return file.match(match);
   }).length;
 }

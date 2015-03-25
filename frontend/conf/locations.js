@@ -3,7 +3,7 @@ module.exports = {
   dest: 'dist',
   vendor: 'vendor',
   layout: {
-    src: 'app/layout/layout-tpl.html',
+    src: 'app/core/layout/layout-tpl.html',
     dest: 'public/index.html'
   }
 };

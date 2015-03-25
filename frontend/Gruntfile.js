@@ -3,8 +3,8 @@ module.exports = function(grunt) {
 
   var defaultTasks = [
     'clean',
-    'ngAnnotate',
     'html2js',
+    'ngAnnotate',
     'uglify',
     'sass',
     'autoprefixer',
