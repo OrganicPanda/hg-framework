@@ -3,8 +3,8 @@ var utils = require('./utils');
 module.exports = (function() {
   var config = {};
 
-  utils.forEachAM(function(module) {
-    if (!module.files.length) return;
+  utils.forEachModule(function(module) {
+    if (!module.files.all.length) return;
 
     config[module.nameSpace] = {};
     config[module.nameSpace].src = module.dest;

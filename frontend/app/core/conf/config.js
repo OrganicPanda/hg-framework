@@ -1,4 +1,4 @@
-angular.module('mis.config', [])
+angular.module('mis.core.config', [])
 
   /**
    *

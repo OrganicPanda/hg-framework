@@ -2,6 +2,10 @@ var conf = require('../conf')
   , path = require('path')
   , fs = require('fs');
 
+var cssMatch = /.scss$/;
+var htmlMatch = /.html$/;
+var jsMatch = /.js$/;
+
 /**
  *
  */
@@ -26,7 +30,25 @@ function isHidden(name) {
 /**
  *
  */
-function forEachAM(cb, wd) {
+function filesByType(files, type, name) {
+  name = new RegExp('^' + name + '\\..*');
+
+  return files
+    .filter(function(file) {
+      return file.match(type);
+    })
+    .sort(function(a, b) {
+      if (a.match(name)) return -1;
+      if (b.match(name)) return 1;
+
+      return 0;
+    });
+}
+
+/**
+ *
+ */
+function forEachModule(cb, wd) {
   wd = wd || conf.locations.src;
 
   var cwd = process.cwd();
@@ -48,32 +70,28 @@ function forEachAM(cb, wd) {
       if (isHidden(module) || isFile(moduleCwd)) return;
 
       data.name = module;
-      data.nameSpace = folder + '-' + module;
+      data.nameSpace = folder + '.' + module;
       data.src = moduleCwd;
       data.dest = conf.locations.dest + '/' + folder + '/' + module;
-      data.files = fs.readdirSync(moduleCwd);
-      data.hasHTML = includesFileType(data.files, /.html$/);
-      data.hasJS = includesFileType(data.files, /.js$/);
-      data.hasSCSS = includesFileType(data.files, /.scss$/);
+
+      data.files = {};
+      data.files.all = fs.readdirSync(moduleCwd);
+      data.files.css = filesByType(data.files.all, cssMatch, data.name);
+      data.files.html = filesByType(data.files.all, htmlMatch, data.name);
+      data.files.js = filesByType(data.files.all, jsMatch, data.name);
+
+      data.hasCSS = !!data.files.css.length;
+      data.hasHTML = !!data.files.html.length;
+      data.hasJS = !!data.files.js.length;
 
       cb(data);
     });
   });
 }
 
-/**
- *
- */
-function includesFileType(files, match) {
-  return !!files.filter(function(file) {
-    return file.match(match);
-  }).length;
-}
-
 module.exports = {
   isDir: isDir,
   isFile: isFile,
   isHidden: isHidden,
-  forEachAM: forEachAM,
-  includesFileType: includesFileType
+  forEachModule: forEachModule
 };

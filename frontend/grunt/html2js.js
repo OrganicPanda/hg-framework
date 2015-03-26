@@ -14,24 +14,27 @@ module.exports = (function() {
         removeScriptTypeAttributes: true,
         removeStyleLinkTypeAttributes: true
       },
-      module: function(data, moduleName) {
-        return 'mis.' + moduleName.replace('-', '.') + '.tpl';
+      module: function(data, name) {
+        return conf.app.nameSpace + '.' + name.replace('-', '.') + '.tpl';
       },
-      rename: function(moduleName) {
-        return moduleName.replace('../' + conf.locations.src + '/', '');
+      rename: function(name) {
+        return name.replace('../' + conf.locations.src + '/', '');
       }
     }
   };
 
-  utils.forEachAM(function(module) {
+  utils.forEachModule(function(module) {
     if (!module.hasHTML) return;
 
-    var src = module.src + '/**/*.html';
     var dest = module.dest + '/' + module.name + '-tpl.js';
+    var src = module.files.html.map(function(file) {
+      return module.src + '/' + file;
+    });
 
     config[module.nameSpace] = {};
     config[module.nameSpace].src = src;
     config[module.nameSpace].dest = dest;
+
   });
 
   return config;

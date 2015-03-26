@@ -3,8 +3,8 @@ var utils = require('./utils');
 module.exports = (function() {
   var config = {};
 
-  utils.forEachAM(function(module) {
-    if (!module.hasSCSS) return;
+  utils.forEachModule(function(module) {
+    if (!module.hasCSS) return;
 
     var src = module.dest + '/' + module.name + '.css';
     var dest = module.dest + '/' + module.name + '.min.css';

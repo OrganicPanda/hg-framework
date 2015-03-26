@@ -10,7 +10,7 @@ module.exports = (function() {
     }
   };
 
-  utils.forEachAM(function(module) {
+  utils.forEachModule(function(module) {
     if (!module.hasJS) return;
 
     var dest = module.dest + '/' + module.name + '.min.js';

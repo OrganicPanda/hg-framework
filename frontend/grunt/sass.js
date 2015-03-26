@@ -8,11 +8,13 @@ module.exports = (function() {
     }
   };
 
-  utils.forEachAM(function(module) {
-    if (!module.hasSCSS) return;
+  utils.forEachModule(function(module) {
+    if (!module.hasCSS) return;
 
-    var src = module.src + '/**/*.scss';
     var dest = module.dest + '/' + module.name + '.css';
+    var src = module.files.css.map(function(file) {
+      return module.src + '/' + file;
+    });
 
     config[module.nameSpace] = {};
     config[module.nameSpace].files = {};

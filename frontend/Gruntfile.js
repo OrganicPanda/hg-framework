@@ -29,9 +29,9 @@ module.exports = function(grunt) {
 
   grunt.initConfig(config);
 
-  grunt.registerTask('server', function() { require('./server/server.js'); });
   grunt.registerTask('default', defaultTasks);
   grunt.registerTask('start', devTasks);
+  grunt.registerTask('server', function() { require('./server/server.js'); });
   grunt.registerTask('layout', function() { require('./grunt/layout')(grunt); });
 
   grunt.loadNpmTasks('grunt-contrib-clean');

@@ -1,4 +1,5 @@
-var utils = require('./utils');
+var utils = require('./utils')
+  , conf = require('../conf');
 
 module.exports = (function() {
   var config = {
@@ -7,8 +8,9 @@ module.exports = (function() {
     }
   };
 
-  utils.forEachAM(function(module) {
+  utils.forEachModule(function(module) {
     config[module.nameSpace] = {};
+
     var files = config[module.nameSpace].files = [];
     var tasks = config[module.nameSpace].tasks = [];
 
@@ -17,21 +19,27 @@ module.exports = (function() {
     }
 
     if (module.hasHTML) {
-      files.push(module.src + '/**/*.html');
       tasks.push('html2js:' + module.nameSpace);
+      files.push(module.files.html.map(function(file) {
+        return module.src + '/' + file;
+      }));
     }
 
     if (module.hasJS) {
-      files.push(module.src + '/**/*.js');
       tasks.push('ngAnnotate:' + module.nameSpace);
       tasks.push('uglify:' + module.nameSpace);
+      files.push(module.files.js.map(function(file) {
+        return module.src + '/' + file;
+      }));
     }
 
-    if (module.hasSCSS) {
-      files.push(module.src + '/**/*.scss');
+    if (module.hasCSS) {
       tasks.push('sass:' + module.nameSpace);
       tasks.push('autoprefixer:' + module.nameSpace);
       tasks.push('cssmin:' + module.nameSpace);
+      files.push(module.files.css.map(function(file) {
+        return module.src + '/' + file;
+      }));
     }
   });
 
