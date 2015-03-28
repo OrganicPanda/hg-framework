@@ -1,0 +1,25 @@
+@import "../conf/vars";
+
+.layout {
+  position: absolute;
+  width: 100vw;
+  min-height: 100vh;
+
+  .layout-side {
+    position: absolute;
+    min-height: 100vh;
+    width: $sidebar-open;
+  }
+
+  .layout-main {
+    position: absolute;
+    min-height: 100vh;
+    margin-left: $sidebar-open;
+    width: calc(100% - #{$sidebar-open});
+    background-color: $light-base;
+  }
+}
+
+.container {
+  padding: 0 $spacing-base 0 $spacing-base;
+}

@@ -18,7 +18,8 @@ module.exports = (function() {
         return conf.app.nameSpace + '.' + name.replace('-', '.') + '.tpl';
       },
       rename: function(name) {
-        return name.replace('../' + conf.locations.src + '/', '');
+        return name.replace('../' + conf.locations.src + '/'
+          , '/' + conf.locations.dest + '/');
       }
     }
   };
@@ -27,9 +28,7 @@ module.exports = (function() {
     if (!module.hasHTML) return;
 
     var dest = module.dest + '/' + module.name + '-tpl.js';
-    var src = module.files.html.map(function(file) {
-      return module.src + '/' + file;
-    });
+    var src = [module.src + '/**/*.html'];
 
     config[module.nameSpace] = {};
     config[module.nameSpace].src = src;

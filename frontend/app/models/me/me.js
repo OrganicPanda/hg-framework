@@ -25,29 +25,4 @@ angular.module('mis.models.me', [
           return (that.data = Restangular.stripRestangular(me));
         });
     };
-  })
-
-  /*
-   *
-   */
-  .directive('misProfile', function(Me) {
-    return {
-      restrict: 'A',
-      link: function(scope) {
-
-        /*
-         *
-         */
-        scope.profile = Me.data;
-
-        /*
-         *
-         */
-        scope.$watchCollection(function() {
-          return Me.data;
-        }, function(newMe, oldMe) {
-          return (newMe === oldMe) || (scope.profile = newMe);
-        });
-      }
-    };
   });

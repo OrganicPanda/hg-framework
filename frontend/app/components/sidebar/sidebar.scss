@@ -1,0 +1,85 @@
+@import "../../core/conf/vars";
+
+.sidebar {
+  .sidebar-header {
+    height: 200px;
+  }
+
+  // Reset
+  ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  /**
+   *
+   */
+  .menu-item {
+    display: block;
+    padding: $spacing-base;
+    text-decoration: none;
+    color: $light-neg1;
+    transition: background-color 100ms linear,
+                color 100ms linear;
+
+    &:hover {
+      background-color: $dark-neg1;
+      color: $light-pos1;
+      cursor: pointer;
+    }
+  }
+
+  .menu-icon {
+    margin-right: $spacing-small;
+    width: 16px;
+    text-align: center;
+  }
+
+  .menu-toggle {
+    float: right;
+  }
+
+  /**
+   * Active states
+   */
+  .sidebar-body {
+    > li {
+      background-color: $dark-base;
+      border-width: 0px;
+      transition: background-color 100ms linear,
+                  border-width 100ms linear;
+
+      &.active {
+        border-left: $border-thick;
+        background-color: $dark-neg1;
+
+        > .menu-item {
+          color: $light-pos1;
+        }
+      }
+    }
+  }
+
+
+  /**
+   * Indentation: To 3 levels
+   */
+  > ul {
+    > li {
+      .menu-item { padding-left: $spacing-base * 1; }
+
+      > ul {
+        > li {
+          .menu-item { padding-left: $spacing-base * 3.5; }
+
+          > ul {
+            > li {
+              .menu-item { padding-left: $spacing-base * 5; }
+            }
+          }
+        }
+      }
+    }
+  }
+}

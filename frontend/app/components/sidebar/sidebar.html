@@ -1,0 +1,65 @@
+<div class="sidebar">
+  <div class="sidebar-header">
+
+  </div>
+
+  <ul class="sidebar-body">
+    <li ng-repeat="top in ::menu.children"
+        ng-class="{ 'active': state.active.top === top.id }">
+      <a class="menu-item"
+         ng-if="::!top.abstract"
+         href="{{:: top.url }}">
+        <i class="menu-icon fa {{:: top.icon }}"></i>
+        {{:: top.name }}
+      </a>
+
+      <span class="menu-item"
+            ng-if="::top.abstract"
+            ng-click="toggle('top', top)">
+        <i class="menu-icon fa {{:: top.icon }}"></i>
+        {{:: top.name }}
+        <i class="menu-toggle fa"
+           ng-show="top.children.length"
+           ng-class="{ 'fa-chevron-left': state.active.top !== top.id,
+                       'fa-chevron-down': state.active.top === top.id }"></i>
+      </span>
+
+      <ul ng-if="top.children.length"
+          ng-show="state.active.top === top.id">
+        <li ng-repeat="middle in ::top.children">
+          <a class="menu-item"
+             ng-if="::!middle.abstract"
+             href="{{:: middle.url }}">
+            {{:: middle.name }}
+          </a>
+
+          <span class="menu-item"
+                ng-if="::middle.abstract"
+                ng-click="toggle('middle', middle)">
+            {{:: middle.name }}
+            <i class="menu-toggle fa"
+               ng-show="middle.children.length"
+               ng-class="{ 'fa-chevron-left': state.active.middle !== middle.id,
+                           'fa-chevron-down': state.active.middle === middle.id }"></i>
+          </span>
+
+          <ul ng-if="middle.children.length"
+              ng-show="state.active.middle === middle.id">
+            <li ng-repeat="bottom in ::middle.children">
+              <a class="menu-item"
+                 ng-if="::!bottom.abstract"
+                 href="{{:: bottom.url }}">
+                {{:: bottom.name }}
+              </a>
+
+              <span class="menu-item"
+                    ng-if="::bottom.abstract">
+                {{:: bottom.name }}
+              </span>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>

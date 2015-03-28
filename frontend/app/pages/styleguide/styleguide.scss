@@ -1,0 +1,50 @@
+@import "../../core/conf/vars";
+
+.color-box {
+  position: relative;
+  width: 100%;
+  padding-bottom: 40%;
+
+  &.light-pos1 { background-color: $light-pos1; }
+  &.light-base { background-color: $light-base; }
+  &.light-neg1 { background-color: $light-neg1; }
+
+  &.grey-pos1 { background-color: $grey-pos1; }
+  &.grey-base { background-color: $grey-base; }
+  &.grey-neg1 { background-color: $grey-neg1; }
+
+  &.dark-pos1 { background-color: $dark-pos1; }
+  &.dark-base { background-color: $dark-base; }
+  &.dark-neg1 { background-color: $dark-neg1; }
+
+  &.success-pos1 { background-color: $success-pos1; }
+  &.success-base { background-color: $success-base; }
+  &.success-neg1 { background-color: $success-neg1; }
+
+  &.info-pos1 { background-color: $info-pos1; }
+  &.info-base { background-color: $info-base; }
+  &.info-neg1 { background-color: $info-neg1; }
+
+  &.caution-pos1 { background-color: $caution-pos1; }
+  &.caution-base { background-color: $caution-base; }
+  &.caution-neg1 { background-color: $caution-neg1; }
+
+  &.warning-pos1 { background-color: $warning-pos1; }
+  &.warning-base { background-color: $warning-base; }
+  &.warning-neg1 { background-color: $warning-neg1; }
+
+  &.danger-pos1 { background-color: $danger-pos1; }
+  &.danger-base { background-color: $danger-base; }
+  &.danger-neg1 { background-color: $danger-neg1; }
+
+  &:not([class*="light-"]) {
+    color: $light-pos1;
+  }
+}
+
+.color-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

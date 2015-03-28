@@ -2,7 +2,7 @@ var conf = require('../conf')
   , path = require('path')
   , fs = require('fs');
 
-var cssMatch = /.scss$/;
+var cssMatch = /.(s)?css$/;
 var htmlMatch = /.html$/;
 var jsMatch = /.js$/;
 

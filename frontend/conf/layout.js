@@ -30,6 +30,10 @@ module.exports = {
       name: 'font-awesome',
       stylesheet: 'css/font-awesome.min.css',
       script: null
+    }, {
+      name: 'normalize.css',
+      stylesheet: 'normalize.css',
+      script: null
     }
   ]
 };

@@ -1,0 +1,9 @@
+<ul class="breadcrumb">
+  <li ng-repeat="crumb in breadcrumb"
+      ng-class="{ 'active': $last }">
+    <a ng-if=":: crumb.link"
+       ui-sref="{{:: crumb.link }}">{{:: crumb.name }}</a>
+
+    <a ng-if=":: !crumb.link">{{:: crumb.name }}</a>
+  </li>
+</ul>

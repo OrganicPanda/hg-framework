@@ -18,7 +18,8 @@ angular.module('mis', [
  * Core sub-modules
  */
 angular.module('mis.core', [
-  'mis.core.config'
+  'mis.core.config',
+  'mis.core.constants'
 ]);
 
 /**
@@ -33,12 +34,22 @@ angular.module('mis.models', [
  */
 angular.module('mis.components', [
   'mis.components.api',
-  'mis.components.auth'
+  'mis.components.auth',
+  'mis.components.breadcrumb',
+  'mis.components.sidebar',
+  'mis.components.topbar'
 ]);
 
 /**
  * Pages sub-modules
  */
 angular.module('mis.pages', [
-
+  'mis.pages.contacts',
+  'mis.pages.dashboard',
+  'mis.pages.errors',
+  'mis.pages.profile',
+  'mis.pages.reports',
+  'mis.pages.staff',
+  'mis.pages.students',
+  'mis.pages.styleguide'
 ]);

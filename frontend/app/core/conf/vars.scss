@@ -1,0 +1,70 @@
+/**
+ * Colors
+ */
+$lighten-mtpl:      8%;
+
+$light-base:        #F3F3F4;
+$light-pos1:        #FFFFFF;
+$light-neg1:        #E7EAEC;
+
+$grey-base:         #95A5A6;
+$grey-pos1:         lighten($grey-base, $lighten-mtpl);
+$grey-neg1:         #676a6c;
+
+$dark-base:         #2F4050;
+$dark-pos1:         lighten($dark-base, $lighten-mtpl);
+$dark-neg1:         #293846;
+
+$success-base:      #2ECC71;
+$success-pos1:      lighten($success-base, $lighten-mtpl);
+$success-neg1:      #27AE60;
+
+$info-base:         #3498DB;
+$info-pos1:         lighten($info-base, $lighten-mtpl);
+$info-neg1:         #2980B9;
+
+$caution-base:      #F1C40F;
+$caution-pos1:      lighten($caution-base, $lighten-mtpl);
+$caution-neg1:      #F39C12;
+
+$warning-base:      #E67E22;
+$warning-pos1:      lighten($warning-base, $lighten-mtpl);
+$warning-neg1:      #D35400;
+
+$danger-base:       #E74C3C;
+$danger-pos1:       lighten($danger-base, $lighten-mtpl);
+$danger-neg1:       #C0392B;
+
+/**
+ * Type
+ */
+$font-color:        $grey-neg1;
+$font-family:       'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+$line-height:       1.4;
+
+$font-size-h1:      30px;
+$font-size-h2:      26px;
+$font-size-h3:      22px;
+$font-size-h4:      18px;
+$font-size-base:    14px;
+
+$font-weight-light: 300;
+$font-weight-base:  400;
+$font-weight-bold:  600;
+
+/**
+ * Sizes
+ */
+$spacing-base:      15px;
+$spacing-small:     $spacing-base / 2;
+$spacing-large:     $spacing-base * 2;
+
+$sidebar-open:      220px;
+$sidebar-closed:    70px;
+
+
+/**
+ * Borders
+ */
+$border-thin:       1px solid $light-neg1;
+$border-thick:      4px solid $light-neg1;

@@ -1,5 +1,4 @@
-var utils = require('./utils')
-  , conf = require('../conf');
+var utils = require('./utils');
 
 module.exports = (function() {
   var config = {
@@ -20,26 +19,20 @@ module.exports = (function() {
 
     if (module.hasHTML) {
       tasks.push('html2js:' + module.nameSpace);
-      files.push(module.files.html.map(function(file) {
-        return module.src + '/' + file;
-      }));
+      files.push(module.src + '/**/*.html');
     }
 
     if (module.hasJS) {
       tasks.push('ngAnnotate:' + module.nameSpace);
       tasks.push('uglify:' + module.nameSpace);
-      files.push(module.files.js.map(function(file) {
-        return module.src + '/' + file;
-      }));
+      files.push(module.src + '/**/*.js');
     }
 
     if (module.hasCSS) {
       tasks.push('sass:' + module.nameSpace);
       tasks.push('autoprefixer:' + module.nameSpace);
       tasks.push('cssmin:' + module.nameSpace);
-      files.push(module.files.css.map(function(file) {
-        return module.src + '/' + file;
-      }));
+      files.push(module.src + '/**/*.scss');
     }
   });
 

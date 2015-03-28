@@ -1,0 +1,23 @@
+.panel {
+  margin-bottom: $spacing-large;
+  background-color: $light-pos1;
+
+  &.panel-full {
+    .panel-body {
+      padding-left: $spacing-large;
+      padding-right: $spacing-large;
+      border-bottom: $border-thin;
+    }
+  }
+
+  .panel-header {
+    padding: $spacing-base;
+    border-top: $border-thick;
+    font-weight: $font-weight-bold;
+  }
+
+  .panel-body {
+    border-top: $border-thin;
+    padding: $spacing-base;
+  }
+}

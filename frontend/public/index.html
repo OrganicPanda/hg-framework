@@ -2,11 +2,29 @@
 <html>
   <head>
     <title>MIS</title>
+    <base href="/">
     <link rel="stylesheet" href="/vendor/font-awesome/css/font-awesome.min.css">
-    
+<link rel="stylesheet" href="/vendor/normalize.css/normalize.css">
+    <link rel="stylesheet" href="/dist/components/breadcrumb/breadcrumb.min.css">
+<link rel="stylesheet" href="/dist/components/form/form.min.css">
+<link rel="stylesheet" href="/dist/components/sidebar/sidebar.min.css">
+<link rel="stylesheet" href="/dist/components/topbar/topbar.min.css">
+<link rel="stylesheet" href="/dist/core/conf/conf.min.css">
+<link rel="stylesheet" href="/dist/core/layout/layout.min.css">
+<link rel="stylesheet" href="/dist/core/styling/styling.min.css">
+<link rel="stylesheet" href="/dist/pages/styleguide/styleguide.min.css">
   </head>
   <body>
+    <div class="layout">
+      <div class="layout-side">
+        <div mis-sidebar></div>
+      </div>
 
+      <div class="layout-main">
+        <div mis-topbar></div>
+        <div ui-view></div>
+      </div>
+    </div>
 
   <script type="text/javascript" src="/vendor/angular/angular.min.js"></script>
 <script type="text/javascript" src="/vendor/a0-angular-storage/dist/angular-storage.min.js"></script>
@@ -15,9 +33,21 @@
 <script type="text/javascript" src="/vendor/restangular/dist/restangular.min.js"></script>
   <script type="text/javascript" src="/dist/components/api/api.min.js"></script>
 <script type="text/javascript" src="/dist/components/auth/auth.min.js"></script>
+<script type="text/javascript" src="/dist/components/breadcrumb/breadcrumb.min.js"></script>
+<script type="text/javascript" src="/dist/components/sidebar/sidebar.min.js"></script>
+<script type="text/javascript" src="/dist/components/topbar/topbar.min.js"></script>
 <script type="text/javascript" src="/dist/core/app/app.min.js"></script>
 <script type="text/javascript" src="/dist/core/bootstrap/bootstrap.min.js"></script>
 <script type="text/javascript" src="/dist/core/conf/conf.min.js"></script>
+<script type="text/javascript" src="/dist/core/constants/constants.min.js"></script>
 <script type="text/javascript" src="/dist/models/me/me.min.js"></script>
+<script type="text/javascript" src="/dist/pages/contacts/contacts.min.js"></script>
+<script type="text/javascript" src="/dist/pages/dashboard/dashboard.min.js"></script>
+<script type="text/javascript" src="/dist/pages/errors/errors.min.js"></script>
+<script type="text/javascript" src="/dist/pages/profile/profile.min.js"></script>
+<script type="text/javascript" src="/dist/pages/reports/reports.min.js"></script>
+<script type="text/javascript" src="/dist/pages/staff/staff.min.js"></script>
+<script type="text/javascript" src="/dist/pages/students/students.min.js"></script>
+<script type="text/javascript" src="/dist/pages/styleguide/styleguide.min.js"></script>
   </body>
 </html>

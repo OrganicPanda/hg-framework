@@ -1,0 +1,22 @@
+@import "../../core/conf/vars";
+
+.breadcrumb {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+
+  > li {
+    display: inline-block;
+
+    &.active {
+      font-weight: $font-weight-bold;
+    }
+
+    + li::before {
+      content: "/\00a0";
+      padding: 0 $spacing-small;
+      color: $grey-pos1;
+      font-weight: $font-weight-base;
+    }
+  }
+}
