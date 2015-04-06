@@ -4,6 +4,10 @@ module.exports = (function() {
   var config = {
     options: {
       livereload: true
+    },
+    core: {
+      tasks: 'default',
+      files: './app/core/**/*'
     }
   };
 

@@ -1,12 +1,15 @@
 .panel {
-  margin-bottom: $spacing-large;
-  background-color: $light-pos1;
+  margin-bottom: $spacing-grid;
+  background-color: $white-base;
+
+  &:last-child { margin-bottom: 0; }
 
   &.panel-full {
+    border-top: $border-thin;
+    border-bottom: $border-thin;
+
     .panel-body {
-      padding-left: $spacing-large;
-      padding-right: $spacing-large;
-      border-bottom: $border-thin;
+      border-top: 0;
     }
   }
 
@@ -19,5 +22,18 @@
   .panel-body {
     border-top: $border-thin;
     padding: $spacing-base;
+  }
+}
+
+/**
+ * Dark Panel
+ */
+.panel.panel-dark {
+  background-color: $dark-pos1;
+  color: textColor($dark-pos1);
+
+  .panel-header,
+  .panel-body {
+    border-color: $dark-neg1;
   }
 }

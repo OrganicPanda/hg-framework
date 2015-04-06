@@ -1,0 +1,111 @@
+/* The ideal text color
+ * ========================================================================== */
+@function textColor($color) {
+  @if (lightness($color) > 70) {
+    @return $dark-base;
+  } @else {
+    @return $white-base;
+  }
+}
+
+/* Clearfix
+ * ========================================================================== */
+@mixin clearfix() {
+  &::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+/* Transition
+ * ========================================================================== */
+@function buildTransition($properties) {
+  $transitions: ();
+
+  @each $property in $properties {
+    $transitions: append($transitions
+      , $property $transition-time $transition-func, comma);
+  }
+
+  @return $transitions;
+}
+
+@mixin transition($properties) {
+  transition: buildTransition($properties);
+}
+
+/* Breakpointing
+ * ========================================================================== */
+
+/*
+ * Usage:
+ *
+ * .bar {
+ *   color: red;
+ *
+ *   @include breakpoint(sm) {
+ *     color: blue;
+ *   }
+ * }
+ *
+ * Outputs:
+ *
+ * .bar {
+ *   color: red;
+ * }
+ *
+ * @media (min-width: 768px) {
+ *   .bar {
+ *     color: blue;
+ *   }
+ * }
+ *
+ */
+
+@mixin breakpoint($size) {
+  $min: false;
+
+  @if $size == sm { $min: $screen-sm-min; }
+  @if $size == md { $min: $screen-md-min; }
+  @if $size == lg { $min: $screen-lg-min; }
+
+  @media (min-width: $min) {
+    @content;
+  }
+}
+
+
+/* View Range
+ * ========================================================================== */
+
+/*
+ *
+ */
+
+@mixin viewRange($size) {
+  $min: false;
+  $max: false;
+
+  @if $size == sm {                       $max: $screen-sm-max; }
+  @if $size == md { $min: $screen-md-min; $max: $screen-md-max; }
+  @if $size == lg { $min: $screen-lg-min; }
+
+  @if not $max and $min {
+    @media (min-width: $min) {
+      @content;
+    }
+  }
+
+  @if not $min and $max {
+    @media (max-width: $max) {
+      @content;
+    }
+  }
+
+  @if $min and $max {
+    @media (min-width: $min) and (max-width: $max) {
+      @content;
+    }
+  }
+}

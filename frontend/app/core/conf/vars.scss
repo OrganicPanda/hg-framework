@@ -1,70 +1,130 @@
 /**
  * Colors
  */
-$lighten-mtpl:      8%;
+$fade-modifier:         80%;
+$lighten-modifier:      15%;
+$darken-modifier:       10%;
 
-$light-base:        #F3F3F4;
-$light-pos1:        #FFFFFF;
-$light-neg1:        #E7EAEC;
+$white-base:            #FFFFFF;
 
-$grey-base:         #95A5A6;
-$grey-pos1:         lighten($grey-base, $lighten-mtpl);
-$grey-neg1:         #676a6c;
+$grey-light-base:       #ECF0F1;
+$grey-dark-base:        #95A5A6;
+$dark-base:             #34495E;
 
-$dark-base:         #2F4050;
-$dark-pos1:         lighten($dark-base, $lighten-mtpl);
-$dark-neg1:         #293846;
+$primary-base:          #1ABC9C;
+$secondary-base:        #9B59B6;
 
-$success-base:      #2ECC71;
-$success-pos1:      lighten($success-base, $lighten-mtpl);
-$success-neg1:      #27AE60;
+$success-base:          #2ECC71;
+$info-base:             #3498DB;
+$caution-base:          #F1C40F;
+$warning-base:          #E67E22;
+$danger-base:           #E74C3C;
 
-$info-base:         #3498DB;
-$info-pos1:         lighten($info-base, $lighten-mtpl);
-$info-neg1:         #2980B9;
 
-$caution-base:      #F1C40F;
-$caution-pos1:      lighten($caution-base, $lighten-mtpl);
-$caution-neg1:      #F39C12;
+$grey-light-pos1:       mix(white, $grey-light-base, ($lighten-modifier * 3));
+$grey-light-neg1:       mix(black, $grey-light-base, $darken-modifier);
 
-$warning-base:      #E67E22;
-$warning-pos1:      lighten($warning-base, $lighten-mtpl);
-$warning-neg1:      #D35400;
+$grey-dark-pos1:        mix(white, $grey-dark-base, ($lighten-modifier * 3));
+$grey-dark-neg1:        mix(black, $grey-dark-base, $darken-modifier);
 
-$danger-base:       #E74C3C;
-$danger-pos1:       lighten($danger-base, $lighten-mtpl);
-$danger-neg1:       #C0392B;
+$dark-pos1:             mix(white, $dark-base, $lighten-modifier);
+$dark-neg1:             mix(black, $dark-base, $darken-modifier);
+
+$primary-pos1:          mix(white, $primary-base, $lighten-modifier);
+$primary-neg1:          mix(black, $primary-base, $darken-modifier);
+
+$secondary-pos1:        mix(white, $secondary-base, $lighten-modifier);
+$secondary-neg1:        mix(black, $secondary-base, $darken-modifier);
+
+$success-fade:          mix(white, $success-base, $fade-modifier);
+$success-pos1:          mix(white, $success-base, $lighten-modifier);
+$success-neg1:          mix(black, $success-base, $darken-modifier);
+
+$info-fade:             mix(white, $info-base, $fade-modifier);
+$info-pos1:             mix(white, $info-base, $lighten-modifier);
+$info-neg1:             mix(black, $info-base, $darken-modifier);
+
+$caution-fade:          mix(white, $caution-base, $fade-modifier);
+$caution-pos1:          mix(white, $caution-base, $lighten-modifier);
+$caution-neg1:          mix(black, $caution-base, $darken-modifier);
+
+$warning-fade:          mix(white, $warning-base, $fade-modifier);
+$warning-pos1:          mix(white, $warning-base, $lighten-modifier);
+$warning-neg1:          mix(black, $warning-base, $darken-modifier);
+
+$danger-fade:           mix(white, $danger-base, $fade-modifier);
+$danger-pos1:           mix(white, $danger-base, $lighten-modifier);
+$danger-neg1:           mix(black, $danger-base, $darken-modifier);
+
+$background-color:      $grey-light-pos1;
+$font-color:            $dark-pos1;
+$sidebar-color:         $dark-neg1;
 
 /**
  * Type
  */
-$font-color:        $grey-neg1;
-$font-family:       'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-$line-height:       1.4;
+$font-family:           'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 
-$font-size-h1:      30px;
-$font-size-h2:      26px;
-$font-size-h3:      22px;
-$font-size-h4:      18px;
-$font-size-base:    14px;
+$font-size-base:        14px;
+$font-size-sm:          10px;
 
-$font-weight-light: 300;
-$font-weight-base:  400;
-$font-weight-bold:  600;
+$font-size-h1:          floor(($font-size-base * 2.6));
+$font-size-h2:          floor(($font-size-base * 2.15));
+$font-size-h3:          floor(($font-size-base * 1.7));
+$font-size-h4:          floor(($font-size-base * 1.25));
+
+$line-height:           1.428571429;
+$line-height-hs:        1.1;
+$line-height-px:        floor(($font-size-base * $line-height));
+
+$font-weight-light:     300;
+$font-weight-base:      400;
+$font-weight-bold:      600;
+
+/**
+ * Icons
+ */
+$icon-font-name:        "FontAwesome";
+$fa-font-path:          "/vendor/font-awesome/fonts";
+$fa-css-prefix:         icon;
 
 /**
  * Sizes
  */
-$spacing-base:      15px;
-$spacing-small:     $spacing-base / 2;
-$spacing-large:     $spacing-base * 2;
+$spacing-base:          15px;
+$spacing-xs:            $spacing-base / 2;
+$spacing-sm:            floor($spacing-base / 2);
+$spacing-lg:            $spacing-base * 2;
 
-$sidebar-open:      220px;
-$sidebar-closed:    70px;
+$spacing-grid:          $spacing-lg;
 
+$sidebar-open:          220px;
+$sidebar-closed:        70px;
+
+$screen-sm-min:         768px;
+$screen-md-min:         992px;
+$screen-lg-min:         1200px;
+
+$screen-sm-max:         ($screen-md-min - 1);
+$screen-md-max:         ($screen-lg-min - 1);
 
 /**
  * Borders
  */
-$border-thin:       1px solid $light-neg1;
-$border-thick:      4px solid $light-neg1;
+$border-width-sm:       1px;
+$border-width-lg:       4px;
+$border-style:          solid;
+$border-color:          $grey-light-neg1;
+
+$border-thin:           $border-width-sm $border-style $border-color;
+$border-thick:          $border-width-lg $border-style $border-color;
+
+$border-radius-sm:      1px;
+$border-radius-md:      3px;
+$border-radius-lg:      5px;
+
+/**
+ * Animations
+ */
+$transition-time:       200ms;
+$transition-func:       cubic-bezier(0.250, 0.460, 0.450, 0.940);

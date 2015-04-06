@@ -10,7 +10,7 @@ angular.module('mis.pages.staff', [
         templateUrl: '/dist/pages/staff/staff.html',
         data: {
           name: 'Staff',
-          icon: 'fa-male'
+          icon: 'icon-male'
         }
       });
   });

@@ -1,0 +1,53 @@
+@import "../../core/conf/vars";
+@import "../../core/styling/_scss/mixins";
+@import "../../../vendor/font-awesome/scss/_variables.scss";
+
+/**
+ * Table styling
+ */
+table {
+  width: 100%;
+
+  th { padding: $spacing-base; }
+  td { padding: $spacing-sm $spacing-base; }
+
+  th,
+  td {
+    text-align: left;
+  }
+
+  tbody {
+    tr {
+      border-bottom: $border-thin;
+    }
+  }
+}
+
+/**
+ * Table sorting
+ */
+th.sortable {
+  cursor: pointer;
+
+  &::before {
+    font-family: $icon-font-name;
+    content: $fa-var-sort;
+    float: right;
+    color: $grey-light-neg1;
+  }
+
+  &.sort-asc::before  { content: $fa-var-sort-asc; color: inherit; }
+  &.sort-desc::before { content: $fa-var-sort-desc; color: inherit; }
+
+}
+
+/**
+ * Table pagination
+ */
+.pagination {
+  text-align: center;
+
+  .panel + & {
+    margin-top: -($spacing-grid + $border-width-sm);
+  }
+}

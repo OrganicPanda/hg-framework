@@ -1,5 +1,6 @@
 angular.module('mis.core.config', [
-  'ui.router'
+  'ui.router',
+  'restangular'
 ])
 
   /**
@@ -18,7 +19,7 @@ angular.module('mis.core.config', [
    *
    */
   .config(function($locationProvider, $urlRouterProvider
-      , $urlMatcherFactoryProvider) {
+      , $urlMatcherFactoryProvider, RestangularProvider) {
 
     // Enable HTML5 Mode
     // https://docs.angularjs.org/guide/$location
@@ -29,4 +30,18 @@ angular.module('mis.core.config', [
 
     // Redirect to 404 page if URL not found.
     $urlRouterProvider.otherwise('/404');
+
+    // Restangular config
+    RestangularProvider.addResponseInterceptor(function(data, operation) {
+      var extractedData;
+
+      if (operation === 'getList' && data.items) {
+        extractedData = data.items;
+        extractedData.pageInfo = data.pageInfo;
+      } else {
+        extractedData = data;
+      }
+
+      return extractedData;
+    });
   });

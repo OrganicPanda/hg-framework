@@ -11,7 +11,7 @@ angular.module('mis.pages.profile', [
         templateUrl: '/dist/pages/profile/profile.html',
         data: {
           name: 'My Profile',
-          icon: 'fa-user'
+          icon: 'icon-user'
         }
       });
   })

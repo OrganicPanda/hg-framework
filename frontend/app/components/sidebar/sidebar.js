@@ -5,7 +5,11 @@ angular.module( 'mis.components.sidebar', [
 ])
 
   /**
+   * @ngdoc directive
+   * @name sideBar.directive:misSidebar
    *
+   * @description
+   * TODO:
    */
   .directive('misSidebar', function($state, cc) {
     return {
@@ -13,16 +17,20 @@ angular.module( 'mis.components.sidebar', [
       templateUrl: '/dist/components/sidebar/sidebar.html',
       link: function(scope) {
 
-        /**
-         *
+        /*
+         * Traverses the UI-Routers state store and extracts
+         * the registers routes as menu items.
          */
         function getMenuItems(menu) {
-          //
+
+          // Only routes with names and not explicitly hidden from
+          // side bar.
           function onlyValid(item) {
             return item.name && item.data && !item.data.hideInSidebar;
           }
 
-          //
+          // Creates menu item with relative route from the parent.
+          // All sub routes are stored as children with the
           function createMenuItem(item) {
             var structure = item.name.split('.')
               , length = structure.length
@@ -39,7 +47,7 @@ angular.module( 'mis.components.sidebar', [
             });
           }
 
-          //
+          // Recursive lookup for the parent route object.
           function extractParent(structure, parent) {
             if (structure.length) {
               parent = extractParent(
@@ -52,13 +60,13 @@ angular.module( 'mis.components.sidebar', [
             return parent || menu;
           }
 
-          //
+          // Kicks off the menu item creation.
           $state
             .get()
             .filter(onlyValid)
             .forEach(createMenuItem);
 
-          //
+          // Each top-level route will have been given an order.
           menu.children.sort(function(a, b) {
             return cc.MENU_ORDER.indexOf(a.id) - cc.MENU_ORDER.indexOf(b.id);
           });

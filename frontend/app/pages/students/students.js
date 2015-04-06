@@ -10,7 +10,7 @@ angular.module('mis.pages.students', [
         templateUrl: '/dist/pages/students/students.html',
         data: {
           name: 'Students',
-          icon: 'fa-child'
+          icon: 'icon-child'
         }
       });
   });

@@ -10,6 +10,11 @@ angular.module('mis.core.constants', [])
     'styleguide'
   ])
 
+  .constant('PAGING_START', 1)
+  .constant('PAGING_DEFAULT_RESULTS', 10)
+  .constant('SORT_ASC', 1)
+  .constant('SORT_DESC', -1)
+
   /**
    *
    */

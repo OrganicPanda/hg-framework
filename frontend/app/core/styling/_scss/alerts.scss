@@ -1,0 +1,21 @@
+@mixin makeAlert($color, $background) {
+  background-color: $background;
+  color: $color;
+  border-color: $color;
+}
+
+.alert {
+  margin: $spacing-base 0;
+  padding: $spacing-base;
+  border-width: $border-width-sm;
+  border-style: $border-style;
+
+  &:first-child { margin-top: 0; }
+  &:last-child { margin-bottom: 0; }
+}
+
+.alert-success  { @include makeAlert($success-neg1, $success-fade); }
+.alert-info     { @include makeAlert($info-neg1, $info-fade); }
+.alert-caution  { @include makeAlert($caution-neg1, $caution-fade); }
+.alert-warning  { @include makeAlert($warning-neg1, $warning-fade); }
+.alert-danger   { @include makeAlert($danger-neg1, $danger-fade); }

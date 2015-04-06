@@ -10,7 +10,7 @@ angular.module('mis.pages.reports', [
         templateUrl: '/dist/pages/reports/reports.html',
         data: {
           name: 'Reports',
-          icon: 'fa-pie-chart'
+          icon: 'icon-pie-chart'
         }
       });
   });

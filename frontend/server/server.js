@@ -14,7 +14,7 @@ app.use('/' + conf.locations.vendor
 app.use('/*'
   , express.static(__dirname + '/../public'));
 
-server = app.listen(port, function() {
+server = app.listen(3000, function() {
   console.log('server start on port ' + port);
 });
 

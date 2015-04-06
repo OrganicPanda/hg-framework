@@ -1,45 +1,60 @@
 @import "../../core/conf/vars";
+@import "../../core/styling/_scss/mixins";
+
+@mixin colorBox($color) {
+  background-color: $color;
+  color: textColor($color);
+}
 
 .color-box {
   position: relative;
   width: 100%;
-  padding-bottom: 40%;
+  height: 60px;
 
-  &.light-pos1 { background-color: $light-pos1; }
-  &.light-base { background-color: $light-base; }
-  &.light-neg1 { background-color: $light-neg1; }
+  &.grey-light-pos1 { @include colorBox($grey-light-pos1); }
+  &.grey-light-base { @include colorBox($grey-light-base); }
+  &.grey-light-neg1 { @include colorBox($grey-light-neg1); }
 
-  &.grey-pos1 { background-color: $grey-pos1; }
-  &.grey-base { background-color: $grey-base; }
-  &.grey-neg1 { background-color: $grey-neg1; }
+  &.grey-dark-pos1 { @include colorBox($grey-dark-pos1); }
+  &.grey-dark-base { @include colorBox($grey-dark-base); }
+  &.grey-dark-neg1 { @include colorBox($grey-dark-neg1); }
 
-  &.dark-pos1 { background-color: $dark-pos1; }
-  &.dark-base { background-color: $dark-base; }
-  &.dark-neg1 { background-color: $dark-neg1; }
+  &.dark-pos1 { @include colorBox($dark-pos1); }
+  &.dark-base { @include colorBox($dark-base); }
+  &.dark-neg1 { @include colorBox($dark-neg1); }
 
-  &.success-pos1 { background-color: $success-pos1; }
-  &.success-base { background-color: $success-base; }
-  &.success-neg1 { background-color: $success-neg1; }
+  &.primary-pos1 { @include colorBox($primary-pos1); }
+  &.primary-base { @include colorBox($primary-base); }
+  &.primary-neg1 { @include colorBox($primary-neg1); }
 
-  &.info-pos1 { background-color: $info-pos1; }
-  &.info-base { background-color: $info-base; }
-  &.info-neg1 { background-color: $info-neg1; }
+  &.secondary-pos1 { @include colorBox($secondary-pos1); }
+  &.secondary-base { @include colorBox($secondary-base); }
+  &.secondary-neg1 { @include colorBox($secondary-neg1); }
 
-  &.caution-pos1 { background-color: $caution-pos1; }
-  &.caution-base { background-color: $caution-base; }
-  &.caution-neg1 { background-color: $caution-neg1; }
+  &.success-fade { @include colorBox($success-fade); }
+  &.success-pos1 { @include colorBox($success-pos1); }
+  &.success-base { @include colorBox($success-base); }
+  &.success-neg1 { @include colorBox($success-neg1); }
 
-  &.warning-pos1 { background-color: $warning-pos1; }
-  &.warning-base { background-color: $warning-base; }
-  &.warning-neg1 { background-color: $warning-neg1; }
+  &.info-fade { @include colorBox($info-fade); }
+  &.info-pos1 { @include colorBox($info-pos1); }
+  &.info-base { @include colorBox($info-base); }
+  &.info-neg1 { @include colorBox($info-neg1); }
 
-  &.danger-pos1 { background-color: $danger-pos1; }
-  &.danger-base { background-color: $danger-base; }
-  &.danger-neg1 { background-color: $danger-neg1; }
+  &.caution-fade { @include colorBox($caution-fade); }
+  &.caution-pos1 { @include colorBox($caution-pos1); }
+  &.caution-base { @include colorBox($caution-base); }
+  &.caution-neg1 { @include colorBox($caution-neg1); }
 
-  &:not([class*="light-"]) {
-    color: $light-pos1;
-  }
+  &.warning-fade { @include colorBox($warning-fade); }
+  &.warning-pos1 { @include colorBox($warning-pos1); }
+  &.warning-base { @include colorBox($warning-base); }
+  &.warning-neg1 { @include colorBox($warning-neg1); }
+
+  &.danger-fade { @include colorBox($danger-fade); }
+  &.danger-pos1 { @include colorBox($danger-pos1); }
+  &.danger-base { @include colorBox($danger-base); }
+  &.danger-neg1 { @include colorBox($danger-neg1); }
 }
 
 .color-text {
@@ -47,4 +62,13 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+.grid-demo {
+  margin-bottom: 15px!important;
+}
+
+.cell-demo {
+  padding: 10px;
+  background-color: $grey-light-neg1;
 }

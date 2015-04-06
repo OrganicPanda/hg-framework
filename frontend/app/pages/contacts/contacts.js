@@ -10,7 +10,7 @@ angular.module('mis.pages.contacts', [
         templateUrl: '/dist/pages/contacts/contacts.html',
         data: {
           name: 'Contacts',
-          icon: 'fa-book'
+          icon: 'icon-book'
         }
       });
   });

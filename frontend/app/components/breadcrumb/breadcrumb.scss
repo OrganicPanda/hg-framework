@@ -14,8 +14,8 @@
 
     + li::before {
       content: "/\00a0";
-      padding: 0 $spacing-small;
-      color: $grey-pos1;
+      padding: 0 $spacing-sm;
+      color: $grey-light-neg1;
       font-weight: $font-weight-base;
     }
   }

@@ -10,7 +10,7 @@ angular.module('mis.pages.dashboard', [
         templateUrl: '/dist/pages/dashboard/dashboard.html',
         data: {
           name: 'Dashboard',
-          icon: 'fa-bar-chart'
+          icon: 'icon-bar-chart'
         }
       });
   });

@@ -1,0 +1,39 @@
+<table class="panel">
+  <thead class="panel-header">
+    <tr>
+      <th ng-repeat="head in table.data.headers"
+          ng-click="setSort(head);"
+          ng-class="{ 'sortable': table.options.sortable,
+                      'sort-asc': table.sourceConf.sortColumn === head.field &&
+                                  table.sourceConf.sortOrder === 1,
+                      'sort-desc': table.sourceConf.sortColumn === head.field &&
+                                   table.sourceConf.sortOrder === -1 }">
+        {{:: head.name }}
+      </th>
+    </tr>
+  </thead>
+
+  <tbody class="panel-body">
+    <tr ng-if="state.loading">
+      <td class="text-center"
+          colspan="{{ table.data.headers.length }}">
+        <i class="icon icon-refresh icon-spin"></i>
+      </td>
+    </tr>
+
+    <tr ng-if="!state.loading && !table.data.rows.length">
+      <td class="text-center"
+          colspan="{{ table.data.headers.length }}">
+        No data
+      </td>
+    </tr>
+
+    <tr ng-repeat="row in table.data.rows">
+      <td ng-repeat="cell in row.cells">
+        {{:: cell }}
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<div mis-table-pagination="table"></div>

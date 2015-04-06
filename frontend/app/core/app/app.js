@@ -26,6 +26,7 @@ angular.module('mis.core', [
  * Models sub-modules
  */
 angular.module('mis.models', [
+  'mis.models.demo',
   'mis.models.me'
 ]);
 
@@ -36,7 +37,9 @@ angular.module('mis.components', [
   'mis.components.api',
   'mis.components.auth',
   'mis.components.breadcrumb',
+  'mis.components.charts',
   'mis.components.sidebar',
+  'mis.components.table',
   'mis.components.topbar'
 ]);
 

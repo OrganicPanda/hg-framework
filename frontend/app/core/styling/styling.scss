@@ -1,16 +1,23 @@
 @import "../conf/vars";
+@import "../../../vendor/font-awesome/scss/font-awesome.scss";
 
-@import "_scss/type";
+@import "_scss/mixins";
+@import "_scss/alerts";
+@import "_scss/button";
+@import "_scss/form";
 @import "_scss/grid";
+@import "_scss/labels";
 @import "_scss/panel";
+@import "_scss/type";
+@import "_scss/utils";
 
-html {
-  box-sizing: border-box;
-}
-*, *:before, *:after {
+
+*,
+*:before,
+*:after {
   box-sizing: inherit;
 }
 
-body {
-  background-color: $dark-neg1;
+html {
+  box-sizing: border-box;
 }

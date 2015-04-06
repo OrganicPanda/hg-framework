@@ -1,25 +1,17 @@
 @import "../conf/vars";
 
 .layout {
-  position: absolute;
-  width: 100vw;
+  display: flex;
   min-height: 100vh;
+  background-color: $sidebar-color;
 
   .layout-side {
-    position: absolute;
-    min-height: 100vh;
-    width: $sidebar-open;
+    flex-shrink: 0;
   }
 
   .layout-main {
-    position: absolute;
-    min-height: 100vh;
-    margin-left: $sidebar-open;
-    width: calc(100% - #{$sidebar-open});
-    background-color: $light-base;
+    flex-grow: 1;
+    padding: 0 0 $spacing-base;
+    background-color: $background-color;
   }
-}
-
-.container {
-  padding: 0 $spacing-base 0 $spacing-base;
 }

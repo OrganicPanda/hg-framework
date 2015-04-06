@@ -9,19 +9,19 @@
       <a class="menu-item"
          ng-if="::!top.abstract"
          href="{{:: top.url }}">
-        <i class="menu-icon fa {{:: top.icon }}"></i>
+        <i class="menu-icon icon {{:: top.icon }}"></i>
         {{:: top.name }}
       </a>
 
       <span class="menu-item"
             ng-if="::top.abstract"
             ng-click="toggle('top', top)">
-        <i class="menu-icon fa {{:: top.icon }}"></i>
+        <i class="menu-icon icon {{:: top.icon }}"></i>
         {{:: top.name }}
-        <i class="menu-toggle fa"
+        <i class="menu-toggle icon"
            ng-show="top.children.length"
-           ng-class="{ 'fa-chevron-left': state.active.top !== top.id,
-                       'fa-chevron-down': state.active.top === top.id }"></i>
+           ng-class="{ 'icon-chevron-left': state.active.top !== top.id,
+                       'icon-chevron-down': state.active.top === top.id }"></i>
       </span>
 
       <ul ng-if="top.children.length"
@@ -37,10 +37,10 @@
                 ng-if="::middle.abstract"
                 ng-click="toggle('middle', middle)">
             {{:: middle.name }}
-            <i class="menu-toggle fa"
+            <i class="menu-toggle icon"
                ng-show="middle.children.length"
-               ng-class="{ 'fa-chevron-left': state.active.middle !== middle.id,
-                           'fa-chevron-down': state.active.middle === middle.id }"></i>
+               ng-class="{ 'icon-chevron-left': state.active.middle !== middle.id,
+                           'icon-chevron-down': state.active.middle === middle.id }"></i>
           </span>
 
           <ul ng-if="middle.children.length"

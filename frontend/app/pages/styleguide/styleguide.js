@@ -1,5 +1,8 @@
 angular.module('mis.pages.styleguide', [
   'ui.router',
+
+  'mis.models.demo',
+  'mis.components.table',
   'mis.pages.styleguide.tpl'
 ])
 
@@ -16,21 +19,41 @@ angular.module('mis.pages.styleguide', [
         controller: 'MisStyleguideCtrl',
         data: {
           name: 'Styleguide',
-          icon: 'fa-paint-brush'
+          icon: 'icon-paint-brush'
         }
       })
 
-      .state('styleguide.colors', {
+      /**
+       *
+       */
+      .state('styleguide.core', {
+        abstract: true,
+        url: '/core',
+        template: '<ui-view/>',
+        data: {
+          name: 'Core'
+        }
+      })
+
+      .state('styleguide.core.colors', {
         url: '/colors',
-        templateUrl: '/dist/pages/styleguide/colors.html',
+        templateUrl: '/dist/pages/styleguide/core/colors.html',
         data: {
           name: 'Colors'
         }
       })
 
-      .state('styleguide.typography', {
+      .state('styleguide.core.grid', {
+        url: '/grid',
+        templateUrl: '/dist/pages/styleguide/core/grid.html',
+        data: {
+          name: 'Grid System'
+        }
+      })
+
+      .state('styleguide.core.typography', {
         url: '/typography',
-        templateUrl: '/dist/pages/styleguide/typography.html',
+        templateUrl: '/dist/pages/styleguide/core/typography.html',
         data: {
           name: 'Typography'
         }
@@ -39,28 +62,80 @@ angular.module('mis.pages.styleguide', [
       /**
        *
        */
-      .state('styleguide.layout', {
+      .state('styleguide.css', {
         abstract: true,
-        url: '/layout',
+        url: '/css',
         template: '<ui-view/>',
         data: {
-          name: 'Layout'
+          name: 'CSS'
         }
       })
 
-      .state('styleguide.layout.grid', {
-        url: '/grid',
-        templateUrl: '/dist/pages/styleguide/layout/grid.html',
+      .state('styleguide.css.alerts', {
+        url: '/alerts',
+        templateUrl: '/dist/pages/styleguide/css/alerts.html',
         data: {
-          name: 'Grid System'
+          name: 'Alerts'
         }
       })
 
-      .state('styleguide.layout.panel', {
+      .state('styleguide.css.buttons', {
+        url: '/buttons',
+        templateUrl: '/dist/pages/styleguide/css/buttons.html',
+        data: {
+          name: 'Buttons'
+        }
+      })
+
+      .state('styleguide.css.form', {
+        url: '/form',
+        templateUrl: '/dist/pages/styleguide/css/form.html',
+        data: {
+          name: 'Forms'
+        }
+      })
+
+      .state('styleguide.css.labels', {
+        url: '/labels',
+        templateUrl: '/dist/pages/styleguide/css/labels.html',
+        data: {
+          name: 'Labels'
+        }
+      })
+
+      .state('styleguide.css.panel', {
         url: '/panel',
-        templateUrl: '/dist/pages/styleguide/layout/panel.html',
+        templateUrl: '/dist/pages/styleguide/css/panel.html',
         data: {
           name: 'Panels'
+        }
+      })
+
+      /**
+       *
+       */
+      .state('styleguide.directives', {
+        abstract: true,
+        url: '/directives',
+        template: '<ui-view/>',
+        data: {
+          name: 'Directives'
+        }
+      })
+
+      .state('styleguide.directives.chart', {
+        url: '/chart',
+        templateUrl: '/dist/pages/styleguide/directives/chart.html',
+        data: {
+          name: 'Chart'
+        }
+      })
+
+      .state('styleguide.directives.table', {
+        url: '/table',
+        templateUrl: '/dist/pages/styleguide/directives/table.html',
+        data: {
+          name: 'Table'
         }
       });
   })
@@ -88,4 +163,38 @@ angular.module('mis.pages.styleguide', [
 
       $scope.state.breadcrumb = fetchBreadcrumb();
     });
+  })
+
+  /**
+   *
+   */
+  .directive('misDemoData', function($filter, Table, Demo) {
+    return {
+      link: function(scope) {
+
+        /**
+         *
+         */
+        scope.table = new Table({
+          source: Demo.getList,
+          options: {
+            pagination: true,
+            sortable: true
+          },
+          structure: [
+            { name: 'Surname', field: 'surname', sort: true },
+            { name: 'Forename', field: 'forename' },
+            { name: 'Reg Group', field: 'reg_group' },
+            {
+              name: 'DOB',
+              field: 'dob',
+              format: function(value) {
+                return $filter('date')(value, 'shortDate');
+              }
+            },
+            { name: 'UPN', field: 'upn' }
+          ]
+        });
+      }
+    };
   });

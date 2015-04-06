@@ -31,11 +31,16 @@ module.exports = function(grunt) {
   var vendorStylesheets = vendor(conf.layout.vendor, conf.locations.vendor, 'stylesheet');
 
   utils.forEachModule(function(module) {
-    var moduleScript = module.name + '.min.js';
-    var moduleStylesheet = module.name + '.min.css';
+    var moduleScript = module.name + '.js';
+    var moduleTplScript = module.name + '-tpl.js';
+    var moduleStylesheet = module.name + '.css';
 
     if (~module.files.js.indexOf(moduleScript)) {
       appScripts.push(module.dest + '/' + moduleScript);
+    }
+
+    if (~module.files.js.indexOf(moduleTplScript)) {
+      appScripts.push(module.dest + '/' + moduleTplScript);
     }
 
     if (~module.files.css.indexOf(moduleStylesheet)) {
