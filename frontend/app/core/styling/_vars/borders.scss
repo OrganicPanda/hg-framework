@@ -1,0 +1,11 @@
+$border-width-sm:       1px;
+$border-width-lg:       4px;
+$border-style:          solid;
+$border-color:          $grey-light-neg1;
+
+$border-thin:           $border-width-sm $border-style $border-color;
+$border-thick:          $border-width-lg $border-style $border-color;
+
+$border-radius-sm:      1px;
+$border-radius-md:      3px;
+$border-radius-lg:      5px;

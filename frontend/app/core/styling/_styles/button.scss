@@ -28,9 +28,17 @@
 
 .btn-group {
   display: inline-block;
-  margin: 0;
+  margin: 0 $spacing-sm;
   padding: 0;
   @include clearfix();
+
+  &:first-child { margin-left: 0; }
+  &:last-child { margin-right: 0; }
+
+  &:first-child:last-child {
+    margin-left: 0;
+    margin-right: 0;
+  }
 
   .btn {
     float: left;
@@ -66,6 +74,8 @@
 
 .btn          { @include makeButton($grey-light-base, $grey-light-pos1, $grey-light-neg1); }
 .btn-dark     { @include makeButton($dark-base,       $dark-pos1,       $dark-neg1); }
+.btn-primary  { @include makeButton($primary-base,    $primary-pos1,    $primary-neg1); }
+.btn-secondary{ @include makeButton($secondary-base,  $secondary-pos1,  $secondary-neg1); }
 .btn-success  { @include makeButton($success-base,    $success-pos1,    $success-neg1); }
 .btn-info     { @include makeButton($info-base,       $info-pos1,       $info-neg1); }
 .btn-caution  { @include makeButton($caution-base,    $caution-pos1,    $caution-neg1); }

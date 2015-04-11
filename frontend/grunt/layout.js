@@ -2,13 +2,12 @@ var path = require('path')
   , utils = require('./utils')
   , conf = require('../conf');
 
-function vendor(data, dest, type) {
-  return data
-    .filter(function(item) {
-      return item[type];
-    })
+function vendor(type) {
+  return conf.layout.vendor
+    .filter(function(item) { return item[type]; })
     .map(function(item) {
-      return conf.locations[dest] + '/' + item.name + '/' + item[type];
+      return conf.locations[conf.locations.vendor] +
+        '/' + item.name + '/' + item[type];
     });
 }
 
@@ -27,20 +26,15 @@ module.exports = function(grunt) {
   var templateContent = grunt.file.read(templateSrc);
   var appScripts = [];
   var appStylesheets = [];
-  var vendorScripts = vendor(conf.layout.vendor, conf.locations.vendor, 'script');
-  var vendorStylesheets = vendor(conf.layout.vendor, conf.locations.vendor, 'stylesheet');
+  var vendorScripts = vendor('script');
+  var vendorStylesheets = vendor('stylesheet');
 
   utils.forEachModule(function(module) {
-    var moduleScript = module.name + '.js';
-    var moduleTplScript = module.name + '-tpl.js';
-    var moduleStylesheet = module.name + '.css';
+    var moduleScript = module.name + '.min.js';
+    var moduleStylesheet = module.name + '.min.css';
 
     if (~module.files.js.indexOf(moduleScript)) {
       appScripts.push(module.dest + '/' + moduleScript);
-    }
-
-    if (~module.files.js.indexOf(moduleTplScript)) {
-      appScripts.push(module.dest + '/' + moduleTplScript);
     }
 
     if (~module.files.css.indexOf(moduleStylesheet)) {

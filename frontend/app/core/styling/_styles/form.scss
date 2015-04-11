@@ -7,7 +7,7 @@
   flex-direction: column;
   margin: 0 0 $spacing-base;
 
-  &:last-child { margin: 0; }
+  &:last-child { margin-bottom: 0; }
 
   > .input-label,
   > .textarea-label,
@@ -32,10 +32,9 @@
 
   .input,
   .textarea,
-  .select,
   .addon {
     padding: $spacing-base;
-    border: $border-thin;
+    line-height: $line-height;
     @include transition((color, border-color, outline-color, background-color));
   }
 
@@ -55,10 +54,13 @@
   }
 
   .select {
-    height: $line-height-px + ($spacing-base * 2) + ($border-width-sm * 2);
-    border: 0;
-    outline: $border-thin;
-    outline-offset: -$border-width-sm;
+    height: $line-height + ($spacing-base * 2) + ($border-width-sm * 2);
+  }
+
+  &.form-thick {
+    .select {
+      height: $line-height + ($spacing-base * 2) + ($border-width-lg * 2);
+    }
   }
 
   > .checkbox-group,
@@ -83,24 +85,54 @@
 }
 
 /**
+ * Borders
+ */
+.form-group {
+  .input,
+  .textarea,
+  .addon {
+    border: $border-thin;
+  }
+
+  .select {
+    border: 0;
+    outline: $border-thin;
+    outline-offset: -$border-width-sm;
+  }
+
+  &.form-thick {
+    .input,
+    .textarea,
+    .addon {
+      border: $border-thick;
+    }
+
+    .select {
+      outline: $border-thick;
+      outline-offset: -$border-width-lg;
+    }
+  }
+}
+
+/**
  * Focussed styling
  */
 .form-group {
   .input:focus,
   .textarea:focus {
     outline: 0;
-    border-color: $info-base;
+    border-color: $primary-base;
   }
 
   .select:focus {
-    outline-color: $info-base;
+    outline-color: $primary-base;
   }
 
   .input:focus ~ .addon,
   .select:focus ~ .addon {
     color: $grey-light-base;
-    background-color: $info-base;
-    border-color: $info-base;
+    background-color: $primary-base;
+    border-color: $primary-base;
   }
 }
 
@@ -167,13 +199,45 @@
     }
 
     > .addon {
-      background-color: $grey-light-neg1;
+      background-color: $border-color;
 
-      &:first-child { border-right: 0; }
-      &:last-child  { border-left: 0; }
+      &.addon-pre { border-right: 0; }
+      &:addon-post { border-left: 0; }
     }
 
     > .addon-pre  {  order: 0; }
     > .addon-post {  order: 2; }
+  }
+}
+
+/**
+ * Sized inputs
+ */
+.form-group-sm {
+  display: inline-block;
+  width: $form-sm;
+  .input,
+  .textarea,
+  .addon {
+    padding: $spacing-sm;
+  }
+
+  .select {
+    height: $line-height + ($spacing-sm * 2) + ($border-width-sm * 2);
+  }
+}
+
+.form-group-md {
+  display: inline-block;
+  width: $form-md;
+
+  .input,
+  .textarea,
+  .addon {
+    padding: $spacing-base;
+  }
+
+  .select {
+    height: $line-height + ($spacing-base * 2) + ($border-width-sm * 2);
   }
 }

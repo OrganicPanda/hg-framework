@@ -1,15 +1,16 @@
 var utils = require('./utils');
+var conf = require('../conf');
 
 module.exports = (function() {
   var config = {
     options: {
       livereload: true
-    },
-    core: {
-      tasks: 'default',
-      files: './app/core/**/*'
     }
   };
+
+  /*
+   * Module watches
+   */
 
   utils.forEachModule(function(module) {
     config[module.nameSpace] = {};
@@ -39,6 +40,30 @@ module.exports = (function() {
       files.push(module.src + '/**/*.scss');
     }
   });
+
+  /*
+   * Special watches
+   */
+
+  // Updating vendors
+  config.layout = {
+    files: [ utils.location('conf/locations.js') ],
+    tasks: [ 'layout' ]
+  };
+
+  // Update colors
+  config.colors = {
+    files: [ utils.location(conf.locations.colors.src) ],
+    tasks: [ 'colors' ]
+  };
+
+  // SASS Variables
+  config.variables = {
+    tasks: [ 'sass', 'autoprefixer', 'cssmin' ],
+    files: conf.locations.sassVars.map(function(location) {
+      return utils.location(location);
+    })
+  };
 
   return config;
 })();

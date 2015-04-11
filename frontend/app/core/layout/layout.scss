@@ -1,4 +1,4 @@
-@import "../conf/vars";
+@import "../styling/variables";
 
 .layout {
   display: flex;
@@ -11,7 +11,7 @@
 
   .layout-main {
     flex-grow: 1;
-    padding: 0 0 $spacing-base;
+    padding: 0 0 $spacing-grid;
     background-color: $background-color;
   }
 }

@@ -37,6 +37,8 @@
   &.grid-no-gutters {
     margin: 0;
 
+    &:last-child { margin: 0; }
+
     > .grid-cell {
       padding: 0;
     }
@@ -71,6 +73,7 @@
    * Responsive and Size modifiers
    */
   > .grid-cell {
+    &.grid-10 { width: 10%; flex: none; }
     &.grid-25 { width: 25%; flex: none; }
     &.grid-50 { width: 50%; flex: none; }
     &.grid-75 { width: 75%; flex: none; }
@@ -82,24 +85,30 @@
   @include viewRange(sm) {
     &.grid-sm-fit > .grid-cell { flex: 1; }
     &.grid-sm-full > .grid-cell {
-      padding: 0 $spacing-grid;
+      padding: 0 $spacing-grid $spacing-grid;
       flex: 0 0 100%;
+
+      &:last-child { padding-bottom: 0; }
     }
   }
 
   @include viewRange(md) {
     &.grid-md-fit > .grid-cell { flex: 1; }
     &.grid-md-full > .grid-cell {
-      padding: 0 $spacing-grid;
+      padding: 0 $spacing-grid $spacing-grid;
       flex: 0 0 100%;
+
+      &:last-child { padding-bottom: 0; }
     }
   }
 
   @include viewRange(lg) {
     &.grid-lg-fit > .grid-cell { flex: 1; }
     &.grid-lg-full > .grid-cell {
-      padding: 0 $spacing-grid;
+      padding: 0 $spacing-grid $spacing-grid;
       flex: 0 0 100%;
+
+      &:last-child { padding-bottom: 0; }
     }
   }
 }

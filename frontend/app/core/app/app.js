@@ -18,6 +18,7 @@ angular.module('mis', [
  * Core sub-modules
  */
 angular.module('mis.core', [
+  'mis.core.colors',
   'mis.core.config',
   'mis.core.constants'
 ]);
@@ -47,6 +48,7 @@ angular.module('mis.components', [
  * Pages sub-modules
  */
 angular.module('mis.pages', [
+  'mis.pages.communication',
   'mis.pages.contacts',
   'mis.pages.dashboard',
   'mis.pages.errors',

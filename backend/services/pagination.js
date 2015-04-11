@@ -13,41 +13,59 @@ function attatchPagination(schema) {
 }
 
 /*
- * The pagination function
+ * Build Regex query
  */
-function paginate(req, query, options, cb) {
-  // Normalise the params
-  if (typeof query === 'function') {
-    cb = query;
-    query = {};
-    options = {};
-  } else if (typeof options === 'function') {
-    cb = query;
-    options = {};
-  }
+function buildQuery(query) {
+  if (!query) return {};
 
-  // Get results and page number.
   var model = this;
+  var regexString = '^(' + query.replace(/ /g, '|') + ')';
+  var search = new RegExp(regexString, 'ig');
+  var find = { $or: [] };
+
+  Object.keys(model.schema.paths)
+    .forEach(function(key) {
+      if (key === '_id') return;
+
+      var thisQuery = {};
+      thisQuery[key] = search;
+      find.$or.push(thisQuery);
+    });
+
+  return find;
+}
+
+/*
+ *
+ */
+function paginate(req, cb) {
+  var model = this;
+
+  // Paging and results
   var page = parseInt(req.query.page, 10) || 1;
   var results = parseInt(req.query.results, 10) || DEFAULT;
-  var sortColumn = req.query.sortColumn || null;
-  var sortOrder = req.query.sortOrder || null;
-  var sort = {};
-  var skipFrom = (page * results) - results;
-  var dbFind = model.find(query);
 
   page = page >= 1 ? page : 1;
   results = (results >= MINIMUM && results <= MAXIMUM) ? results : DEFAULT;
 
-  if (options.columns) dbFind.select(options.columns);
-  if (sortColumn) {
-    sort[sortColumn] = sortOrder || 1;
-    dbFind.sort(sort);
-  }
+  // Query text search
+  var query = buildQuery.call(model, req.query.query);
 
-  dbFind = dbFind
-    .skip(skipFrom)
-    .limit(results);
+  // Sorting
+  var sortOrder = req.query.sortOrder || 1;
+  var sortColumn = req.query.sortColumn || null;
+  var sort = {};
+
+  if (sortColumn) sort[sortColumn] = sortOrder;
+
+  /*
+   * Query object.
+   */
+  var dbFind = model
+      .find(query)
+      .sort(sort)
+      .skip((page * results) - results)
+      .limit(results);
 
   async.parallel({
     results: function(callback) {
@@ -61,8 +79,10 @@ function paginate(req, query, options, cb) {
 
     cb(err, {
       pageInfo: {
-        page: page,
         count: data.results.length,
+        from: ((page * results) - results) + 1,
+        page: page,
+        to: data.count < (page * results) ? data.count : (page * results),
         totalResults: data.count,
         totalPages: Math.ceil(data.count / results)
       },

@@ -1,0 +1,9 @@
+/* The ideal text color
+ * ========================================================================== */
+@function textColor($color) {
+  @if (lightness($color) > 70) {
+    @return $dark-base;
+  } @else {
+    @return $white-base;
+  }
+}

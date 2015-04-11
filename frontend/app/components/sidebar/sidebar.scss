@@ -1,8 +1,12 @@
-@import "../../core/conf/vars";
-@import "../../core/styling/_scss/mixins";
+@import "../../core/styling/variables";
+@import "../../core/styling/mixins";
 
 .sidebar {
   width: $sidebar-open;
+  @include transition((width));
+  @include viewRange(sm) {
+    width: $sidebar-closed;
+  }
 
   .sidebar-header {
 
@@ -26,10 +30,20 @@
     transition: background-color 100ms linear,
                 color 100ms linear;
 
+    @include viewRange(sm) {
+      text-align: center;
+    }
+
     &:hover {
       background-color: fade-out(black, 0.9);
       color: $grey-light-pos1;
       cursor: pointer;
+    }
+  }
+
+  .menu-text {
+    @include viewRange(sm) {
+      display: none;
     }
   }
 

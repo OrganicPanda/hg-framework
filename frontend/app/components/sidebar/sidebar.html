@@ -10,14 +10,14 @@
          ng-if="::!top.abstract"
          href="{{:: top.url }}">
         <i class="menu-icon icon {{:: top.icon }}"></i>
-        {{:: top.name }}
+        <span class="menu-text">{{:: top.name }}</span>
       </a>
 
       <span class="menu-item"
             ng-if="::top.abstract"
             ng-click="toggle('top', top)">
         <i class="menu-icon icon {{:: top.icon }}"></i>
-        {{:: top.name }}
+        <span class="menu-text">{{:: top.name }}</span>
         <i class="menu-toggle icon"
            ng-show="top.children.length"
            ng-class="{ 'icon-chevron-left': state.active.top !== top.id,
@@ -30,13 +30,13 @@
           <a class="menu-item"
              ng-if="::!middle.abstract"
              href="{{:: middle.url }}">
-            {{:: middle.name }}
+            <span class="menu-text">{{:: middle.name }}</span>
           </a>
 
           <span class="menu-item"
                 ng-if="::middle.abstract"
                 ng-click="toggle('middle', middle)">
-            {{:: middle.name }}
+            <span class="menu-text">{{:: middle.name }}</span>
             <i class="menu-toggle icon"
                ng-show="middle.children.length"
                ng-class="{ 'icon-chevron-left': state.active.middle !== middle.id,
@@ -49,12 +49,12 @@
               <a class="menu-item"
                  ng-if="::!bottom.abstract"
                  href="{{:: bottom.url }}">
-                {{:: bottom.name }}
+                <span class="menu-text">{{:: bottom.name }}</span>
               </a>
 
               <span class="menu-item"
                     ng-if="::bottom.abstract">
-                {{:: bottom.name }}
+                <span class="menu-text">{{:: bottom.name }}</span>
               </span>
             </li>
           </ul>

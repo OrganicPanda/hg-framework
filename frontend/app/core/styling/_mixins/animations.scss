@@ -1,0 +1,16 @@
+/* Transition
+ * ========================================================================== */
+@function buildTransition($properties) {
+  $transitions: ();
+
+  @each $property in $properties {
+    $transitions: append($transitions
+      , $property $transition-time $transition-func, comma);
+  }
+
+  @return $transitions;
+}
+
+@mixin transition($properties) {
+  transition: buildTransition($properties);
+}

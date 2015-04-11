@@ -5,13 +5,12 @@
 }
 
 .alert {
-  margin: $spacing-base 0;
+  margin: 0 0 $spacing-base;
   padding: $spacing-base;
   border-width: $border-width-sm;
   border-style: $border-style;
 
-  &:first-child { margin-top: 0; }
-  &:last-child { margin-bottom: 0; }
+  &:last-child { margin: 0; }
 }
 
 .alert-success  { @include makeAlert($success-neg1, $success-fade); }

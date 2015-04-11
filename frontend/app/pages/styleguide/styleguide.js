@@ -2,11 +2,12 @@ angular.module('mis.pages.styleguide', [
   'ui.router',
 
   'mis.models.demo',
+  'mis.components.charts',
   'mis.components.table',
   'mis.pages.styleguide.tpl'
 ])
 
-  .config(function($stateProvider) {
+  .config(function($stateProvider, $urlRouterProvider) {
     $stateProvider
 
       /**
@@ -87,6 +88,14 @@ angular.module('mis.pages.styleguide', [
         }
       })
 
+      .state('styleguide.css.cards', {
+        url: '/cards',
+        templateUrl: '/dist/pages/styleguide/css/cards.html',
+        data: {
+          name: 'Cards'
+        }
+      })
+
       .state('styleguide.css.form', {
         url: '/form',
         templateUrl: '/dist/pages/styleguide/css/form.html',
@@ -123,11 +132,43 @@ angular.module('mis.pages.styleguide', [
         }
       })
 
+      .state('styleguide.directives.buttons', {
+        url: '/buttons',
+        templateUrl: '/dist/pages/styleguide/directives/buttons.html',
+        data: {
+          name: 'Buttons'
+        }
+      })
+
       .state('styleguide.directives.chart', {
-        url: '/chart',
+        url: '/charts',
         templateUrl: '/dist/pages/styleguide/directives/chart.html',
         data: {
-          name: 'Chart'
+          name: 'Charts'
+        }
+      })
+
+      .state('styleguide.directives.datePicker', {
+        url: '/date-picker',
+        templateUrl: '/dist/pages/styleguide/directives/date-picker.html',
+        data: {
+          name: 'Date Picker'
+        }
+      })
+
+      .state('styleguide.directives.dropdown', {
+        url: '/dropdown',
+        templateUrl: '/dist/pages/styleguide/directives/dropdown.html',
+        data: {
+          name: 'Dropdown Menu'
+        }
+      })
+
+      .state('styleguide.directives.notification', {
+        url: '/notification',
+        templateUrl: '/dist/pages/styleguide/directives/notification.html',
+        data: {
+          name: 'Notification'
         }
       })
 
@@ -138,12 +179,32 @@ angular.module('mis.pages.styleguide', [
           name: 'Table'
         }
       });
+
+      // Parent page redirections
+      $urlRouterProvider.when(
+        '/styleguide',
+        '/styleguide/core');
+
+      $urlRouterProvider.when(
+        '/styleguide/core',
+        '/styleguide/core/colors');
+
+      $urlRouterProvider.when(
+        '/styleguide/css',
+        '/styleguide/css/alerts');
+
+      $urlRouterProvider.when(
+        '/styleguide/directives',
+        '/styleguide/directives/buttons');
   })
 
   /**
    *
    */
-  .controller('MisStyleguideCtrl', function($scope, $state) {
+  .controller('MisStyleguideCtrl'
+      , function($scope, $filter, $state, Demo, Table, AreaChart, BarChart
+        , ColumnChart, DonutChart, LineChart, PieChart) {
+
     function fetchBreadcrumb() {
       return $state.$current.path.map(function(crumb) {
         return {
@@ -163,38 +224,42 @@ angular.module('mis.pages.styleguide', [
 
       $scope.state.breadcrumb = fetchBreadcrumb();
     });
-  })
 
-  /**
-   *
-   */
-  .directive('misDemoData', function($filter, Table, Demo) {
-    return {
-      link: function(scope) {
+    /**
+     *
+     */
+    $scope.data = {};
+    $scope.data.table = new Table({
+      source: Demo.getList,
+      options: {
+        pagination: true,
+        searching: true,
+        sorting: true
+      },
+      structure: [
+        { name: 'Surname', field: 'surname', sort: true },
+        { name: 'Forename', field: 'forename' },
+        { name: 'Reg Group', field: 'reg_group' },
+        {
+          name: 'DOB',
+          field: 'dob',
+          format: function(value) {
+            return $filter('date')(value, 'shortDate');
+          }
+        },
+        { name: 'UPN', field: 'upn' }
+      ]
+    });
 
-        /**
-         *
-         */
-        scope.table = new Table({
-          source: Demo.getList,
-          options: {
-            pagination: true,
-            sortable: true
-          },
-          structure: [
-            { name: 'Surname', field: 'surname', sort: true },
-            { name: 'Forename', field: 'forename' },
-            { name: 'Reg Group', field: 'reg_group' },
-            {
-              name: 'DOB',
-              field: 'dob',
-              format: function(value) {
-                return $filter('date')(value, 'shortDate');
-              }
-            },
-            { name: 'UPN', field: 'upn' }
-          ]
-        });
-      }
-    };
+    /**
+     *
+     */
+    $scope.data.chart = {};
+    $scope.data.chart.area = new AreaChart({});
+    $scope.data.chart.bar = new BarChart({});
+    $scope.data.chart.column = new ColumnChart({});
+    $scope.data.chart.donut = new DonutChart({});
+    $scope.data.chart.line = new LineChart({});
+    $scope.data.chart.pie = new PieChart({});
+    $scope.data.chart.combination = new LineChart({});
   });

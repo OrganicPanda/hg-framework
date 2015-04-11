@@ -27,6 +27,14 @@ module.exports = {
       stylesheet: null,
       script: 'dist/restangular.min.js'
     }, {
+      name: 'highcharts',
+      stylesheet: null,
+      script: 'adapters/standalone-framework.js'
+    }, {
+      name: 'highcharts',
+      stylesheet: null,
+      script: 'highcharts.js'
+    }, {
       name: 'normalize.css',
       stylesheet: 'normalize.css',
       script: null

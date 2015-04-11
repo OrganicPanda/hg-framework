@@ -6,6 +6,7 @@ angular.module('mis.core.constants', [])
     'contacts',
     'students',
     'staff',
+    'communication',
     'reports',
     'styleguide'
   ])

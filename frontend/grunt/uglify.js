@@ -14,14 +14,14 @@ module.exports = (function() {
     if (!module.hasJS) return;
 
     var dest = module.dest + '/' + module.name + '.min.js';
-    var srcs = [
+    var src = [
       module.dest + '/' + module.name + '.js',
       module.dest + '/' + module.name + '-tpl.js'
     ];
 
     config[module.nameSpace] = {};
     config[module.nameSpace].files = {};
-    config[module.nameSpace].files[dest] = srcs;
+    config[module.nameSpace].files[dest] = src;
   });
 
   return config;

@@ -19,6 +19,7 @@
     "angular-ui-router": "~0.2.13",
     "font-awesome": "4.3.*",
     "restangular": "~1.4.0",
-    "normalize.css": "~3.0.2"
+    "normalize.css": "~3.0.2",
+    "highcharts": "~4.1.4"
   }
 }

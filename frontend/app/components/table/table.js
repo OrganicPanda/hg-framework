@@ -36,7 +36,7 @@ angular.module( 'mis.components.table', [
      */
     Table.prototype.init = function() {
       if (this.options.pagination) this.setUpPagination();
-      if (this.options.sortable) this.setUpSorting();
+      if (this.options.sorting) this.setUpSorting();
 
       this.buildTable();
 
@@ -57,7 +57,9 @@ angular.module( 'mis.components.table', [
     Table.prototype.setUpSorting = function() {
       this.sourceConf.sortOrder = cc.SORT_ASC;
       this.structure.some(function(column) {
-        return this.sourceConf.sortColumn = column.sort ? column.field : null;
+        return this.sourceConf.sortColumn = column.sort
+          ? column.field
+          : null;
       }, this);
     };
 
@@ -88,6 +90,9 @@ angular.module( 'mis.components.table', [
             that.data.rows = that.format(data);
             that.pageInfo = data.pageInfo;
             defer.resolve(that.data);
+          })
+          .catch(function() {
+            defer.reject();
           });
       } else {
         that.data.rows = that.format(that.source);
@@ -106,6 +111,7 @@ angular.module( 'mis.components.table', [
       function getRows() {
         return (data || []).map(function(row) {
           return {
+            orig: row,
             cells: getCells(row)
           };
         });
@@ -124,20 +130,85 @@ angular.module( 'mis.components.table', [
       return getRows();
     };
 
-
     return Table;
-
   })
 
   /**
    *
    */
-  .directive('misTable', function() {
+  .directive('misTable', function(cc) {
     return {
+      transclude: true,
+      replace: true,
       templateUrl: '/dist/components/table/table.html',
-      controller: 'MisTableCtrl',
       scope: {
         table: '=misTable'
+      },
+      link: function(scope, el, attrs, ctrl, $transclude) {
+        /**
+         *
+         */
+        scope.state = {
+          loading: true,
+          loadingPage: null,
+          customRowTpl: false
+        };
+
+        /**
+         *
+         */
+        scope.setSort = function(head) {
+          if (scope.table.sourceConf.sortColumn === head.field) {
+            scope.table.sourceConf.sortOrder =
+              scope.table.sourceConf.sortOrder === cc.SORT_ASC
+                ? cc.SORT_DESC
+                : cc.SORT_ASC;
+          } else {
+            scope.table.sourceConf.sortColumn = head.field;
+            scope.table.sourceConf.sortOrder = cc.SORT_ASC;
+          }
+
+          scope.table.getData();
+        };
+
+        /**
+         *
+         */
+        $transclude(function(clone) {
+          if (!clone.length) return;
+          scope.state.customRowTpl = clone;
+        });
+
+        /**
+         *
+         */
+        scope.table
+          .init()
+          .catch(function() {
+            scope.state.failed = true;
+          })
+          .finally(function() {
+            scope.state.loading = false;
+          });
+
+      }
+    };
+  })
+
+  /**
+   *
+   */
+  .directive('misTableActions', function() {
+    return {
+      replace: true,
+      templateUrl: '/dist/components/table/actions.html',
+      link: function(scope) {
+        scope.$watch('table.sourceConf.query', function(newVal, oldVal) {
+          if (newVal === oldVal) return;
+
+          scope.table.sourceConf.page = 1;
+          scope.table.getData();
+        });
       }
     };
   })
@@ -149,115 +220,57 @@ angular.module( 'mis.components.table', [
     return {
       replace: true,
       templateUrl: '/dist/components/table/pagination.html',
-      controller: 'MisTablePaginationCtrl'
-    };
-  })
+      link: function(scope) {
+        var maxPages = 10;
 
-  /**
-   *
-   */
-  .controller('MisTableCtrl', function($scope, cc) {
+        /**
+         *
+         */
+        scope.pageNumbers = function() {
+          var numbers = [];
+          var page = scope.table.pageInfo.page;
+          var totalPages = scope.table.pageInfo.totalPages;
+          var start = (Math.floor((page - 1) / maxPages) * maxPages) + 1;
+          var end = totalPages < maxPages
+            ? totalPages
+            : start + (maxPages - 1);
 
-    function initTable(table) {
-      if (!table) return;
-      $scope.table = table;
+          for (var i = start; i <= end; i++) {
+            numbers.push(i);
+          }
 
-      table
-        .init()
-        .then(function() {
-          $scope.state.loading = false;
-          tableInited();
-        });
-    }
+          return numbers;
+        };
 
-    /**
-     *
-     */
-    $scope.table = null;
+        /**
+         *
+         */
+        scope.pageOnNextSet = function() {
+          return scope.pageNumbers()[scope.pageNumbers().length - 1] + 1;
+        };
 
-    /**
-     *
-     */
-    $scope.state = {
-      loading: true,
-      loadingPage: null
-    };
+        /**
+         *
+         */
+        scope.updateResults = function() {
+          scope.table.sourceConf.page = 1;
+          scope.table.getData();
+        };
 
-    /**
-     *
-     */
-    $scope.setSort = function(head) {
-      if ($scope.table.sourceConf.sortColumn === head.field) {
-        $scope.table.sourceConf.sortOrder =
-          $scope.table.sourceConf.sortOrder === cc.SORT_ASC
-            ? cc.SORT_DESC
-            : cc.SORT_ASC;
-      } else {
-        $scope.table.sourceConf.sortColumn = head.field;
-        $scope.table.sourceConf.sortOrder = cc.SORT_ASC;
+        /**
+         *
+         */
+        scope.goToPage = function(n) {
+          if (scope.table.sourceConf.page === n) return;
+
+          scope.state.loadingPage = n;
+          scope.table.sourceConf.page = n;
+          scope.table.getData().then(function() {
+            if (scope.state.loadingPage === n) {
+              scope.state.loadingPage = null;
+            }
+          });
+        };
       }
-
-      $scope.table.getData();
-    };
-
-    /**
-     *
-     */
-    var tableInited = $scope.$watch('table', initTable);
-  })
-
-  /**
-   *
-   */
-  .controller('MisTablePaginationCtrl', function($scope) {
-    var maxPageCount = 10;
-
-    /**
-     *
-     */
-    $scope.pageNumbers = function() {
-      var numbers = [];
-      var page = $scope.table.pageInfo.page;
-      var totalPages = $scope.table.pageInfo.totalPages;
-      var start = (Math.floor((page - 1) / maxPageCount) * maxPageCount) + 1;
-      var end = totalPages < maxPageCount
-        ? totalPages
-        : start + (maxPageCount - 1);
-
-      for (var i = start; i <= end; i++) {
-        numbers.push(i);
-      }
-
-      return numbers;
-    };
-
-    /**
-     *
-     */
-    $scope.pageOnNextSet = function() {
-      return $scope.pageNumbers()[$scope.pageNumbers().length - 1] + 1;
-    };
-
-    /**
-     *
-     */
-    $scope.updateResults = function() {
-      $scope.table.sourceConf.page = 1;
-      $scope.table.getData();
-    };
-
-    /**
-     *
-     */
-    $scope.goToPage = function(n) {
-      if ($scope.table.sourceConf.page === n) return;
-
-      $scope.state.loadingPage = n;
-      $scope.table.sourceConf.page = n;
-      $scope.table.getData().then(function() {
-        if ($scope.state.loadingPage === n) {
-          $scope.state.loadingPage = null;
-        }
-      });
     };
   });

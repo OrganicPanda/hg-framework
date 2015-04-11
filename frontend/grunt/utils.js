@@ -9,6 +9,13 @@ var jsMatch = /.js$/;
 /**
  *
  */
+function location(locate) {
+  return path.join(process.cwd(), locate);
+}
+
+/**
+ *
+ */
 function isDir(pathCheck) {
   return fs.existsSync(pathCheck) && fs.statSync(pathCheck).isDirectory();
 }
@@ -90,6 +97,7 @@ function forEachModule(cb, wd) {
 }
 
 module.exports = {
+  location: location,
   isDir: isDir,
   isFile: isFile,
   isHidden: isHidden,

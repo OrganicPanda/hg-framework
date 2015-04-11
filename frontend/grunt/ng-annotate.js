@@ -11,9 +11,7 @@ module.exports = (function() {
     if (!module.hasJS) return;
 
     var dest = module.dest + '/' + module.name + '.js';
-    var src = module.files.js.map(function(file) {
-      return module.src + '/' + file;
-    });
+    var src = module.src + '/**/*.js';
 
     config[module.nameSpace] = {};
     config[module.nameSpace].files = {};

@@ -1,16 +1,17 @@
-@import "../conf/vars";
-@import "../../../vendor/font-awesome/scss/font-awesome.scss";
+@import "variables";
+@import "mixins";
 
-@import "_scss/mixins";
-@import "_scss/alerts";
-@import "_scss/button";
-@import "_scss/form";
-@import "_scss/grid";
-@import "_scss/labels";
-@import "_scss/panel";
-@import "_scss/type";
-@import "_scss/utils";
+@import "_styles/alerts";
+@import "_styles/button";
+@import "_styles/cards";
+@import "_styles/form";
+@import "_styles/grid";
+@import "_styles/labels";
+@import "_styles/panel";
+@import "_styles/type";
+@import "_styles/utils";
 
+@import "../../../vendor/font-awesome/scss/font-awesome";
 
 *,
 *:before,
