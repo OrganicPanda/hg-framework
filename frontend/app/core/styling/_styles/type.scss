@@ -37,6 +37,11 @@ p {
   }
 }
 
+strong,
+.strong {
+  font-weight: $font-weight-bold;
+}
+
 // Alignment Modifiers
 .text-left { text-align: left; }
 .text-center { text-align: center; }

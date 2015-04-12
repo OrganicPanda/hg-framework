@@ -9,10 +9,22 @@ angular.module( 'mis.components.charts')
       MisChart.call(this, config);
 
       this.chart.type = 'pie';
+
+      this.plotOptions.pie = {
+        dataLabels: {
+          enabled: false
+        },
+        borderWidth: 0,
+        showInLegend: true
+      };
     }
 
     PieChart.prototype = Object.create(MisChart.prototype);
     PieChart.prototype.constructor = PieChart;
+
+    PieChart.prototype.parseSeries = function() {
+      return [{ data: this.config.series }];
+    };
 
     return PieChart;
   });

@@ -47,14 +47,17 @@ module.exports = (function() {
 
   // Updating vendors
   config.layout = {
-    files: [ utils.location('conf/locations.js') ],
-    tasks: [ 'layout' ]
+    tasks: [ 'layout' ],
+    files: [
+      utils.location('conf/locations.js'),
+      utils.location(conf.locations.layout.src)
+    ]
   };
 
   // Update colors
   config.colors = {
-    files: [ utils.location(conf.locations.colors.src) ],
-    tasks: [ 'colors' ]
+    tasks: [ 'colors' ],
+    files: [ utils.location(conf.locations.colors.src) ]
   };
 
   // SASS Variables

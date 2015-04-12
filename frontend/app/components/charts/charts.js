@@ -1,11 +1,11 @@
 angular.module( 'mis.components.charts', [
-
+  'mis.core.colors'
 ])
 
   /**
    *
    */
-  .factory('MisChart', function() {
+  .factory('MisChart', function(Colors) {
 
     /**
      *
@@ -14,10 +14,19 @@ angular.module( 'mis.components.charts', [
       this.config = config;
 
       this.chart = {
-        height: 250
+        height: 300,
+        renderTo: null,
+        events: {},
+        plotBorderWidth: 0,
+        plotShadow: false,
+        plotBackgroundColor: null
       };
 
-      this.series = null;
+      // Default colours
+      this.colors = [
+        Colors['primary-pos1'],
+        Colors['secondary-pos1']
+      ];
 
       this.title = {
         text: ''
@@ -30,6 +39,42 @@ angular.module( 'mis.components.charts', [
       this.exporting = {
         enabled: false
       };
+
+      this.plotOptions = {
+        series: {
+          borderWidth: 0,
+          pointPadding: 0.01,
+          fillOpacity: 0.2
+        }
+      };
+
+      this.tooltip = {
+        backgroundColor: null,
+        borderWidth: null,
+        shadow: null,
+        style: {},
+        useHTML: true
+      };
+
+      this.xAxis = {
+        labels: {
+          enabled: true
+        },
+        title: {
+          text: null
+        }
+      };
+
+      this.yAxis = {
+        labels: {
+          enabled: true
+        },
+        title: {
+          text: null
+        }
+      };
+
+      this.series = null;
     }
 
     /**

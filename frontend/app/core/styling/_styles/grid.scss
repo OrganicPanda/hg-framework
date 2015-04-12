@@ -82,7 +82,7 @@
     &.grid-66 { width: 66.6666%; flex: none; }
   }
 
-  @include viewRange(sm) {
+  @include breakpoint(sm) {
     &.grid-sm-fit > .grid-cell { flex: 1; }
     &.grid-sm-full > .grid-cell {
       padding: 0 $spacing-grid $spacing-grid;
@@ -92,7 +92,7 @@
     }
   }
 
-  @include viewRange(md) {
+  @include breakpoint(md) {
     &.grid-md-fit > .grid-cell { flex: 1; }
     &.grid-md-full > .grid-cell {
       padding: 0 $spacing-grid $spacing-grid;
@@ -102,7 +102,7 @@
     }
   }
 
-  @include viewRange(lg) {
+  @include breakpoint(lg) {
     &.grid-lg-fit > .grid-cell { flex: 1; }
     &.grid-lg-full > .grid-cell {
       padding: 0 $spacing-grid $spacing-grid;

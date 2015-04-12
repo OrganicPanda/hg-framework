@@ -27,13 +27,14 @@
  */
 
 @mixin breakpoint($size) {
-  $min: false;
+  $max: false;
 
-  @if $size == sm { $min: $screen-sm-min; }
-  @if $size == md { $min: $screen-md-min; }
-  @if $size == lg { $min: $screen-lg-min; }
+  @if $size == xs { $max: $screen-xs-max; }
+  @if $size == sm { $max: $screen-sm-max; }
+  @if $size == md { $max: $screen-md-max; }
+  @if $size == lg { $max: $screen-lg-min; }
 
-  @media (min-width: $min) {
+  @media (max-width: $max) {
     @content;
   }
 }
@@ -50,7 +51,8 @@
   $min: false;
   $max: false;
 
-  @if $size == sm {                       $max: $screen-sm-max; }
+  @if $size == xs {                       $max: $screen-xs-max; }
+  @if $size == sm { $min: $screen-sm-min; $max: $screen-sm-max; }
   @if $size == md { $min: $screen-md-min; $max: $screen-md-max; }
   @if $size == lg { $min: $screen-lg-min; }
 

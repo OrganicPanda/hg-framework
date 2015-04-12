@@ -172,6 +172,14 @@ angular.module('mis.pages.styleguide', [
         }
       })
 
+      .state('styleguide.directives.popup', {
+        url: '/popup',
+        templateUrl: '/dist/pages/styleguide/directives/popup.html',
+        data: {
+          name: 'Popup'
+        }
+      })
+
       .state('styleguide.directives.table', {
         url: '/table',
         templateUrl: '/dist/pages/styleguide/directives/table.html',
@@ -203,7 +211,7 @@ angular.module('mis.pages.styleguide', [
    */
   .controller('MisStyleguideCtrl'
       , function($scope, $filter, $state, Demo, Table, AreaChart, BarChart
-        , ColumnChart, DonutChart, LineChart, PieChart) {
+        , ColumnChart, ComboChart, DonutChart, LineChart, PieChart, Colors) {
 
     function fetchBreadcrumb() {
       return $state.$current.path.map(function(crumb) {
@@ -254,12 +262,58 @@ angular.module('mis.pages.styleguide', [
     /**
      *
      */
+    var lineSeries = {
+      config: {},
+      series: [
+        {
+          name: 'FooBar',
+          data: [ 300, 550, 700, 400, 350, 200, 450, 500, 800, 850 ]
+        }, {
+          name: 'PingPong',
+          data: [ 450, 600, 650, 300, 550, 600, 450, 800, 900, 950 ]
+        }
+      ]
+    };
+
+    var rangeSeries = {
+      config: {},
+      series: [
+        {
+          name: 'FooBar',
+          y: 175
+        }, {
+          name: 'PingPong',
+          y: 80
+        }
+      ]
+    };
+
+    var comboSeries = {
+      config: {},
+      series: [
+        {
+          name: 'PingPong',
+          type: 'column',
+          color: Colors['grey-light-base'],
+          data: [ 450, 600, 650, 300, 550, 600, 450, 800, 900, 950 ]
+        }, {
+          name: 'FooBar',
+          type: 'line',
+          data: [ 300, 550, 700, 400, 350, 200, 450, 500, 800, 850 ]
+        }, {
+          name: 'FooBar',
+          type: 'area',
+          data: [ 200, 350, 500, 300, 250, 100, 250, 300, 500, 450 ]
+        }
+      ]
+    };
+
     $scope.data.chart = {};
-    $scope.data.chart.area = new AreaChart({});
-    $scope.data.chart.bar = new BarChart({});
-    $scope.data.chart.column = new ColumnChart({});
-    $scope.data.chart.donut = new DonutChart({});
-    $scope.data.chart.line = new LineChart({});
-    $scope.data.chart.pie = new PieChart({});
-    $scope.data.chart.combination = new LineChart({});
+    $scope.data.chart.area = new AreaChart(lineSeries);
+    $scope.data.chart.bar = new BarChart(lineSeries);
+    $scope.data.chart.column = new ColumnChart(lineSeries);
+    $scope.data.chart.donut = new DonutChart(rangeSeries);
+    $scope.data.chart.line = new LineChart(lineSeries);
+    $scope.data.chart.pie = new PieChart(rangeSeries);
+    $scope.data.chart.combo = new ComboChart(comboSeries);
   });
