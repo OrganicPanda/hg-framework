@@ -68,10 +68,6 @@
     > label {
       display: block;
       margin: 0 0 $spacing-sm;
-
-      > input {
-        margin: 0 $spacing-sm 0 0;
-      }
     }
   }
 
@@ -80,6 +76,66 @@
 
     &:not(.resizeable) {
       resize: none;
+    }
+  }
+}
+
+/**
+ * Checkbox and Radio Styling
+ */
+.checkbox-group,
+.radio-group {
+  > label {
+    > input {
+      visibility: hidden;
+      width: 0;
+      height: 0;
+    }
+
+    > span::before {
+      display: inline-block;
+      vertical-align: middle;
+      margin: 0 $spacing-sm 0 0;
+      width: $line-height + ($border-width-sm * 2);
+      height: $line-height + ($border-width-sm * 2);
+      background-color: $white-base;
+      color: transparent;
+      font-family: $icon-font-name;
+      font-size: $font-size-sm;
+      text-align: center;
+      border: $border-thin;
+      @include transition((color, border-color, background-color));
+    }
+
+    &:hover {
+      > span::before {
+        color: $border-color;
+      }
+    }
+
+    > input:checked {
+      + span::before {
+        background-color: $primary-base;
+        color: $white-base;
+        border-color: $primary-neg1;
+      }
+    }
+  }
+}
+
+.checkbox-group {
+  > label {
+    > span::before {
+      content: $fa-var-check;
+    }
+  }
+}
+
+.radio-group {
+  > label {
+    > span::before {
+      content: $fa-var-circle;
+      border-radius: 50%;
     }
   }
 }
@@ -144,12 +200,15 @@
   .textarea[disabled],
   .select[disabled] {
     background-color: $grey-light-base;
-    border-color: $grey-light-neg1;
   }
 
   .checkbox-group > label[disabled],
   .radio-group > label[disabled] {
     color: $grey-light-neg1;
+
+    > span::before {
+      background-color: $grey-light-base;
+    }
   }
 
   .input[disabled],
