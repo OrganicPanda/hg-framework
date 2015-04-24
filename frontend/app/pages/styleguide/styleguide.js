@@ -1,8 +1,12 @@
 angular.module('mis.pages.styleguide', [
+  'ipsum',
   'ui.router',
 
+  'mis.core.styling',
   'mis.models.demo',
   'mis.components.charts',
+  'mis.components.dialog',
+  'mis.components.notification',
   'mis.components.table',
   'mis.pages.styleguide.tpl'
 ])
@@ -32,7 +36,8 @@ angular.module('mis.pages.styleguide', [
         url: '/core',
         template: '<ui-view/>',
         data: {
-          name: 'Core'
+          name: 'Core',
+          icon: null
         }
       })
 
@@ -68,7 +73,8 @@ angular.module('mis.pages.styleguide', [
         url: '/css',
         template: '<ui-view/>',
         data: {
-          name: 'CSS'
+          name: 'CSS',
+          icon: null
         }
       })
 
@@ -128,7 +134,8 @@ angular.module('mis.pages.styleguide', [
         url: '/directives',
         template: '<ui-view/>',
         data: {
-          name: 'Directives'
+          name: 'Directives',
+          icon: null
         }
       })
 
@@ -142,6 +149,7 @@ angular.module('mis.pages.styleguide', [
 
       .state('styleguide.directives.chart', {
         url: '/charts',
+        controller: 'MisStyleGuideChartCtrl',
         templateUrl: '/dist/pages/styleguide/directives/chart.html',
         data: {
           name: 'Charts'
@@ -164,27 +172,54 @@ angular.module('mis.pages.styleguide', [
         }
       })
 
-      .state('styleguide.directives.notification', {
+
+
+      .state('styleguide.directives.table', {
+        url: '/table',
+        controller: 'MisStyleGuideTableCtrl',
+        templateUrl: '/dist/pages/styleguide/directives/table.html',
+        data: {
+          name: 'Table'
+        }
+      })
+
+      /**
+       *
+       */
+      .state('styleguide.services', {
+        abstract: true,
+        url: '/services',
+        template: '<ui-view/>',
+        data: {
+          name: 'Services',
+          icon: null
+        }
+      })
+
+      .state('styleguide.services.dialog', {
+        url: '/dialog',
+        controller: 'MisStyleGuideDialogCtrl',
+        templateUrl: '/dist/pages/styleguide/services/dialog.html',
+        data: {
+          name: 'Dialog'
+        }
+      })
+
+      .state('styleguide.services.notification', {
         url: '/notification',
-        templateUrl: '/dist/pages/styleguide/directives/notification.html',
+        controller: 'MisStyleGuideNotificationCtrl',
+        templateUrl: '/dist/pages/styleguide/services/notification.html',
         data: {
           name: 'Notification'
         }
       })
 
-      .state('styleguide.directives.popup', {
-        url: '/popup',
-        templateUrl: '/dist/pages/styleguide/directives/popup.html',
+      .state('styleguide.services.progress', {
+        url: '/progress',
+        controller: 'MisStyleGuideProgressCtrl',
+        templateUrl: '/dist/pages/styleguide/services/progress.html',
         data: {
-          name: 'Popup'
-        }
-      })
-
-      .state('styleguide.directives.table', {
-        url: '/table',
-        templateUrl: '/dist/pages/styleguide/directives/table.html',
-        data: {
-          name: 'Table'
+          name: 'Progress'
         }
       });
 
@@ -210,8 +245,7 @@ angular.module('mis.pages.styleguide', [
    *
    */
   .controller('MisStyleguideCtrl'
-      , function($scope, $filter, $state, Demo, Table, AreaChart, BarChart
-        , ColumnChart, ComboChart, DonutChart, LineChart, PieChart, Colors) {
+      , function($scope, $state) {
 
     function fetchBreadcrumb() {
       return $state.$current.path.map(function(crumb) {
@@ -232,88 +266,4 @@ angular.module('mis.pages.styleguide', [
 
       $scope.state.breadcrumb = fetchBreadcrumb();
     });
-
-    /**
-     *
-     */
-    $scope.data = {};
-    $scope.data.table = new Table({
-      source: Demo.getList,
-      options: {
-        pagination: true,
-        searching: true,
-        sorting: true
-      },
-      structure: [
-        { name: 'Surname', field: 'surname', sort: true },
-        { name: 'Forename', field: 'forename' },
-        { name: 'Reg Group', field: 'reg_group' },
-        {
-          name: 'DOB',
-          field: 'dob',
-          format: function(value) {
-            return $filter('date')(value, 'shortDate');
-          }
-        },
-        { name: 'UPN', field: 'upn' }
-      ]
-    });
-
-    /**
-     *
-     */
-    var lineSeries = {
-      config: {},
-      series: [
-        {
-          name: 'FooBar',
-          data: [ 300, 550, 700, 400, 350, 200, 450, 500, 800, 850 ]
-        }, {
-          name: 'PingPong',
-          data: [ 450, 600, 650, 300, 550, 600, 450, 800, 900, 950 ]
-        }
-      ]
-    };
-
-    var rangeSeries = {
-      config: {},
-      series: [
-        {
-          name: 'FooBar',
-          y: 175
-        }, {
-          name: 'PingPong',
-          y: 80
-        }
-      ]
-    };
-
-    var comboSeries = {
-      config: {},
-      series: [
-        {
-          name: 'PingPong',
-          type: 'column',
-          color: Colors['grey-light-base'],
-          data: [ 450, 600, 650, 300, 550, 600, 450, 800, 900, 950 ]
-        }, {
-          name: 'FooBar',
-          type: 'line',
-          data: [ 300, 550, 700, 400, 350, 200, 450, 500, 800, 850 ]
-        }, {
-          name: 'FooBar',
-          type: 'area',
-          data: [ 200, 350, 500, 300, 250, 100, 250, 300, 500, 450 ]
-        }
-      ]
-    };
-
-    $scope.data.chart = {};
-    $scope.data.chart.area = new AreaChart(lineSeries);
-    $scope.data.chart.bar = new BarChart(lineSeries);
-    $scope.data.chart.column = new ColumnChart(lineSeries);
-    $scope.data.chart.donut = new DonutChart(rangeSeries);
-    $scope.data.chart.line = new LineChart(lineSeries);
-    $scope.data.chart.pie = new PieChart(rangeSeries);
-    $scope.data.chart.combo = new ComboChart(comboSeries);
   });

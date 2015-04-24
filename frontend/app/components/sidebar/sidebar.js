@@ -1,6 +1,7 @@
 angular.module( 'mis.components.sidebar', [
   'ui.router',
   'mis.core.constants',
+  'mis.core.utils',
   'mis.components.sidebar.tpl'
 ])
 
@@ -32,29 +33,26 @@ angular.module( 'mis.components.sidebar', [
           // Creates menu item with relative route from the parent.
           // All sub routes are stored as children with the
           function createMenuItem(item) {
-            var structure = item.name.split('.')
-              , length = structure.length
-              , parent = extractParent(structure.slice(0, length - 1));
-
-            parent.children.push({
-              id: structure[structure.length - 1],
-              nameSpace: structure,
-              name: item.data.name,
-              icon: item.data.icon,
-              url: (parent.url || '') + item.url,
-              abstract: item.abstract,
-              children: []
-            });
+            findParent(item.name)
+              .children.push({
+                state: item,
+                children: []
+              });
           }
 
-          // Recursive lookup for the parent route object.
-          function extractParent(structure, parent) {
+          // Recursive look down for the parent route object.
+          function findParent(name, structure, parent) {
+            if (!structure) structure = name.split('.').slice(0, -1);
+
             if (structure.length) {
-              parent = extractParent(
+              parent = findParent(
+                name,
                 structure.slice(1, structure.length),
                 (parent || menu).children.filter(function(child) {
-                  return child.id === structure[0];
-                })[0]);
+                  return child.state.name.split('.').slice(-1)[0]
+                    === structure[0];
+                })[0]
+              );
             }
 
             return parent || menu;
@@ -80,35 +78,59 @@ angular.module( 'mis.components.sidebar', [
         scope.menu = getMenuItems({
           children: []
         });
+      }
+    };
+  })
 
-        /**
-         *
+  /**
+   *
+   */
+  .directive('misSidebarMenu', function() {
+    return {
+      replace: true,
+      templateUrl: '/dist/components/sidebar/sidebar-menu.html',
+      scope: {
+        items: '=misSidebarMenu'
+      }
+    };
+  })
+
+  .directive('misSidebarMenuItem', function($compile, $state, $window, utils) {
+    return {
+      replace: true,
+      templateUrl: '/dist/components/sidebar/sidebar-menu-item.html',
+      scope: {
+        item: '=misSidebarMenuItem'
+      },
+      link: function(scope, el) {
+
+        /*
+         * This is needed to get around Angular lack of ability
+         * to do recursive directives straight from the template.
          */
+        var menuTpl = '<div mis-sidebar-menu="item.children"></div>';
+        if (scope.item.children.length) {
+          $compile(menuTpl)(scope, function(cloned){
+            el.append(cloned);
+          });
+        }
+
         scope.state = {
-          active: {
-            top: null,
-            middle: null
-          }
+          open: false
         };
 
         /**
          *
          */
-        scope.toggle = function(level, item) {
-          scope.state.active[level] =
-            (scope.state.active[level] === item.id) || item.id;
+        scope.isActive = function() {
+          return $state.includes(scope.item.state);
         };
 
         //
         scope.$watch(function() {
-          return $state.current;
-        }, function(newVal, oldVal) {
-          if (newVal === oldVal) return;
-
-          var structure = newVal.name.split('.');
-
-          scope.state.active.top = structure[0];
-          scope.state.active.middle = structure[1];
+          return $state.current.name;
+        }, function() {
+          scope.state.open = scope.isActive() && utils.screen.isOver('md');
         });
       }
     };

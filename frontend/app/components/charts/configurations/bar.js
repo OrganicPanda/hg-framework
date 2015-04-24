@@ -3,15 +3,15 @@ angular.module( 'mis.components.charts')
   /**
    *
    */
-  .factory('BarChart', function(MisChart) {
+  .factory('BarChart', function(LineSeriesChart) {
 
     function BarChart(config) {
-      MisChart.call(this, config);
+      LineSeriesChart.call(this, config);
 
       this.chart.type = 'bar';
     }
 
-    BarChart.prototype = Object.create(MisChart.prototype);
+    BarChart.prototype = Object.create(LineSeriesChart.prototype);
     BarChart.prototype.constructor = BarChart;
 
     return BarChart;

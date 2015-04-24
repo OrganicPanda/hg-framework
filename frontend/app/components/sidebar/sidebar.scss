@@ -2,86 +2,154 @@
 @import "../../core/styling/mixins";
 
 .sidebar {
-  width: $sidebar-open;
   @include transition((width));
 
-  .sidebar-header {
-
+  @include screenLessThan(sm) {
+    width: $sidebar-closed;
   }
 
-  // Reset
-  ul {
-    padding: 0;
-    margin: 0;
-    list-style: none;
+  @include screenMoreThan(md) {
+    width: $sidebar-open;
+    overflow: hidden;
+  }
+}
+
+.sidebar-header {
+
+}
+
+.sidebar-menu {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.sidebar-menu-item {
+  position: relative;
+  overflow: hidden;
+
+  >.sidebar-menu {
+    height: 0;
   }
 
-  /**
-   *
-   */
-  .menu-item {
-    display: block;
-    padding: $spacing-base;
-    text-decoration: none;
-    color:  $grey-light-neg1;
-    transition: background-color 100ms linear,
-                color 100ms linear;
-
-    &:hover {
-      background-color: fade-out(black, 0.9);
-      color: $grey-light-pos1;
-      cursor: pointer;
+  &.open {
+    >.sidebar-menu {
+      height: auto;
     }
   }
+}
 
-  .menu-icon {
-    margin-right: $spacing-sm;
-    width: 16px;
-    text-align: center;
+.sidebar-menu-link {
+  display: block;
+  padding: $spacing-base;
+  text-decoration: none;
+  color:  $grey-light-neg1;
+  @include transition((background-color, color));
+
+  &:hover {
+    background-color: fade-out(black, 0.9);
+    color: $grey-light-pos1;
+    cursor: pointer;
+  }
+}
+
+.sidebar-menu-icon {
+  margin-right: $spacing-sm;
+  width: 16px;
+  text-align: center;
+}
+
+.sidebar-menu-toggle {
+  float: right;
+}
+
+/**
+ * Menu Item styling
+ * - All screens
+ */
+
+// First level
+.sidebar > .sidebar-menu > .sidebar-menu-item {
+  background-color: $dark-base;
+  border-width: 0px;
+  @include transition((background-color, border-width));
+
+  &.active {
+    background-color: $dark-neg1;
+    border-left: $border-thick;
+    border-color: $primary-base;
   }
 
-  .menu-toggle {
-    float: right;
-  }
+  // Second level
+  > .sidebar-menu > .sidebar-menu-item {
 
-  /**
-   * Active states
-   */
-  .sidebar-body {
-    > li {
-      background-color: $dark-base;
-      border-width: 0px;
-      @include transition((background-color, border-width));
+    // Third level
+    > .sidebar-menu > .sidebar-menu-item {
+      > .sidebar-menu-link {
+        padding: $spacing-sm $spacing-base;
+      }
 
       &.active {
-        border-left: $border-thick;
-        border-color: $primary-base;
-        background-color: $dark-neg1;
-
-        > .menu-item {
-          color: $grey-light-pos1;
+        > .sidebar-menu-link {
+          color: $primary-base;
         }
       }
     }
   }
+}
 
+/*
+ * - Smaller screens
+ */
+@include screenLessThan(sm) {
+  // First level
+  .sidebar > .sidebar-menu > .sidebar-menu-item {
+    &.open { overflow: visible; }
 
-  /**
-   * Indentation: To 3 levels
-   */
-  > ul {
-    > li {
-      .menu-item { padding-left: $spacing-base * 1; }
+    > .sidebar-menu-link {
+      text-align: center;
 
-      > ul {
-        > li {
-          .menu-item { padding-left: $spacing-base * 3.5; }
+      .sidebar-menu-text {
+        display: none;
+      }
 
-          > ul {
-            > li {
-              .menu-item { padding-left: $spacing-base * 5; }
-            }
-          }
+      .sidebar-menu-toggle {
+        display: none;
+      }
+    }
+
+    // Second level
+    > .sidebar-menu {
+      position: absolute;
+      top: 0;
+      left: 100%;
+      min-width: $sidebar-open;
+      z-index: $zindex-sidebar;
+      background-color: $sidebar-color;
+    }
+  }
+}
+
+/*
+ * - Large screens
+ */
+@include screenMoreThan(md) {
+  // First level
+  .sidebar > .sidebar-menu > .sidebar-menu-item {
+    .sidebar-menu-link {
+      min-width: $sidebar-open - $border-width-lg;
+    }
+
+    // Second level
+    > .sidebar-menu > .sidebar-menu-item {
+      > .sidebar-menu-link {
+        padding-left: $spacing-base * 2;
+      }
+
+      // Third level
+      > .sidebar-menu > .sidebar-menu-item {
+        > .sidebar-menu-link {
+          padding-left: $spacing-base * 3;
         }
       }
     }

@@ -3,7 +3,7 @@ module.exports = function(grunt) {
 
   var defaultTasks = [
     'clean',
-    'colors',
+    'sharedVars',
     'html2js',
     'ngAnnotate',
     'uglify',
@@ -33,7 +33,7 @@ module.exports = function(grunt) {
   grunt.registerTask('default', defaultTasks);
   grunt.registerTask('start', devTasks);
   grunt.registerTask('server', function() { require('./server/server.js'); });
-  grunt.registerTask('colors', function() { require('./grunt/colors')(grunt); });
+  grunt.registerTask('sharedVars', function() { require('./grunt/shared-vars')(grunt); });
   grunt.registerTask('layout', function() { require('./grunt/layout')(grunt); });
 
   grunt.loadNpmTasks('grunt-contrib-clean');

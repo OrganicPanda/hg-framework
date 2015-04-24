@@ -38,6 +38,10 @@ module.exports = {
       name: 'normalize.css',
       stylesheet: 'normalize.css',
       script: null
+    }, {
+      name: 'angular-ipsum',
+      stylesheet: null,
+      script: 'dist/ipsum.min.js'
     }
   ]
 };

@@ -1,0 +1,68 @@
+@import "../../core/styling/variables";
+@import "../../core/styling/mixins";
+
+.dialog-container,
+.dialog-backdrop {
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
+.dialog-container {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: $zindex-modal;
+}
+
+.dialog-backdrop {
+  position: absolute;
+  opacity: 0;
+  background: fade-out($black-base, 0.4);
+  @include transition((opacity));
+
+  .dialog-open & {
+    opacity: 1;
+  }
+}
+
+.dialog-container {
+  &.dialog-lg .dialog {
+    @include screenMoreThan(sm) { width: $modal-sm; }
+    @include screenMoreThan(md) { width: $modal-md; }
+    @include screenMoreThan(lg) { width: $modal-lg; }
+  }
+
+  &.dialog-md .dialog {
+    @include screenMoreThan(sm) { width: $modal-sm; }
+    @include screenMoreThan(md) { width: $modal-md; }
+  }
+
+  &.dialog-sm .dialog {
+    @include screenMoreThan(sm) { width: $modal-sm; }
+  }
+}
+
+/*
+ *
+ */
+.dialog {
+  opacity: 0;
+  animation-duration: $transition-time-base;
+  animation-fill-mode: forwards;
+
+  .dialog-open & { animation-name: dialogOpen; }
+  .dialog-close & { animation-name: dialogClose; }
+}
+
+@keyframes dialogOpen {
+    0% { opacity: 0; transform: scale3d(0, 0, 1); }
+  100% { opacity: 1; transform: scale3d(1, 1, 1); }
+}
+
+@keyframes dialogClose {
+    0% { opacity: 1; }
+  100% { opacity: 0; transform: scale3d(0.5, 0.5, 1); }
+}

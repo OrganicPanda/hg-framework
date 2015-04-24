@@ -1,53 +1,31 @@
-/* Breakpointing
- * ========================================================================== */
-
-/*
- * Usage:
- *
- * .bar {
- *   color: red;
- *
- *   @include breakpoint(sm) {
- *     color: blue;
- *   }
- * }
- *
- * Outputs:
- *
- * .bar {
- *   color: red;
- * }
- *
- * @media (min-width: 768px) {
- *   .bar {
- *     color: blue;
- *   }
- * }
- *
- */
-
-@mixin breakpoint($size) {
+//
+@mixin screenLessThan($size) {
   $max: false;
 
   @if $size == xs { $max: $screen-xs-max; }
   @if $size == sm { $max: $screen-sm-max; }
   @if $size == md { $max: $screen-md-max; }
-  @if $size == lg { $max: $screen-lg-min; }
 
   @media (max-width: $max) {
     @content;
   }
 }
 
+//
+@mixin screenMoreThan($size) {
+  $min: false;
 
-/* View Range
- * ========================================================================== */
+  @if $size == sm { $min: $screen-sm-min; }
+  @if $size == md { $min: $screen-md-min; }
+  @if $size == lg { $min: $screen-lg-min; }
 
-/*
- *
- */
+  @media (min-width: $min) {
+    @content;
+  }
+}
 
-@mixin viewRange($size) {
+//
+@mixin screenOnlyFor($size) {
   $min: false;
   $max: false;
 

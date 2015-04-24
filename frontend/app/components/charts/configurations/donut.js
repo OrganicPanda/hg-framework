@@ -3,31 +3,18 @@ angular.module( 'mis.components.charts')
   /**
    *
    */
-  .factory('DonutChart', function(MisChart) {
+  .factory('DonutChart', function(PieChart) {
 
     function DonutChart(config) {
-      MisChart.call(this, config);
+      PieChart.call(this, config);
 
-      this.chart.type = 'pie';
-
-      this.plotOptions.pie = {
-        dataLabels: {
-          enabled: false
-        },
-        borderWidth: 0,
-        center: ['50%', '50%'],
-        size: '100%',
-        innerSize: '70%',
-        showInLegend: true
-      };
+      this.plotOptions.pie.center = ['50%', '50%'];
+      this.plotOptions.pie.size = '100%';
+      this.plotOptions.pie.innerSize = '70%';
     }
 
-    DonutChart.prototype = Object.create(MisChart.prototype);
+    DonutChart.prototype = Object.create(PieChart.prototype);
     DonutChart.prototype.constructor = DonutChart;
-
-    DonutChart.prototype.parseSeries = function() {
-      return [{ data: this.config.series }];
-    };
 
     return DonutChart;
   });

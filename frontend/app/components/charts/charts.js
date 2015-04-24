@@ -1,17 +1,18 @@
 angular.module( 'mis.components.charts', [
-  'mis.core.colors'
+  'mis.core.styling'
 ])
 
   /**
    *
    */
-  .factory('MisChart', function(Colors) {
+  .factory('MisChart', function(SASS) {
 
     /**
      *
      */
-    function MisChart(config) {
-      this.config = config;
+    function MisChart(data) {
+      this.config = data.config;
+      this.rawSeries = data.series;
 
       this.chart = {
         height: 300,
@@ -24,8 +25,8 @@ angular.module( 'mis.components.charts', [
 
       // Default colours
       this.colors = [
-        Colors['primary-pos1'],
-        Colors['secondary-pos1']
+        SASS['primary-pos1'],
+        SASS['secondary-pos1']
       ];
 
       this.title = {
@@ -46,6 +47,10 @@ angular.module( 'mis.components.charts', [
           pointPadding: 0.01,
           fillOpacity: 0.2
         }
+      };
+
+      this.legend = {
+        enabled: true
       };
 
       this.tooltip = {
@@ -99,7 +104,7 @@ angular.module( 'mis.components.charts', [
      *
      */
     MisChart.prototype.parseSeries = function() {
-      return this.config.series;
+      return this.rawSeries;
     };
 
     /**

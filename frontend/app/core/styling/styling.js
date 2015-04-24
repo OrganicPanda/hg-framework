@@ -1,10 +1,14 @@
-angular.module('mis.core.colors', [])
+angular.module('mis.core.styling', [])
 
   /**
    *
    */
-  .value('Colors', {
+  .value('SASS', {
+    'transition-time-fast': 200,
+    'transition-time-base': 300,
+    'transition-time-slow': 400,
     'white-base': '#FFFFFF',
+    'black-base': '#000000',
     'grey-light-pos1': '#f4f6f7',
     'grey-light-base': '#ECF0F1',
     'grey-light-neg1': '#d4d8d8',
@@ -39,5 +43,11 @@ angular.module('mis.core.colors', [])
     'info-fade': '#d6eaf7',
     'caution-fade': '#fcf3cf',
     'warning-fade': '#fae5d2',
-    'danger-fade': '#fadbd8'
+    'danger-fade': '#fadbd8',
+    'spacing-base': 15,
+    'screen-xs-min': 375,
+    'screen-sm-min': 768,
+    'screen-md-min': 992,
+    'screen-lg-min': 1200,
+    'line-height': 20
   });

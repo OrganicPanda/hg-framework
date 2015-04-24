@@ -1,2 +1,5 @@
-$transition-time:       200ms;
-$transition-func:       cubic-bezier(0.250, 0.460, 0.450, 0.940);
+$transition-time-fast:    200ms; // #JS#
+$transition-time-base:    300ms; // #JS#
+$transition-time-slow:    400ms; // #JS#
+
+$transition-func:         cubic-bezier(0.250, 0.460, 0.450, 0.940);

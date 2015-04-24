@@ -44,4 +44,8 @@ angular.module('mis.core.config', [
 
       return extractedData;
     });
+  })
+
+  .run(function($rootScope, $state) {
+    $rootScope.$state = $state;
   });

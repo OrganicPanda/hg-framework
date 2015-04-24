@@ -4,6 +4,7 @@
 angular.module('mis', [
   // Vendors
   'angular-storage',
+  'ipsum',
   'restangular',
   'ui.router',
 
@@ -18,9 +19,10 @@ angular.module('mis', [
  * Core sub-modules
  */
 angular.module('mis.core', [
-  'mis.core.colors',
   'mis.core.config',
-  'mis.core.constants'
+  'mis.core.constants',
+  'mis.core.styling',
+  'mis.core.utils'
 ]);
 
 /**
@@ -32,13 +34,15 @@ angular.module('mis.models', [
 ]);
 
 /**
- * Models sub-modules
+ * Components sub-modules
  */
 angular.module('mis.components', [
   'mis.components.api',
   'mis.components.auth',
   'mis.components.breadcrumb',
   'mis.components.charts',
+  'mis.components.dialog',
+  'mis.components.notification',
   'mis.components.sidebar',
   'mis.components.table',
   'mis.components.topbar'

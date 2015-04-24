@@ -54,16 +54,26 @@ module.exports = (function() {
     ]
   };
 
-  // Update colors
-  config.colors = {
-    tasks: [ 'colors' ],
-    files: [ utils.location(conf.locations.colors.src) ]
+  // Shared SASS Variables
+  config.sharedVars = {
+    tasks: [ 'sharedVars' ],
+    files: conf.locations.sharedVars.src.map(function(location) {
+      return utils.location(location);
+    })
   };
 
   // SASS Variables
   config.variables = {
     tasks: [ 'sass', 'autoprefixer', 'cssmin' ],
     files: conf.locations.sassVars.map(function(location) {
+      return utils.location(location);
+    })
+  };
+
+  // SASS Mixins
+  config.mixins = {
+    tasks: [ 'sass', 'autoprefixer', 'cssmin' ],
+    files: conf.locations.sassMixins.map(function(location) {
       return utils.location(location);
     })
   };

@@ -3,10 +3,10 @@ angular.module( 'mis.components.charts')
   /**
    *
    */
-  .factory('PieChart', function(MisChart) {
+  .factory('PieChart', function(RangeSeriesChart) {
 
     function PieChart(config) {
-      MisChart.call(this, config);
+      RangeSeriesChart.call(this, config);
 
       this.chart.type = 'pie';
 
@@ -15,16 +15,19 @@ angular.module( 'mis.components.charts')
           enabled: false
         },
         borderWidth: 0,
-        showInLegend: true
+        showInLegend: true,
+        point: {
+          events: {
+            legendItemClick: function() {
+              return false;
+            }
+          }
+        }
       };
     }
 
-    PieChart.prototype = Object.create(MisChart.prototype);
+    PieChart.prototype = Object.create(RangeSeriesChart.prototype);
     PieChart.prototype.constructor = PieChart;
-
-    PieChart.prototype.parseSeries = function() {
-      return [{ data: this.config.series }];
-    };
 
     return PieChart;
   });

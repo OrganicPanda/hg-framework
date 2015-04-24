@@ -14,7 +14,9 @@ function allDemo(req, res) {
     if (err) {
       responder.error(res, err);
     } else {
-      responder.collection(res, data);
+      setTimeout(function() {
+        responder.collection(res, data);
+      }, 500);
     }
   });
 }

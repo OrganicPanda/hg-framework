@@ -22,7 +22,7 @@
   ));
 
   &:active {
-    box-shadow: inset 0 3px 5px rgba(0,0,0,.125);
+    box-shadow: inset 0 3px 5px fade-out(black, 0.875);
   }
 }
 
@@ -63,14 +63,16 @@
   &:active {
     background-color: $negative;
   }
+
+  &[disabled],
+  &[disabled]:hover,
+  &[disabled]:active {
+    background-color: $positive;
+    color: $negative;
+    box-shadow: inset 0 3px 5px fade-out($negative, 0.875);
+  }
 }
 
-.btn[disabled],
-.btn[disabled]:hover,
-.btn[disabled]:active {
-  background-color: $grey-light-pos1;
-  color: $grey-light-neg1;
-}
 
 .btn          { @include makeButton($grey-light-base, $grey-light-pos1, $grey-light-neg1); }
 .btn-dark     { @include makeButton($dark-base,       $dark-pos1,       $dark-neg1); }

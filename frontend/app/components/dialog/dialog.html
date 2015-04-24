@@ -1,0 +1,21 @@
+<div class="dialog-container dialog-open"
+     ng-class="::{ 'dialog-sm': config.size === 'sm' || !config.size,
+                   'dialog-md': config.size === 'md',
+                   'dialog-lg': config.size === 'lg' }">
+
+  <div class="dialog-backdrop"
+       ng-click="$$close()"
+       ng-class="::{ 'dialog-black-out': config.blackOut }"></div>
+
+  <div class="panel dialog">
+    <div class="panel-header"
+         ng-show="::config.title">
+      {{ ::config.title }}
+    </div>
+
+    <div class="panel-body">
+      <template>
+    </div>
+  </div>
+
+</div>

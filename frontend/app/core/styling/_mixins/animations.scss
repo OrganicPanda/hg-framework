@@ -5,7 +5,7 @@
 
   @each $property in $properties {
     $transitions: append($transitions
-      , $property $transition-time $transition-func, comma);
+      , $property $transition-time-base $transition-func, comma);
   }
 
   @return $transitions;

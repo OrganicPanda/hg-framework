@@ -1,0 +1,20 @@
+<li class="sidebar-menu-item"
+    ng-class="{ 'active': isActive(),
+                'open': state.open }">
+  <a class="sidebar-menu-link"
+     ng-if="::!item.state.abstract"
+     ui-sref="{{ ::item.state.name }}">
+    <i class="sidebar-menu-icon icon {{ ::item.state.data.icon }}"></i>
+    <span class="sidebar-menu-text">{{ ::item.state.data.name }}</span>
+  </a>
+
+  <span class="sidebar-menu-link"
+        ng-if="::item.state.abstract"
+        ng-click="state.open = !state.open">
+    <i class="sidebar-menu-icon icon {{ ::item.state.data.icon }}"></i>
+    <span class="sidebar-menu-text">{{ ::item.state.data.name }}</span>
+    <i class="sidebar-menu-toggle icon"
+       ng-class="{ 'icon-chevron-left': !state.open,
+                   'icon-chevron-down': state.open }"></i>
+  </span>
+</li>

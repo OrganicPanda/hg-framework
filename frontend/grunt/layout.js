@@ -30,11 +30,16 @@ module.exports = function(grunt) {
   var vendorStylesheets = vendor('stylesheet');
 
   utils.forEachModule(function(module) {
-    var moduleScript = module.name + '.min.js';
+    var moduleScript = module.name + '.js';
+    var moduleScriptTpl = module.name + '-tpl.js';
     var moduleStylesheet = module.name + '.min.css';
 
     if (~module.files.js.indexOf(moduleScript)) {
       appScripts.push(module.dest + '/' + moduleScript);
+    }
+
+    if (~module.files.js.indexOf(moduleScriptTpl)) {
+      appScripts.push(module.dest + '/' + moduleScriptTpl);
     }
 
     if (~module.files.css.indexOf(moduleStylesheet)) {

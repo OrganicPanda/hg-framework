@@ -3,10 +3,11 @@
 .layout {
   display: flex;
   min-height: 100vh;
-  background-color: $sidebar-color;
+  background-color: $background-color;
 
   .layout-side {
     flex-shrink: 0;
+    background-color: $sidebar-color;
   }
 
   .layout-main {

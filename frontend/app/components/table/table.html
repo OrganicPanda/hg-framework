@@ -5,14 +5,14 @@
   <table>
     <thead class="panel-header">
       <tr>
-        <th ng-repeat="head in table.data.headers"
+        <th ng-repeat="head in ::table.data.headers"
             ng-click="setSort(head);"
             ng-class="{ 'sorting': table.options.sorting,
                         'sort-asc': table.sourceConf.sortColumn === head.field &&
                                     table.sourceConf.sortOrder === 1,
                         'sort-desc': table.sourceConf.sortColumn === head.field &&
                                      table.sourceConf.sortOrder === -1 }">
-          {{:: head.name }}
+          {{ ::head.name }}
         </th>
       </tr>
     </thead>
@@ -21,10 +21,10 @@
       <!-- Loading Message -->
       <tr ng-if="state.loading">
         <td class="text-center"
-            colspan="{{ table.data.headers.length }}">
+            colspan="{{ ::table.data.headers.length }}">
 
           <span ng-if="table.options.message.loading">
-            {{:: table.options.message.loading }}
+            {{ ::table.options.message.loading }}
           </span>
 
           <span ng-if="!table.options.message.loading">
@@ -36,10 +36,10 @@
       <!-- Failed Message -->
       <tr ng-if="state.failed">
         <td class="text-center"
-            colspan="{{ table.data.headers.length }}">
+            colspan="{{ ::table.data.headers.length }}">
 
           <span ng-if="table.options.message.failed">
-            {{:: table.options.message.failed }}
+            {{ ::table.options.message.failed }}
           </span>
 
           <span ng-if="!table.options.message.failed">
@@ -49,11 +49,11 @@
       </tr>
 
       <!-- Zero Data Message -->
-      <tr ng-if="!state.loading && !table.data.rows.length">
+      <tr ng-if="!state.loading && !table.data.rows.length && !state.failed">
         <td class="text-center"
-            colspan="{{ table.data.headers.length }}">
+            colspan="{{ ::table.data.headers.length }}">
           <span ng-if="table.options.message.zeroData">
-            {{:: table.options.message.zeroData }}
+            {{ ::table.options.message.zeroData }}
           </span>
 
           <span ng-if="!table.options.message.zeroData">
@@ -69,13 +69,13 @@
       <tr ng-if="!state.customRowTpl"
           ng-repeat="row in table.data.rows">
         <td ng-repeat="cell in row.cells">
-          {{:: cell }}
+          {{ ::cell }}
         </td>
       </tr>
     </tbody>
   </table>
 
   <div mis-table-pagination="table"
-       ng-if="table.options.pagination"></div>
+       ng-if="table.options.pagination && !state.failed"></div>
 </div>
 

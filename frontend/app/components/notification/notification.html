@@ -1,0 +1,21 @@
+<div class="notification"
+     ng-click="$$remove()">
+
+  <i class="notification-icon icon icon-info text-info"
+     ng-show="config.type === 'info'"></i>
+
+  <i class="notification-icon icon icon-check text-success"
+     ng-show="config.type === 'success'"></i>
+
+  <i class="notification-icon icon icon-exclamation text-caution"
+     ng-show="config.type === 'caution'"></i>
+
+  <i class="notification-icon icon icon-exclamation-circle text-warning"
+     ng-show="config.type === 'warning'"></i>
+
+  <i class="notification-icon icon icon-exclamation-triangle text-danger"
+     ng-show="config.type === 'danger'"></i>
+
+  {{ config.message }}
+
+</div>

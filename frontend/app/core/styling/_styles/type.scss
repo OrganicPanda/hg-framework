@@ -46,3 +46,12 @@ strong,
 .text-left { text-align: left; }
 .text-center { text-align: center; }
 .text-right { text-align: right; }
+
+// Textual colors
+.text-primary   { color: $primary-base; }
+.text-secondary { color: $secondary-base; }
+.text-info      { color: $info-base; }
+.text-success   { color: $success-base; }
+.text-caution   { color: $caution-base; }
+.text-warning   { color: $warning-base; }
+.text-danger    { color: $danger-base; }

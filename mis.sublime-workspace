@@ -4,6 +4,90 @@
 		"selected_items":
 		[
 			[
+				"font",
+				"font-weight"
+			],
+			[
+				"fade",
+				"fade-out	Sass-function"
+			],
+			[
+				"dial",
+				"dialogElement"
+			],
+			[
+				"bacl",
+				"background-color: "
+			],
+			[
+				"misSi",
+				"misSidebarMenu"
+			],
+			[
+				"side",
+				"sidebar-menu-list"
+			],
+			[
+				"sideb",
+				"sidebar"
+			],
+			[
+				"pr",
+				"parentId"
+			],
+			[
+				"extrac",
+				"extractParent"
+			],
+			[
+				"backgr",
+				"background-color: "
+			],
+			[
+				"back",
+				"background-color: "
+			],
+			[
+				"cona",
+				"contactForm"
+			],
+			[
+				"margin",
+				"margin-left: "
+			],
+			[
+				"min",
+				"min-width: "
+			],
+			[
+				"border",
+				"border-color: "
+			],
+			[
+				"pag",
+				"pageYOffset"
+			],
+			[
+				"sec",
+				"sectionId"
+			],
+			[
+				"lighe",
+				"lighten	Sass-function"
+			],
+			[
+				"font-",
+				"font-size: "
+			],
+			[
+				"wht",
+				"white-base"
+			],
+			[
+				"mar",
+				"margin: "
+			],
+			[
 				"flex-",
 				"flex-direction: "
 			],
@@ -14,10 +98,6 @@
 			[
 				"fon",
 				"font-weight: "
-			],
-			[
-				"mar",
-				"margin-right: "
 			],
 			[
 				"pa",
@@ -76,10 +156,6 @@
 				"background-color: "
 			],
 			[
-				"margin",
-				"margin: "
-			],
-			[
 				"sort",
 				"sortColumn"
 			],
@@ -90,14 +166,6 @@
 			[
 				"proto",
 				"prototype"
-			],
-			[
-				"font",
-				"font-family: "
-			],
-			[
-				"back",
-				"background-color"
 			],
 			[
 				"BmMei",
@@ -136,20 +204,12 @@
 				"PointSchema"
 			],
 			[
-				"pr",
-				"project"
-			],
-			[
 				"res",
 				"responder"
 			],
 			[
 				"Poi",
 				"PointSchema"
-			],
-			[
-				"backgr",
-				"background"
 			],
 			[
 				"prd",
@@ -166,10 +226,6 @@
 			[
 				"border-co",
 				"border-color"
-			],
-			[
-				"bacl",
-				"background-color"
 			],
 			[
 				"tex",
@@ -458,62 +514,6 @@
 			[
 				"pre",
 				"previousColumn"
-			],
-			[
-				"PLA",
-				"PLACEHOLDER_CONTENT_ID"
-			],
-			[
-				"re",
-				"requires	@requires"
-			],
-			[
-				"block",
-				"blockSelector"
-			],
-			[
-				"me",
-				"method	@method"
-			],
-			[
-				"marg",
-				"margin"
-			],
-			[
-				"select",
-				"selectNumberOfColumns"
-			],
-			[
-				"COLU",
-				"COLUMN_ID"
-			],
-			[
-				"conte",
-				"contentTemplate"
-			],
-			[
-				"colum",
-				"columnTemplate"
-			],
-			[
-				"new",
-				"newElement"
-			],
-			[
-				"templat",
-				"templateUrl"
-			],
-			[
-				"template",
-				"templateCache"
-			],
-			[
-				"child",
-				"child"
-			],
-			[
-				"remove",
-				"removeChild"
 			]
 		]
 	},
@@ -524,10 +524,14 @@
 	"build_varint": "",
 	"command_palette":
 	{
-		"height": 392.0,
-		"last_filter": "inst",
+		"height": 267.0,
+		"last_filter": "html",
 		"selected_items":
 		[
+			[
+				"html",
+				"Snippet: html"
+			],
 			[
 				"inst",
 				"Package Control: Install Package"
@@ -593,10 +597,6 @@
 				"Package Control: Remove Package"
 			],
 			[
-				"html",
-				"Snippet: html"
-			],
-			[
 				"instlal",
 				"Package Control: Install Package"
 			],
@@ -609,7 +609,7 @@
 				"Package Control: Install Package"
 			]
 		],
-		"width": 467.0
+		"width": 575.0
 	},
 	"console":
 	{
@@ -630,49 +630,105 @@
 	},
 	"file_history":
 	[
-		"/Users/Harry/Projects/mis/frontend/app/components/charts/charts.scss",
-		"/Users/Harry/Projects/mis/frontend/app/components/charts/charts.js",
+		"/Users/Harry/Projects/mis/frontend/app/components/sidebar/sidebar.scss",
+		"/Users/Harry/Projects/baltic-machinery/app/less/components/_gallery.less",
+		"/Users/Harry/Projects/baltic-machinery/app/less/components/_product-table.less",
+		"/Users/Harry/Projects/baltic-machinery/app/partial/components/product-table.html",
+		"/Users/Harry/Projects/baltic-machinery/app/js/components/section.js",
+		"/Users/Harry/Projects/baltic-machinery/public/index.html",
+		"/Users/Harry/Projects/baltic-machinery/grunt/cssmin.js",
+		"/Users/Harry/Projects/baltic-machinery/Gruntfile.js",
+		"/Users/Harry/Projects/baltic-machinery/package.json",
+		"/Users/Harry/Projects/baltic-machinery/app/js/components/printer.js",
+		"/Users/Harry/Projects/mis/frontend/app/pages/styleguide/directives/dialog.js",
+		"/Users/Harry/Projects/mis/frontend/app/components/dialog/dialog.html",
+		"/Users/Harry/Projects/mis/frontend/app/components/dialog/dialog.js",
+		"/Users/Harry/Projects/mis/frontend/app/components/dialog/dialog.scss",
+		"/Users/Harry/Projects/mis/frontend/app/pages/styleguide/directives/dialog.html",
+		"/Users/Harry/Projects/mis/frontend/app/components/table/table.html",
+		"/Users/Harry/Projects/mis/frontend/app/components/table/pagination.html",
+		"/Users/Harry/Projects/mis/frontend/app/components/sidebar/sidebar.html",
+		"/Users/Harry/Projects/mis/frontend/app/components/breadcrumb/breadcrumb.html",
+		"/Users/Harry/Projects/mis/frontend/app/components/sidebar/sidebar-menu-item.html",
+		"/Users/Harry/Projects/mis/frontend/app/components/sidebar/sidebar-menu.html",
+		"/Users/Harry/Projects/mis/frontend/app/core/utils/utils.js",
+		"/Users/Harry/Projects/mis/frontend/app/components/sidebar/sidebar.js",
+		"/Users/Harry/Projects/mis/frontend/grunt/watch.js",
+		"/Users/Harry/Projects/mis/frontend/Gruntfile.js",
+		"/Users/Harry/Projects/mis/frontend/grunt/shared-vars.js",
+		"/Users/Harry/Projects/mis/frontend/conf/locations.js",
+		"/Users/Harry/Projects/mis/frontend/app/core/styling/_vars/sizes.js",
+		"/Users/Harry/Projects/mis/frontend/app/core/styling/_vars/colors.js",
+		"/Users/Harry/Projects/mis/frontend/app/core/styling/_vars/colors.scss",
+		"/Users/Harry/Projects/mis/frontend/app/core/styling/_vars/sizes.scss",
 		"/Users/Harry/Projects/mis/frontend/app/pages/styleguide/styleguide.js",
+		"/Users/Harry/Projects/mis/frontend/app/components/charts/charts.js",
+		"/Users/Harry/Projects/mis/frontend/app/core/app/app.js",
+		"/Users/Harry/Projects/mis/frontend/app/core/conf/config.js",
+		"/Users/Harry/Projects/mis/frontend/app/core/styling/styling.js",
+		"/Users/Harry/Projects/mis/frontend/grunt/layout.js",
+		"/Users/Harry/Projects/baltic-machinery/public/print-template.html",
+		"/Users/Harry/Projects/baltic-machinery/app/less/sections/_print.less",
+		"/Users/Harry/Projects/baltic-machinery/app/partial/components/print-template.html",
+		"/Users/Harry/Projects/baltic-machinery/app/partial/pages/contact.html",
+		"/Users/Harry/Projects/baltic-machinery/app/partial/pages/landing.html",
+		"/Users/Harry/Projects/baltic-machinery/app/less/core/_mixins.less",
+		"/Users/Harry/Projects/baltic-machinery/app/less/core/_animations.less",
+		"/Users/Harry/Projects/baltic-machinery/app/less/sections/_sections.less",
+		"/Users/Harry/Projects/baltic-machinery/app/less/sections/_landing-page.less",
+		"/Users/Harry/Projects/baltic-machinery/app/less/sections/_services.less",
+		"/Users/Harry/Projects/baltic-machinery/dist/css/baltic-machinery.css",
+		"/Users/Harry/Projects/mis/frontend/grunt/ng-annotate.js",
+		"/Users/Harry/Projects/baltic-machinery/app/less/sections/_products.less",
+		"/Users/Harry/Projects/baltic-machinery/app/less/sections/_contact.less",
+		"/Users/Harry/Projects/baltic-machinery/app/js/pages/contact.js",
 		"/Users/Harry/Projects/mis/frontend/app/pages/styleguide/directives/chart.html",
+		"/Users/Harry/Projects/mis/frontend/app/pages/styleguide/directives/table.js",
+		"/Users/Harry/Projects/mis/frontend/app/pages/styleguide/directives/chart.js",
+		"/Users/Harry/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+		"/Users/Harry/Projects/baltic-machinery/app/less/core/_buttons.less",
+		"/Users/Harry/Projects/baltic-machinery/app/partial/page-breaks/footer.html",
+		"/Users/Harry/Projects/mis/frontend/app/core/layout/layout.scss",
+		"/Users/Harry/Projects/mis/frontend/app/core/styling/_vars/zindex.scss",
+		"/Users/Harry/Projects/mis/frontend/app/components/sidebar/sidebar-menu-level.html",
+		"/Users/Harry/Projects/baltic-machinery/app/js/baltic-machinery.js",
+		"/Users/Harry/Projects/baltic-machinery/app/partial/components/gallery.html",
+		"/Users/Harry/Projects/baltic-machinery/app/partial/pages/about-us.html",
+		"/Users/Harry/Projects/baltic-machinery/app/js/components/product-table.js",
+		"/Users/Harry/Projects/baltic-machinery/app/js/components/video.js",
+		"/Users/Harry/Projects/mis/frontend/app/core/styling/_styles/button.scss",
+		"/Users/Harry/Projects/mis/frontend/app/pages/styleguide/core/grid.html",
+		"/Users/Harry/Projects/mis/frontend/app/core/styling/_styles/grid.scss",
+		"/Users/Harry/Projects/mis/frontend/app/core/styling/_mixins/breakpoints.scss",
+		"/Users/Harry/Projects/mis/frontend/conf/layout.js",
+		"/Users/Harry/Projects/mis/frontend/bower.json",
+		"/Users/Harry/Projects/mis/frontend/app/pages/styleguide/css/cards.html",
+		"/Users/Harry/Projects/mis/frontend/app/core/styling/mixins.scss",
+		"/Users/Harry/Projects/mis/backend/controllers/demo.js",
+		"/Users/Harry/Projects/mis/frontend/app/core/styling/_styles/form.scss",
+		"/Users/Harry/Projects/mis/frontend/app/pages/styleguide/css/form.html",
+		"/Users/Harry/Projects/mis/frontend/app/components/charts/charts.scss",
 		"/Users/Harry/Projects/mis/frontend/app/core/colors/colors.js",
 		"/Users/Harry/Projects/mis/frontend/app/components/charts/configurations/combo.js",
 		"/Users/Harry/Projects/mis/frontend/app/components/charts/configurations/donut.js",
 		"/Users/Harry/Projects/mis/frontend/app/components/charts/configurations/pie.js",
 		"/Users/Harry/Projects/mis/frontend/app/pages/styleguide/css/labels.html",
-		"/Users/Harry/Projects/mis/frontend/app/pages/styleguide/css/cards.html",
-		"/Users/Harry/Projects/baltic-machinery/app/partial/components/gallery.html",
-		"/Users/Harry/Projects/baltic-machinery/app/less/components/_gallery.less",
 		"/Users/Harry/Projects/baltic-machinery/app/js/components/gallery.js",
-		"/Users/Harry/Projects/mis/frontend/app/core/styling/_mixins/breakpoints.scss",
 		"/Users/Harry/Projects/mis/frontend/app/core/styling/_styles/cards.scss",
-		"/Users/Harry/Projects/mis/frontend/app/components/sidebar/sidebar.scss",
-		"/Users/Harry/Projects/mis/frontend/app/core/styling/_styles/grid.scss",
-		"/Users/Harry/Projects/baltic-machinery/app/js/components/section.js",
-		"/Users/Harry/Projects/baltic-machinery/app/partial/pages/about-us.html",
 		"/Users/Harry/Projects/baltic-machinery/app/less/sections/_about-us.less",
 		"/Users/Harry/Projects/baltic-machinery/app/less/core/_variables.less",
 		"/Users/Harry/Projects/baltic-machinery/app/less/core/_icons.less",
 		"/Users/Harry/Projects/baltic-machinery/app/js/components/tracker.js",
 		"/Users/Harry/Projects/baltic-machinery/app/less/core/_color-variables.less",
-		"/Users/Harry/Projects/baltic-machinery/app/less/sections/_sections.less",
 		"/Users/Harry/Projects/baltic-machinery/app/partial/pages/products.html",
-		"/Users/Harry/Projects/baltic-machinery/app/less/sections/_contact.less",
-		"/Users/Harry/Projects/baltic-machinery/app/js/baltic-machinery.js",
-		"/Users/Harry/Projects/baltic-machinery/app/partial/components/product-table.html",
-		"/Users/Harry/Projects/mis/frontend/app/core/styling/_vars/sizes.scss",
 		"/Users/Harry/Projects/mis/frontend/app/core/layout/layout-tpl.html",
-		"/Users/Harry/Projects/mis/frontend/grunt/watch.js",
 		"/Users/Harry/Projects/mis/frontend/app/pages/communication/communication.js",
 		"/Users/Harry/Projects/mis/frontend/app/core/styling/_styles/type.scss",
 		"/Users/Harry/Projects/mis/frontend/app/core/styling/_vars/icons.scss",
 		"/Users/Harry/Projects/mis/frontend/app/pages/styleguide/directives/popup.html",
 		"/Users/Harry/Projects/mis/frontend/app/pages/styleguide/css/panel.html",
-		"/Users/Harry/Projects/mis/frontend/app/components/sidebar/sidebar.html",
-		"/Users/Harry/Projects/mis/frontend/app/core/layout/layout.scss",
 		"/Users/Harry/Projects/mis/frontend/app/core/styling/styling.scss",
 		"/Users/Harry/Projects/mis/frontend/app/pages/styleguide/directives/table.html",
-		"/Users/Harry/Projects/mis/frontend/app/core/conf/config.js",
-		"/Users/Harry/Projects/mis/frontend/app/components/table/table.html",
 		"/Users/Harry/Projects/mis/frontend/app/pages/styleguide/directives/notification.html",
 		"/Users/Harry/Projects/mis/frontend/app/components/table/table.scss",
 		"/Users/Harry/Projects/mis/frontend/app/pages/styleguide/directives/dropdown.html",
@@ -683,20 +739,13 @@
 		"/Users/Harry/Projects/mis/frontend/app/components/charts/configurations/line.js",
 		"/Users/Harry/Projects/mis/backend/services/pagination.js",
 		"/Users/Harry/Projects/mis/frontend/app/components/table/table.js",
-		"/Users/Harry/Projects/mis/frontend/app/core/styling/_styles/form.scss",
 		"/Users/Harry/Projects/mis/frontend/app/core/styling/_vars/borders.scss",
-		"/Users/Harry/Projects/mis/frontend/conf/layout.js",
-		"/Users/Harry/Projects/mis/frontend/conf/locations.js",
-		"/Users/Harry/Projects/mis/frontend/app/core/app/app.js",
 		"/Users/Harry/Projects/mis/frontend/app/core/styling/variables.scss",
 		"/Users/Harry/Projects/mis/frontend/grunt/utils.js",
-		"/Users/Harry/Projects/mis/frontend/app/core/styling/_vars/colors.scss",
 		"/Users/Harry/Projects/mis/frontend/grunt/colors.js",
-		"/Users/Harry/Projects/mis/frontend/Gruntfile.js",
 		"/Users/Harry/Projects/mis/frontend/grunt/uglify.js",
 		"/Users/Harry/Projects/mis/frontend/grunt/sass.js",
 		"/Users/Harry/Projects/mis/frontend/grunt/html2js.js",
-		"/Users/Harry/Projects/mis/frontend/app/core/styling/mixins.scss",
 		"/Users/Harry/Projects/mis/frontend/app/core/styling/_vars/type.scss",
 		"/Users/Harry/Projects/mis/frontend/app/core/styling/_mixins/animations.scss",
 		"/Users/Harry/Projects/mis/frontend/app/core/styling/_mixins/utils.scss",
@@ -707,67 +756,19 @@
 		"/Users/Harry/Projects/mis/frontend/app/components/breadcrumb/breadcrumb.scss",
 		"/Users/Harry/Projects/mis/frontend/app/core/conf/vars.scss",
 		"/Users/Harry/Projects/mis/frontend/app/core/conf/colors.js",
-		"/Users/Harry/Projects/mis/frontend/grunt/ng-annotate.js",
 		"/Users/Harry/Projects/mis/frontend/app/pages/styleguide/styleguide.html",
-		"/Users/Harry/Projects/mis/frontend/app/components/table/actions.html",
-		"/Users/Harry/Projects/mis/frontend/app/core/styling/_scss/form.scss",
-		"/Users/Harry/Projects/mis/frontend/app/core/styling/_scss/button.scss",
-		"/Users/Harry/Projects/mis/frontend/app/components/table/pagination.html",
-		"/Users/Harry/Projects/mis/frontend/app/core/styling/_scss/grid.scss",
-		"/Users/Harry/Projects/mis/frontend/app/core/styling/_scss/alerts.scss",
-		"/Users/Harry/Projects/baltic-machinery/app/js/components/product-table.js",
-		"/Users/Harry/Projects/baltic-machinery/public/index.html",
-		"/Users/Harry/Projects/baltic-machinery/app/less/sections/_landing-page.less",
-		"/Users/Harry/Projects/baltic-machinery/app/less/components/_product-table.less",
-		"/Users/Harry/Projects/baltic-machinery/app/less/sections/_products.less",
-		"/Users/Harry/Projects/baltic-machinery/app/less/sections/_partners.less",
-		"/Users/Harry/Projects/baltic-machinery/app/partial/pages/partners.html",
-		"/Users/Harry/Projects/mis/frontend/app/core/constants/constants.js",
-		"/Users/Harry/Projects/mis/frontend/app/pages/communication/communication.html",
-		"/Users/Harry/Projects/mis/frontend/bower.json",
-		"/Users/Harry/Projects/mis/frontend/grunt/layout.js",
-		"/Users/Harry/Projects/mis/frontend/app/core/styling/_scss/panel.scss",
-		"/Users/Harry/Projects/mis/frontend/app/core/styling/_scss/type.scss",
-		"/Users/Harry/Projects/mis/frontend/app/core/styling/_scss/labels.scss",
-		"/Users/Harry/Projects/mis/frontend/app/pages/styleguide/css/form.html",
-		"/Users/Harry/Projects/mis/frontend/app/core/styling/_scss/mixins.scss",
-		"/Users/Harry/Projects/baltic-machinery/app/js/pages/partners.js",
-		"/Users/Harry/Projects/baltic-machinery/app/less/components/_google-map.less",
-		"/Users/Harry/Projects/baltic-machinery/app/less/baltic-machinery.less",
-		"/Users/Harry/Projects/baltic-machinery/app/partial/pages/services.html",
-		"/Users/Harry/Projects/baltic-machinery/app/partial/pages/media-modal.html",
-		"/Users/Harry/Projects/baltic-machinery/app/js/pages/media.js",
-		"/Users/Harry/Projects/baltic-machinery/app/less/components/_modal.less",
-		"/Users/Harry/Projects/baltic-machinery/app/partial/components/media-modal.html",
-		"/Users/Harry/Downloads/Builder/src/builder/MessageBuilder.java",
-		"/Users/Harry/Projects/mis/frontend/app/components/sidebar/sidebar.js",
-		"/Users/Harry/Projects/data-map/client/app/sass/components/profile.scss",
-		"/Users/Harry/Projects/data-map/client/app/sass/data-map.scss",
-		"/Users/Harry/Projects/baltic-machinery/app/js/components/google-map.js",
-		"/Users/Harry/Projects/data-map/client/config.json",
-		"/Users/Harry/Projects/data-map/client/grunt/watch.js",
-		"/Users/Harry/Projects/data-map/client/app/js/components/menu.js",
-		"/Users/Harry/Projects/data-map/api/server.js",
-		"/Users/Harry/Projects/data-map/client/app/js/data-map.js",
-		"/Users/Harry/Projects/data-map/client/app/partial/components/menu.html",
-		"/Users/Harry/Projects/data-map/client/app/js/models/projects.js",
-		"/Users/Harry/Projects/data-map/client/public/index.html",
-		"/Users/Harry/Projects/data-map/client/app/sass/components/map.scss",
-		"/Users/Harry/Projects/data-map/client/app/sass/components/menu.scss",
-		"/Users/Harry/Projects/data-map/client/app/js/components/map.js",
-		"/Users/Harry/Projects/data-map/client/app/partial/components/map.html",
-		"/Users/Harry/Projects/data-map/client/app/js/services/auth.js",
-		"/Users/Harry/Projects/data-map/client/app/js/services/state.js"
+		"/Users/Harry/Projects/mis/frontend/app/components/table/actions.html"
 	],
 	"find":
 	{
-		"height": 25.0
+		"height": 35.0
 	},
 	"find_in_files":
 	{
 		"height": 93.0,
 		"where_history":
 		[
+			"/Users/Harry/Projects/baltic-machinery/app/js",
 			"/Users/Harry/Projects/mis/frontend/app",
 			"/Users/Harry/Projects/baltic-machinery",
 			"/Users/Harry/Projects/pure360/frontend/app/editor/src",
@@ -788,6 +789,73 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"open",
+			"width",
+			"sizing",
+			"line",
+			"item",
+			"colors",
+			";",
+			"extractParent",
+			"moduleScript",
+			"initial",
+			"print",
+			"background-color",
+			"screenLessThan",
+			"md",
+			"\"",
+			"ng-model=",
+			"defaultForm",
+			"ng-model=\"form",
+			"data.chart",
+			".chart",
+			"structure",
+			"open",
+			"<ul class=\"",
+			"active",
+			"open",
+			"structure[",
+			"top",
+			"active",
+			"middle",
+			"top",
+			"active",
+			"middle",
+			"top",
+			"sidebar-body",
+			"a = ",
+			"attrs.",
+			".btn",
+			" grid-sm-full",
+			"cell",
+			" grid-md-fit",
+			" grid-sm-full",
+			" grid-33",
+			" grid-50",
+			"grid-cell ",
+			"<div ipsum=\"2s\"></div>",
+			"<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tempus ut felis vitae hendrerit. Ut ut nibh nunc. Mauris vehicula dictum lacus, nec elementum tellus luctus vel. Nulla volutpat quam sem, sit amet porta tellus bibendum eget.</p>",
+			"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tempus ut felis vitae hendrerit. Ut ut nibh nunc. Mauris vehicula dictum lacus, nec elementum tellus luctus vel. Nulla volutpat quam sem, sit amet porta tellus bibendum eget.",
+			" grid-sm-full",
+			"xs",
+			"max",
+			"min",
+			"href=\"",
+			"href=\"{{:: ",
+			"max",
+			";",
+			"sm",
+			"<input name=\"a\" type=\"radio\">",
+			"<input type=\"checkbox\">",
+			"a",
+			"<input type=\"",
+			"<input type=\"checkbox\">",
+			"<label>",
+			"group",
+			"checkbox",
+			"size",
+			"line-height",
+			"20px",
 			"ColumnChart",
 			"rangeChart",
 			"{ series: linearData }",
@@ -848,74 +916,7 @@
 			"BarChart",
 			"AreaChart",
 			"instanceData",
-			"</td>",
-			"<td",
-			"</tr>",
-			"tr",
-			"class=\"tr\" ng-if=",
-			"<tr",
-			"tr",
-			"tbody",
-			"thead",
-			"table>",
-			"table",
-			"maxPageCount",
-			"td",
-			"cell",
-			"td",
-			"span",
-			"faield",
-			"path",
-			"src",
-			"layout",
-			"ngAnnotate",
-			"srcs",
-			"mixins",
-			"colors",
-			"breakpoints",
-			"animations",
-			"_scss",
-			"scope",
-			"success",
-			"info",
-			"border",
-			"p",
-			"Specifications",
-			"reports",
-			"contacts",
-			"this.instance",
-			"chart",
-			"$scope",
-			"$scope.$watchCollection('p3Data', function(newVal, oldVal) {\n          if (",
-			"conf.layout.vendor, conf.locations.vendor, ",
-			"\"",
-			"$scope",
-			"-px",
-			"px",
-			"$line-height",
-			"$line-height-px",
-			"top",
-			"div",
-			"sm",
-			"base",
-			"sm",
-			"base",
-			"md",
-			"sm",
-			"sortable",
-			"serivce",
-			"pagination",
-			"sortField",
-			"pagination",
-			".pagination",
-			"pagination",
-			"sortField",
-			"sortBy",
-			"order",
-			"Secondary",
-			"p",
-			"div",
-			"0"
+			"</td>"
 		],
 		"highlight": true,
 		"in_selection": false,

@@ -11,6 +11,10 @@ angular.module('mis.core.constants', [])
     'styleguide'
   ])
 
+  // Notification
+  .constant('NOTIFY_DELAY', 2000)
+
+  // Table
   .constant('PAGING_START', 1)
   .constant('PAGING_DEFAULT_RESULTS', 10)
   .constant('SORT_ASC', 1)

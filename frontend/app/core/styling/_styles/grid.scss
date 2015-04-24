@@ -47,6 +47,7 @@
   /**
    * Cell shrinker
    */
+
   > .grid-shrink {
     flex-basis: auto;
     flex-shrink: 1;
@@ -72,43 +73,38 @@
   /**
    * Responsive and Size modifiers
    */
-  > .grid-cell {
-    &.grid-10 { width: 10%; flex: none; }
-    &.grid-25 { width: 25%; flex: none; }
-    &.grid-50 { width: 50%; flex: none; }
-    &.grid-75 { width: 75%; flex: none; }
 
-    &.grid-33 { width: 33.3333%; flex: none; }
-    &.grid-66 { width: 66.6666%; flex: none; }
-  }
+  //
+  @mixin makeResponsiveClasses($size) {
+    @include screenMoreThan($size) {
+      > .grid-cell {
+        &.grid-#{$size}-25 { width: 25%; flex: none; }
+        &.grid-#{$size}-50 { width: 50%; flex: none; }
+        &.grid-#{$size}-75 { width: 75%; flex: none; }
 
-  @include breakpoint(sm) {
-    &.grid-sm-fit > .grid-cell { flex: 1; }
-    &.grid-sm-full > .grid-cell {
-      padding: 0 $spacing-grid $spacing-grid;
-      flex: 0 0 100%;
+        &.grid-#{$size}-33 { width: 33.3333%; flex: none; }
+        &.grid-#{$size}-66 { width: 66.6666%; flex: none; }
+      }
 
-      &:last-child { padding-bottom: 0; }
+      &.grid-#{$size}-fit > .grid-cell { flex: 1; }
+      &.grid-#{$size}-full > .grid-cell { @include fullWidth(); }
     }
   }
 
-  @include breakpoint(md) {
-    &.grid-md-fit > .grid-cell { flex: 1; }
-    &.grid-md-full > .grid-cell {
-      padding: 0 $spacing-grid $spacing-grid;
-      flex: 0 0 100%;
+  //
+  @mixin fullWidth() {
+    padding: 0 $spacing-grid $spacing-grid;
+    flex: 0 0 100%;
 
-      &:last-child { padding-bottom: 0; }
-    }
+    &:last-child { padding-bottom: 0; }
   }
 
-  @include breakpoint(lg) {
-    &.grid-lg-fit > .grid-cell { flex: 1; }
-    &.grid-lg-full > .grid-cell {
-      padding: 0 $spacing-grid $spacing-grid;
-      flex: 0 0 100%;
-
-      &:last-child { padding-bottom: 0; }
-    }
+  // For small screen back to 100% width
+  @include screenLessThan(sm) {
+    > .grid-cell { @include fullWidth(); }
   }
+
+  @include makeResponsiveClasses(sm);
+  @include makeResponsiveClasses(md);
+  @include makeResponsiveClasses(lg);
 }
