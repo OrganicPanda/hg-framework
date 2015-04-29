@@ -1,0 +1,54 @@
+<div class="panel">
+  <div class="panel-header">
+    Standard Message
+  </div>
+
+  <div class="panel-body">
+    <button class="btn"
+            ng-click="notify('Standard notification')">
+      Standard
+    </button>
+  </div>
+</div>
+
+<div class="panel">
+  <div class="panel-header">
+    Response Messages
+  </div>
+
+  <div class="panel-body">
+
+    <button class="btn btn-info"
+            ng-click="notify('Infomation', 'info')">
+      Info
+    </button>
+
+    <button class="btn btn-success"
+            ng-click="notify('Information Saved!', 'success')">
+      Success
+    </button>
+
+    <button class="btn btn-warning"
+            ng-click="notify('Im warning you!', 'warning')">
+      Warning
+    </button>
+
+    <button class="btn btn-danger"
+            ng-click="notify('Ahhhhhhhhh!', 'danger')">
+      Danger
+    </button>
+  </div>
+</div>
+
+<div class="panel">
+  <div class="panel-header">
+    Persistent Message
+  </div>
+
+  <div class="panel-body">
+    <button class="btn"
+            ng-click="notify('Yeah that didn\'t work', 'danger', true)">
+      Persist!
+    </button>
+  </div>
+</div>

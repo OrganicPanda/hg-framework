@@ -1,0 +1,81 @@
+<div class="panel">
+  <div ff-table-actions="table"
+       ng-if="table.options.searching"></div>
+
+  <table>
+    <thead class="panel-header">
+      <tr>
+        <th ng-repeat="head in ::table.data.headers"
+            ng-click="setSort(head);"
+            ng-class="{ 'sorting': table.options.sorting,
+                        'sort-asc': table.sourceConf.sortColumn === head.field &&
+                                    table.sourceConf.sortOrder === 1,
+                        'sort-desc': table.sourceConf.sortColumn === head.field &&
+                                     table.sourceConf.sortOrder === -1 }">
+          {{ ::head.name }}
+        </th>
+      </tr>
+    </thead>
+
+    <tbody class="panel-body">
+      <!-- Loading Message -->
+      <tr ng-if="state.loading">
+        <td class="text-center"
+            colspan="{{ ::table.data.headers.length }}">
+
+          <span ng-if="table.options.message.loading">
+            {{ ::table.options.message.loading }}
+          </span>
+
+          <span ng-if="!table.options.message.loading">
+            <i class="icon icon-spinner icon-spin"></i>
+          </span>
+        </td>
+      </tr>
+
+      <!-- Failed Message -->
+      <tr ng-if="state.failed">
+        <td class="text-center"
+            colspan="{{ ::table.data.headers.length }}">
+
+          <span ng-if="table.options.message.failed">
+            {{ ::table.options.message.failed }}
+          </span>
+
+          <span ng-if="!table.options.message.failed">
+            Failed to fetch data
+          </span>
+        </td>
+      </tr>
+
+      <!-- Zero Data Message -->
+      <tr ng-if="!state.loading && !table.data.rows.length && !state.failed">
+        <td class="text-center"
+            colspan="{{ ::table.data.headers.length }}">
+          <span ng-if="table.options.message.zeroData">
+            {{ ::table.options.message.zeroData }}
+          </span>
+
+          <span ng-if="!table.options.message.zeroData">
+            No results found
+          </span>
+        </td>
+      </tr>
+
+      <!-- Custom Row Template -->
+
+
+      <!-- Default Row Template -->
+      <tr ng-if="!state.customRowTpl"
+          ng-repeat="row in table.data.rows">
+        <td ng-repeat="cell in row.cells">
+          {{ ::cell }}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div ff-table-pagination="table"
+       ng-if="table.options.pagination && !state.failed && !state.loading"></div>
+</div>
+

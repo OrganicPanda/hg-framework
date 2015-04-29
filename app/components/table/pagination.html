@@ -1,0 +1,72 @@
+<div class="table-pagination text-center">
+  <div class="btn-group">
+    <button class="btn btn-light"
+            ng-click="goToPage(1)"
+            ng-disabled="table.pageInfo.page === 1">
+      <i class="icon icon-angle-double-left"></i>
+    </button>
+
+    <button class="btn btn-light"
+            ng-click="goToPage(table.pageInfo.page - 1)"
+            ng-disabled="table.pageInfo.page === 1">
+      <i class="icon icon-angle-left"></i>
+    </button>
+
+    <!-- <button class="btn btn-light"
+            ng-if="pageNumbers()[0] > 10"
+            ng-click="goToPage(pageNumbers()[0] - 1)">
+      ...
+    </button> -->
+
+    <button class="btn btn-light"
+            ng-repeat="n in pageNumbers()"
+            ng-click="goToPage(n)"
+            ng-class="{ 'btn-primary': n === table.pageInfo.page }">
+      <span ng-show="state.loadingPage !== n">{{ n }}</span>
+      <i class="icon icon-spinner icon-spin"
+         ng-show="state.loadingPage === n"></i>
+    </button>
+
+    <button class="btn btn-light"
+            ng-if="pageNumbers()[pageNumbers().length - 1] <
+              table.pageInfo.totalPages"
+            ng-click="goToPage(pageOnNextSet())">
+      <span ng-show="state.loadingPage !== pageOnNextSet()">...</span>
+      <i class="icon icon-spinner icon-spin"
+         ng-show="state.loadingPage === pageOnNextSet()"></i>
+    </button>
+
+    <button class="btn btn-light"
+            ng-click="goToPage(table.pageInfo.page + 1)"
+            ng-disabled="table.pageInfo.page === table.pageInfo.totalPages">
+      <i class="icon icon-angle-right"></i>
+    </button>
+
+    <button class="btn btn-light"
+            ng-click="goToPage(table.pageInfo.totalPages)"
+            ng-disabled="table.pageInfo.page === table.pageInfo.totalPages">
+      <i class="icon icon-angle-double-right"></i>
+    </button>
+  </div>
+
+  <p>
+    Showing
+    {{ table.pageInfo.from }}
+    to
+    {{ table.pageInfo.to }}
+    of
+    {{ table.pageInfo.totalResults }}
+  </p>
+
+<!--
+    <span class="form-group form-group-sm">
+      <select class="select"
+              ng-change="updateResults()"
+              ng-model="table.sourceConf.results">
+        <option value="10">10</option>
+        <option value="25">25</option>
+        <option value="50">50</option>
+        <option value="100">100</option>
+      </select>
+    </span> -->
+</div>

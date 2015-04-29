@@ -1,0 +1,36 @@
+.card {
+  display: flex;
+  align-items: center;
+  padding: $spacing-base $spacing-lg;
+
+  .card-icon {
+    flex-shrink: 0;
+    margin-right: $spacing-base;
+  }
+
+  .card-details {
+    flex-grow: 1;
+  }
+
+  p,
+  h1,
+  h2,
+  h3,
+  h4 {
+    margin: 0;
+  }
+}
+
+@mixin makeCard($color) {
+  background-color: $color;
+  color: textColor($color);
+}
+
+.card            { @include makeCard($light-light); }
+.card-dark       { @include makeCard($dark-light); }
+.card-primary    { @include makeCard($primary-light); }
+.card-secondary  { @include makeCard($secondary-light); }
+.card-success    { @include makeCard($success-light); }
+.card-info       { @include makeCard($info-light); }
+.card-warning    { @include makeCard($warning-light); }
+.card-danger     { @include makeCard($danger-light); }

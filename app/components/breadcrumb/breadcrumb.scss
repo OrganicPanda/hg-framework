@@ -1,0 +1,22 @@
+@import "../../core/styling/variables";
+
+.breadcrumb {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+
+  > li {
+    display: inline-block;
+
+    &.active {
+      font-weight: $font-weight-bold;
+    }
+
+    + li::before {
+      content: "/\00a0";
+      padding: 0 $spacing-sm;
+      color: $light-dark;
+      font-weight: $font-weight-base;
+    }
+  }
+}

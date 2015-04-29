@@ -1,0 +1,25 @@
+$transition-time-fast:    200ms; // #JS#
+$transition-time-base:    300ms; // #JS#
+$transition-time-slow:    400ms; // #JS#
+
+$transition-func:         cubic-bezier(0.250, 0.460, 0.450, 0.940);
+
+@keyframes standardAppear {
+    0% { opacity: 0; transform: scale3d(0, 0, 1); }
+  100% { opacity: 1; transform: scale3d(1, 1, 1); }
+}
+
+@keyframes standardDisappear {
+    0% { opacity: 1; }
+  100% { opacity: 0; transform: scale3d(0.5, 0.5, 1); }
+}
+
+@keyframes fadeAppear {
+    0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes fadeDisappear {
+    0% { opacity: 1; }
+  100% { opacity: 0; }
+}

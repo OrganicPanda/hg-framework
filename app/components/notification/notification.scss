@@ -1,0 +1,29 @@
+@import "../../core/styling/variables";
+@import "../../core/styling/mixins";
+
+.notification {
+  position: fixed;
+  padding: $spacing-base;
+  bottom: $spacing-base;
+  right: $spacing-base;
+  background-color: $dark-base;
+  color: textColor($dark-base);
+  cursor: pointer;
+
+  opacity: 0;
+  animation-duration: $transition-time-base;
+  animation-fill-mode: forwards;
+
+  @include transition((margin-bottom));
+
+  &.notification-insert { animation-name: standardAppear; }
+  &.notification-remove { animation-name: standardDisappear; }
+}
+
+.notification-icon {
+  margin-right: $spacing-sm;
+}
+
+.notification-acknowledge {
+  margin-left: $spacing-base;
+}

@@ -1,0 +1,16 @@
+@mixin makeAlert($color, $background) {
+  background-color: $background;
+  color: $color;
+}
+
+.alert {
+  margin: 0 0 $spacing-base;
+  padding: $spacing-base;
+
+  &:last-child { margin: 0; }
+}
+
+.alert-success  { @include makeAlert($success-dark, $success-fade); }
+.alert-info     { @include makeAlert($info-dark, $info-fade); }
+.alert-warning  { @include makeAlert($warning-dark, $warning-fade); }
+.alert-danger   { @include makeAlert($danger-dark, $danger-fade); }

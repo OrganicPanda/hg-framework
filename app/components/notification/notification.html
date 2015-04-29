@@ -1,0 +1,15 @@
+<div class="notification"
+     ng-click="$$remove()">
+  <i class="notification-icon icon text-{{ config.type }}"
+     ng-class="::{ 'icon-info': config.type === 'info',
+                   'icon-check': config.type === 'success',
+                   'icon-exclamation-circle': config.type === 'warning',
+                   'icon-exclamation-triangle': config.type === 'danger' }"></i>
+
+  {{:: config.message }}
+
+  <span class="notification-acknowledge"
+        ng-show="config.persist">
+    | {{:: config.button || 'Ok' }}
+  </span>
+</div>

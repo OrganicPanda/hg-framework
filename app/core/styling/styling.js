@@ -1,0 +1,46 @@
+angular.module('ff.core.styling', [])
+
+  /**
+   *
+   */
+  .value('SASS', {
+    'transition-time-fast': 200,
+    'transition-time-base': 300,
+    'transition-time-slow': 400,
+    'white-base': '#FFFFFF',
+    'black-base': '#000000',
+    'light-light': '#FAFAFA',
+    'light-base': '#F0F0F0',
+    'light-dark': '#E6E6E6',
+    'dark-light': '#626C75',
+    'dark-base': '#3B4752',
+    'dark-dark': '#313B44',
+    'primary-light': '#40D9CA',
+    'primary-base': '#10CFBD',
+    'primary-dark': '#0DAD9E',
+    'secondary-light': '#8A7DBE',
+    'secondary-base': '#6D5CAE',
+    'secondary-dark': '#5B4D91',
+    'success-light': '#4dd386',
+    'success-base': '#2ECC71',
+    'success-dark': '#29b765',
+    'success-fade': '#d5f4e2',
+    'info-light': '#6DC0F9',
+    'info-base': '#48B0F7',
+    'info-dark': '#3C93CE',
+    'info-fade': '#DAEFFD',
+    'warning-light': '#F9D975',
+    'warning-base': '#F8D053',
+    'warning-dark': '#CFAE45',
+    'warning-fade': '#FEF6DD',
+    'danger-light': '#F77975',
+    'danger-base': '#F55753',
+    'danger-dark': '#CD4945',
+    'danger-fade': '#FDDDDD',
+    'spacing-base': 15,
+    'screen-xs-min': 375,
+    'screen-sm-min': 768,
+    'screen-md-min': 992,
+    'screen-lg-min': 1200,
+    'line-height': 20
+  });
