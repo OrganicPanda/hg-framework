@@ -1,4 +1,4 @@
-angular.module('ff.core.config', [
+angular.module('hg.core.config', [
   'ui.router'
 ])
 

@@ -1,9 +1,9 @@
-angular.module( 'ff.components.sidebar', [
+angular.module( 'hg.components.sidebar', [
   'ui.router',
-  'ff.core.constants',
-  'ff.core.utils',
-  'ff.components.sidebar.tpl',
-  'ff.components.sticky'
+  'hg.core.constants',
+  'hg.core.utils',
+  'hg.components.sidebar.tpl',
+  'hg.components.sticky'
 ])
 
   /**
@@ -13,7 +13,7 @@ angular.module( 'ff.components.sidebar', [
    * @description
    * TODO:
    */
-  .directive('ffSidebar', function($state, cc) {
+  .directive('hgSidebar', function($state, cc) {
     return {
       replace: true,
       templateUrl: '/dist/components/sidebar/sidebar.html',
@@ -87,22 +87,22 @@ angular.module( 'ff.components.sidebar', [
   /**
    *
    */
-  .directive('ffSidebarMenu', function() {
+  .directive('hgSidebarMenu', function() {
     return {
       replace: true,
       templateUrl: '/dist/components/sidebar/sidebar-menu.html',
       scope: {
-        items: '=ffSidebarMenu'
+        items: '=hgSidebarMenu'
       }
     };
   })
 
-  .directive('ffSidebarMenuItem', function($compile, $state, $window, utils) {
+  .directive('hgSidebarMenuItem', function($compile, $state, $window, utils) {
     return {
       replace: true,
       templateUrl: '/dist/components/sidebar/sidebar-menu-item.html',
       scope: {
-        item: '=ffSidebarMenuItem'
+        item: '=hgSidebarMenuItem'
       },
       link: function(scope, el) {
 
@@ -110,7 +110,7 @@ angular.module( 'ff.components.sidebar', [
          * This is needed to get around Angular lack of ability
          * to do recursive directives straight from the template.
          */
-        var menuTpl = '<div ff-sidebar-menu="item.children"></div>';
+        var menuTpl = '<div hg-sidebar-menu="item.children"></div>';
         if (scope.item.children.length) {
           $compile(menuTpl)(scope, function(cloned){
             el.append(cloned);

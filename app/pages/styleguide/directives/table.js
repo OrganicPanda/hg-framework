@@ -1,6 +1,6 @@
-angular.module('ff.pages.styleguide')
+angular.module('hg.pages.styleguide')
 
-  .controller('FFStyleGuideTableCtrl', function($scope, $filter, Demo, Table) {
+  .controller('HgStyleGuideTableCtrl', function($scope, $filter, Demo, Table) {
     /**
      *
      */
@@ -17,7 +17,6 @@ angular.module('ff.pages.styleguide')
       structure: [
         { name: 'Surname', field: 'surname', sort: true },
         { name: 'Forename', field: 'forename' },
-        { name: 'Reg Group', field: 'reg_group' },
         {
           name: 'DOB',
           field: 'dob',
@@ -25,7 +24,7 @@ angular.module('ff.pages.styleguide')
             return $filter('date')(value, 'shortDate');
           }
         },
-        { name: 'UPN', field: 'upn' }
+        { name: 'UID', field: 'uid' }
       ]
     });
   });

@@ -1,5 +1,5 @@
-angular.module('ff.core.utils', [
-  'ff.core.styling'
+angular.module('hg.core.utils', [
+  'hg.core.styling'
 ])
 
   /**

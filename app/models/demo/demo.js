@@ -1,4 +1,4 @@
-angular.module('ff.models.demo', [])
+angular.module('hg.models.demo', [])
 
   /*
    *

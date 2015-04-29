@@ -1,6 +1,6 @@
-angular.module('ff.components.sticky', [])
+angular.module('hg.components.sticky', [])
 
-  .directive('ffSticky', function() {
+  .directive('hgSticky', function() {
     return {
       link: function() {
 

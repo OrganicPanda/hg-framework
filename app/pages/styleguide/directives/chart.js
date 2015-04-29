@@ -1,6 +1,6 @@
-angular.module('ff.pages.styleguide')
+angular.module('hg.pages.styleguide')
 
-  .controller('FFStyleGuideChartCtrl'
+  .controller('HgStyleGuideChartCtrl'
       , function($scope, $filter, AreaChart, BarChart, ColumnChart, ComboChart
         , DonutChart, LineChart, PieChart, SASS) {
     /**

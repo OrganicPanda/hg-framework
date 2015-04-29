@@ -1,5 +1,5 @@
-angular.module( 'ff.components.charts', [
-  'ff.core.styling'
+angular.module( 'hg.components.charts', [
+  'hg.core.styling'
 ])
 
   /**
@@ -147,11 +147,11 @@ angular.module( 'ff.components.charts', [
   /**
    *
    */
-  .directive('ffChart', function() {
+  .directive('hgChart', function() {
     return {
       template: '<div></div>',
       scope: {
-        chart: '=ffChart'
+        chart: '=hgChart'
       },
       link: function(scope, el) {
         if (!scope.chart) return;

@@ -1,14 +1,6 @@
-angular.module('ff.core.constants', [])
+angular.module('hg.core.constants', [])
 
   .constant('MENU_ORDER', [
-    'dashboard',
-    'profile',
-    'admin',
-    'contacts',
-    'students',
-    'staff',
-    'homework',
-    'reports',
     'styleguide'
   ])
 
@@ -25,7 +17,7 @@ angular.module('ff.core.constants', [])
    *
    */
   .service('cc', function() {
-    var module = angular.module('ff.core.constants');
+    var module = angular.module('hg.core.constants');
 
     module._invokeQueue.forEach(function(el) {
       if (el[1] === 'constant') {

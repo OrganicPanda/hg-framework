@@ -1,52 +1,52 @@
 /**
  *
  */
-angular.module('ff', [
+angular.module('hg', [
   // Vendors
   'ipsum',
   'ui.router',
 
   // App modules
-  'ff.core',
-  'ff.models',
-  'ff.components',
-  'ff.pages'
+  'hg.core',
+  'hg.models',
+  'hg.components',
+  'hg.pages'
 ]);
 
 /**
  * Core sub-modules
  */
-angular.module('ff.core', [
-  'ff.core.config',
-  'ff.core.constants',
-  'ff.core.styling',
-  'ff.core.utils'
+angular.module('hg.core', [
+  'hg.core.config',
+  'hg.core.constants',
+  'hg.core.styling',
+  'hg.core.utils'
 ]);
 
 /**
  * Models sub-modules
  */
-angular.module('ff.models', [
-  'ff.models.demo'
+angular.module('hg.models', [
+  'hg.models.demo'
 ]);
 
 /**
  * Components sub-modules
  */
-angular.module('ff.components', [
-  'ff.components.breadcrumb',
-  'ff.components.charts',
-  'ff.components.dialog',
-  'ff.components.notification',
-  'ff.components.sidebar',
-  'ff.components.sticky',
-  'ff.components.table',
-  'ff.components.topbar'
+angular.module('hg.components', [
+  'hg.components.breadcrumb',
+  'hg.components.charts',
+  'hg.components.dialog',
+  'hg.components.notification',
+  'hg.components.sidebar',
+  'hg.components.sticky',
+  'hg.components.table',
+  'hg.components.topbar'
 ]);
 
 /**
  * Pages sub-modules
  */
-angular.module('ff.pages', [
-  'ff.pages.styleguide'
+angular.module('hg.pages', [
+  'hg.pages.styleguide'
 ]);

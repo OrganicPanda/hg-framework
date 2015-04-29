@@ -1,6 +1,6 @@
-angular.module('ff.pages.styleguide')
+angular.module('hg.pages.styleguide')
 
-  .controller('FFStyleGuideNotificationCtrl', function($scope, Notification) {
+  .controller('HgStyleGuideNotificationCtrl', function($scope, Notification) {
     $scope.notify = function(message, type, persist) {
       new Notification({
         type: type,

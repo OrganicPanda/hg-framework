@@ -1,9 +1,9 @@
-angular.module('ff.pages.styleguide')
+angular.module('hg.pages.styleguide')
 
-  .controller('FFStyleGuideDialogCtrl', function($scope, dialog) {
+  .controller('HgStyleGuideDialogCtrl', function($scope, dialog) {
     $scope.launchDialog = function(size, backdrop) {
       dialog.show({
-        controller: 'FFDemoDialogCtrl',
+        controller: 'HgDemoDialogCtrl',
         templateUrl: '/dist/pages/styleguide/services/dialog-example.html',
         title: 'Are you sure?',
         size: size,
@@ -15,7 +15,7 @@ angular.module('ff.pages.styleguide')
     };
   })
 
-  .controller('FFDemoDialogCtrl', function($scope, $element, close) {
+  .controller('HgDemoDialogCtrl', function($scope, $element, close) {
     $scope.cancel = function() {
       close(null);
     };

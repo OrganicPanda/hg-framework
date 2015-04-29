@@ -1,11 +1,9 @@
-var appConf = require('./app');
-
 module.exports = {
   conf: {
-    vendorScript: '<!-- ' + appConf.nameSpace + ': scripts_vendor -->',
-    vendorStylesheet: '<!-- ' + appConf.nameSpace + ': stylesheets_vendor -->',
-    appScript: '<!-- ' + appConf.nameSpace + ': scripts_app -->',
-    appStylesheet: '<!-- ' + appConf.nameSpace + ': stylesheets_app -->'
+    vendorScript: '<!-- #scripts_vendor# -->',
+    vendorStylesheet: '<!-- #stylesheets_vendor# -->',
+    appScript: '<!-- #scripts_app# -->',
+    appStylesheet: '<!-- #stylesheets_app# -->'
   },
   vendor: [
     {

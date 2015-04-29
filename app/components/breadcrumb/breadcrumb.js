@@ -1,15 +1,15 @@
-angular.module( 'ff.components.breadcrumb', [
-  'ff.components.breadcrumb.tpl'
+angular.module( 'hg.components.breadcrumb', [
+  'hg.components.breadcrumb.tpl'
 ])
 
   /**
    *
    */
-  .directive('ffBreadcrumb', function() {
+  .directive('hgBreadcrumb', function() {
     return {
       templateUrl: '/dist/components/breadcrumb/breadcrumb.html',
       scope: {
-        breadcrumb: '=ffBreadcrumb'
+        breadcrumb: '=hgBreadcrumb'
       }
     };
   });

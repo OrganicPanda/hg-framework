@@ -1,14 +1,14 @@
-angular.module('ff.pages.styleguide', [
+angular.module('hg.pages.styleguide', [
   'ipsum',
   'ui.router',
 
-  'ff.core.styling',
-  'ff.models.demo',
-  'ff.components.charts',
-  'ff.components.dialog',
-  'ff.components.notification',
-  'ff.components.table',
-  'ff.pages.styleguide.tpl'
+  'hg.core.styling',
+  'hg.models.demo',
+  'hg.components.charts',
+  'hg.components.dialog',
+  'hg.components.notification',
+  'hg.components.table',
+  'hg.pages.styleguide.tpl'
 ])
 
   .config(function($stateProvider, $urlRouterProvider) {
@@ -21,7 +21,7 @@ angular.module('ff.pages.styleguide', [
         abstract: true,
         url: '/styleguide',
         templateUrl: '/dist/pages/styleguide/styleguide.html',
-        controller: 'FFStyleguideCtrl',
+        controller: 'HgStyleguideCtrl',
         data: {
           name: 'Styleguide',
           icon: 'icon-paint-brush'
@@ -141,7 +141,7 @@ angular.module('ff.pages.styleguide', [
 
       .state('styleguide.directives.chart', {
         url: '/charts',
-        controller: 'FFStyleGuideChartCtrl',
+        controller: 'HgStyleGuideChartCtrl',
         templateUrl: '/dist/pages/styleguide/directives/chart.html',
         data: {
           name: 'Charts'
@@ -150,7 +150,7 @@ angular.module('ff.pages.styleguide', [
 
       .state('styleguide.directives.table', {
         url: '/table',
-        controller: 'FFStyleGuideTableCtrl',
+        controller: 'HgStyleGuideTableCtrl',
         templateUrl: '/dist/pages/styleguide/directives/table.html',
         data: {
           name: 'Table'
@@ -172,7 +172,7 @@ angular.module('ff.pages.styleguide', [
 
       .state('styleguide.services.dialog', {
         url: '/dialog',
-        controller: 'FFStyleGuideDialogCtrl',
+        controller: 'HgStyleGuideDialogCtrl',
         templateUrl: '/dist/pages/styleguide/services/dialog.html',
         data: {
           name: 'Dialog'
@@ -181,7 +181,7 @@ angular.module('ff.pages.styleguide', [
 
       .state('styleguide.services.notification', {
         url: '/notification',
-        controller: 'FFStyleGuideNotificationCtrl',
+        controller: 'HgStyleGuideNotificationCtrl',
         templateUrl: '/dist/pages/styleguide/services/notification.html',
         data: {
           name: 'Notification'
@@ -213,7 +213,7 @@ angular.module('ff.pages.styleguide', [
   /**
    *
    */
-  .controller('FFStyleguideCtrl'
+  .controller('HgStyleguideCtrl'
       , function($scope, $state) {
 
     function fetchBreadcrumb() {

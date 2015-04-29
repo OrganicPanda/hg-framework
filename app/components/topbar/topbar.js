@@ -1,11 +1,11 @@
-angular.module( 'ff.components.topbar', [
-  'ff.components.topbar.tpl'
+angular.module( 'hg.components.topbar', [
+  'hg.components.topbar.tpl'
 ])
 
   /**
    *
    */
-  .directive('ffTopbar', function() {
+  .directive('hgTopbar', function() {
     return {
       replace: true,
       templateUrl: '/dist/components/topbar/topbar.html'

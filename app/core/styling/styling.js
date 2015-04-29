@@ -1,4 +1,4 @@
-angular.module('ff.core.styling', [])
+angular.module('hg.core.styling', [])
 
   /**
    *

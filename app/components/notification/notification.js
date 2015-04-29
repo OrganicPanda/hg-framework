@@ -1,7 +1,7 @@
-angular.module('ff.components.notification', [
-  'ff.core.constants',
-  'ff.core.utils',
-  'ff.components.notification.tpl'
+angular.module('hg.components.notification', [
+  'hg.core.constants',
+  'hg.core.utils',
+  'hg.components.notification.tpl'
 ])
 
   /**

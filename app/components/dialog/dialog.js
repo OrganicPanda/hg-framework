@@ -1,6 +1,6 @@
-angular.module('ff.components.dialog', [
-  'ff.core.utils',
-  'ff.components.dialog.tpl'
+angular.module('hg.components.dialog', [
+  'hg.core.utils',
+  'hg.components.dialog.tpl'
 ])
 
   /**

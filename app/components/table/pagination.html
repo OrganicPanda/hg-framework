@@ -2,13 +2,13 @@
   <div class="btn-group">
     <button class="btn btn-light"
             ng-click="goToPage(1)"
-            ng-disabled="table.pageInfo.page === 1">
+            ng-disabled="table.pageInfo.page === 1 || !table.pageInfo.page">
       <i class="icon icon-angle-double-left"></i>
     </button>
 
     <button class="btn btn-light"
             ng-click="goToPage(table.pageInfo.page - 1)"
-            ng-disabled="table.pageInfo.page === 1">
+            ng-disabled="table.pageInfo.page === 1 || !table.pageInfo.page">
       <i class="icon icon-angle-left"></i>
     </button>
 
@@ -51,11 +51,11 @@
 
   <p>
     Showing
-    {{ table.pageInfo.from }}
+    {{ table.pageInfo.from || 0 }}
     to
-    {{ table.pageInfo.to }}
+    {{ table.pageInfo.to || 0 }}
     of
-    {{ table.pageInfo.totalResults }}
+    {{ table.pageInfo.totalResults || 0 }}
   </p>
 
 <!--

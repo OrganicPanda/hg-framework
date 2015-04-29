@@ -1,4 +1,4 @@
-angular.module( 'ff.components.charts')
+angular.module( 'hg.components.charts')
 
   /**
    *

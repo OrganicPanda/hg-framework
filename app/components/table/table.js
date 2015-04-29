@@ -1,5 +1,5 @@
-angular.module( 'ff.components.table', [
-  'ff.components.table.tpl'
+angular.module( 'hg.components.table', [
+  'hg.components.table.tpl'
 ])
 
   /**
@@ -138,13 +138,13 @@ angular.module( 'ff.components.table', [
   /**
    *
    */
-  .directive('ffTable', function(cc) {
+  .directive('hgTable', function(cc) {
     return {
       transclude: true,
       replace: true,
       templateUrl: '/dist/components/table/table.html',
       scope: {
-        table: '=ffTable'
+        table: '=hgTable'
       },
       link: function(scope, el, attrs, ctrl, $transclude) {
         /**
@@ -200,7 +200,7 @@ angular.module( 'ff.components.table', [
   /**
    *
    */
-  .directive('ffTableActions', function() {
+  .directive('hgTableActions', function() {
     return {
       replace: true,
       templateUrl: '/dist/components/table/actions.html',
@@ -218,7 +218,7 @@ angular.module( 'ff.components.table', [
   /**
    *
    */
-  .directive('ffTablePagination', function() {
+  .directive('hgTablePagination', function() {
     return {
       replace: true,
       templateUrl: '/dist/components/table/pagination.html',
