@@ -228,10 +228,17 @@ angular.module('hg.components.textEditor', [
 
         // Anywhere else in the document that is not the edit area or the
         // toolbar, then hide the toolbar.
-        document.addEventListener('mouseup', function(event) {
+        document.addEventListener('mouseup', hideClick);
+        function hideClick(event) {
           if (!utils.isChild([textEditor.el, toolbar[0]], event.target)) {
             hideToolbar();
           }
+        }
+
+        // Clean up when the scope is destroyed
+        scope.$on('$destroy', function() {
+          toolbar.remove();
+          document.removeEventListener('mosueup', hideClick);
         });
       }
     };
