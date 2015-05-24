@@ -21,8 +21,6 @@ app.use('/data'
 app.use('/*'
   , express.static(__dirname + '/public'));
 
-module.exports = function() {
-  app.listen(port, function() {
-    console.log('server start on port ' + port);
-  });
-};
+module.exports = app.listen(port, function() {
+  console.log('server start on port ' + port);
+});

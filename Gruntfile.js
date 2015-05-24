@@ -32,7 +32,7 @@ module.exports = function(grunt) {
 
   grunt.registerTask('default', defaultTasks);
   grunt.registerTask('start', devTasks);
-  grunt.registerTask('server', require('./server.js'));
+  grunt.registerTask('server', function() { require('./server.js'); });
   grunt.registerTask('sharedVars', require('./grunt/shared-vars')(grunt));
   grunt.registerTask('layout', require('./grunt/layout')(grunt));
 
