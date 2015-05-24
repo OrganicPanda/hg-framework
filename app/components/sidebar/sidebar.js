@@ -80,6 +80,8 @@ angular.module( 'hg.components.sidebar', [
         scope.menu = getMenuItems({
           children: []
         });
+
+
       }
     };
   })

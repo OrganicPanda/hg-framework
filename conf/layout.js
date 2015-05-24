@@ -30,6 +30,22 @@ module.exports = {
       name: 'angular-ipsum',
       stylesheet: null,
       script: 'dist/ipsum.min.js'
+    }, {
+      name: 'lodash',
+      stylesheet: null,
+      script: 'dist/lodash.underscore.min.js'
+    }, {
+      name: 'restangular',
+      stylesheet: null,
+      script: 'dist/restangular.min.js'
+    }, {
+      name: 'requirejs',
+      stylesheet: null,
+      script: 'require.js'
+    }, {
+      name: 'html-janitor',
+      stylesheet: null,
+      script: 'html-janitor.min.js'
     }
   ]
 };

@@ -1,0 +1,9 @@
+<div class="text-editor-toolbar">
+  <div class="btn-group">
+    <button class="btn btn-dark"
+            ng-repeat="button in buttons"
+            ng-click="execCommand(button.command)"
+            ng-class="{ 'active' : button.active }"
+            ng-disabled="button.disabled">{{:: button.name }}</button>
+  </div>
+</div>

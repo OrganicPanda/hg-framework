@@ -27,10 +27,10 @@
     "module": false,
     "console": false,
     "google": false,
-
     "require": false,
     "__dirname": false,
     "process": false,
-    "exports": false
+    "exports": false,
+    "Scribe": false
   }
 }

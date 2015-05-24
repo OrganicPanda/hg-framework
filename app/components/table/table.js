@@ -1,4 +1,6 @@
 angular.module( 'hg.components.table', [
+  'restangular',
+
   'hg.components.table.tpl'
 ])
 
@@ -7,12 +9,13 @@ angular.module( 'hg.components.table', [
    * @name table.service:Table
    *
    * @requires $q
+   * @requires Restangular
    * @requires cc
    *
    * @description
    *
    */
-  .factory('Table', function($q, cc) {
+  .factory('Table', function($q, Restangular, cc) {
 
     /*
      *
@@ -96,7 +99,18 @@ angular.module( 'hg.components.table', [
           .catch(function() {
             defer.reject();
           });
-      } else {
+      }
+
+      if (angular.isString(this.source)) {
+        Restangular
+          .one(this.source)
+          .get()
+          .then(function(data) {
+            console.log(data);
+          });
+      }
+
+      if (angular.isArray(this.source)) {
         that.data.rows = that.format(that.source);
         defer.resolve(that.data);
       }

@@ -21,6 +21,13 @@ angular.module('hg.core.utils', [
     /**
      *
      */
+    this.forEachEl = function(selector, cb, el) {
+      [].forEach.call((el || document).querySelectorAll(selector), cb);
+    };
+
+    /**
+     *
+     */
     this.screen = {
       isUnder: function(size) {
         return $window.innerWidth <= SASS['screen-' + size + '-min'];

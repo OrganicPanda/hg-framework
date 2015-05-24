@@ -41,6 +41,7 @@ angular.module('hg.components', [
   'hg.components.sidebar',
   'hg.components.sticky',
   'hg.components.table',
+  'hg.components.textEditor',
   'hg.components.topbar'
 ]);
 

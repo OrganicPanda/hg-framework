@@ -157,6 +157,15 @@ angular.module('hg.pages.styleguide', [
         }
       })
 
+      .state('styleguide.directives.textEditor', {
+        url: '/text-editor',
+        controller: 'HgStyleGuideTextEditorCtrl',
+        templateUrl: '/dist/pages/styleguide/directives/text-editor.html',
+        data: {
+          name: 'Text Editor'
+        }
+      })
+
       /**
        *
        */

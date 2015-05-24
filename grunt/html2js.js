@@ -15,7 +15,10 @@ module.exports = (function() {
         removeStyleLinkTypeAttributes: true
       },
       module: function(data, name) {
-        return conf.app.nameSpace + '.' + name.replace('-', '.') + '.tpl';
+        return conf.app.nameSpace + '.' +
+          name.replace(/-([a-z])/g, function (g) {
+            return g[1].toUpperCase();
+          }) + '.tpl';
       },
       rename: function(name) {
         return name.replace('../' + conf.locations.src + '/'

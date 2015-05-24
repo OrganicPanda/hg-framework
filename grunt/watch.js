@@ -49,7 +49,7 @@ module.exports = (function() {
   config.layout = {
     tasks: [ 'layout' ],
     files: [
-      utils.location('conf/locations.js'),
+      utils.location('conf/layout.js'),
       utils.location(conf.locations.layout.src)
     ]
   };

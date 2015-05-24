@@ -6,13 +6,13 @@ angular.module('hg.pages.styleguide')
      */
     $scope.data = {};
     $scope.data.table = new Table({
-      source: Demo.getList,
+      source: 'data/table.json',
       options: {
         pagination: {
-          enabled: true
+          enabled: false
         },
-        searching: true,
-        sorting: true
+        searching: false,
+        sorting: false
       },
       structure: [
         { name: 'Surname', field: 'surname', sort: true },
