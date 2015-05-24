@@ -107,7 +107,7 @@ angular.module('hg.components.textEditor', [
             button.active = selection.range && command.queryState(button.value);
             button.disabled = !(selection.range && command.queryEnabled());
 
-            scope.$apply();
+            scope.$applyAsync();
           }
         });
 
