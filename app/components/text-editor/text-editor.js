@@ -71,32 +71,22 @@ angular.module('hg.components.textEditor', [
         scope.buttons = [
           {
             icon: 'bold',
-            command: 'bold',
-            active: false,
-            disabled: false
+            command: 'bold'
           }, {
             icon: 'italic',
-            command: 'italic',
-            active: false,
-            disabled: false
+            command: 'italic'
           }, {
             name: 1,
             icon: 'header',
-            command: 'h1',
-            active: false,
-            disabled: false
+            command: 'h1'
           }, {
             name: 2,
             icon: 'header',
-            command: 'h2',
-            active: false,
-            disabled: false
+            command: 'h2'
           }, {
             name: 3,
             icon: 'header',
-            command: 'h3',
-            active: false,
-            disabled: false
+            command: 'h3'
           }
         ];
 
