@@ -11,7 +11,7 @@ angular.module('hg.components.textEditor', [
    */
   .factory('TextEditor', function() {
     function TextEditor(element) {
-      var scribe = new Scribe.class(element, {
+      var scribe = new Scribe(element, {
         allowBlockElements: true
       });
 
