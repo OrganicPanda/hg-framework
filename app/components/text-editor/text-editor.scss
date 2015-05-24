@@ -19,5 +19,6 @@
   &.toolbar-visible {
     visibility: visible;
     @include transition((top, left));
+
   }
 }
