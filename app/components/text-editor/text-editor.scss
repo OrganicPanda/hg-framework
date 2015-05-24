@@ -6,3 +6,19 @@
     outline: none;
   }
 }
+
+.text-editor-toolbar {
+  position: absolute;
+
+  opacity: 0;
+  visibility: hidden;
+  animation-duration: $transition-time-base;
+  animation-fill-mode: forwards;
+
+  &.toolbar-insert { animation-name: standardAppear; }
+
+  &.toolbar-visible {
+    visibility: visible;
+    @include transition((top, left));
+  }
+}

@@ -2,8 +2,12 @@
   <div class="btn-group">
     <button class="btn btn-dark"
             ng-repeat="button in buttons"
-            ng-click="execCommand(button.command)"
+            ng-click="execCommand(button.command, button.value)"
             ng-class="{ 'active' : button.active }"
-            ng-disabled="button.disabled">{{:: button.name }}</button>
+            ng-disabled="button.disabled">
+      <i class="icon icon-{{:: button.icon }}">
+        {{ button.name }}
+      </i>
+    </button>
   </div>
 </div>

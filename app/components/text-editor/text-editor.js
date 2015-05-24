@@ -41,44 +41,67 @@ angular.module('hg.components.textEditor', [
   /**
    *
    */
-  .directive('hgTextEditor', function($document, $compile, TextEditor, utils) {
+  .directive('hgTextEditor', function($compile, $timeout, SASS, TextEditor, utils) {
     return {
       require: 'ngModel',
       link: function(scope, el) {
         var textEditor = new TextEditor(el[0])
-          , toolbar;
+          , toolbar
+          , toolbarRect
+          , hideTimeout;
+
+        //
+        utils
+          .getTemplate('/dist/components/text-editor/text-editor-toolbar.html')
+          .then(function(tTpl) {
+            toolbar = $compile(angular.element(tTpl))(scope);
+            document.body.querySelector('.layout-main').appendChild(toolbar[0]);
+            $timeout(function() {
+              toolbarRect = toolbar[0].getBoundingClientRect();
+            });
+          });
 
         /**
          *
          */
         scope.buttons = [
           {
-            name: 'Bold',
+            icon: 'bold',
             command: 'bold',
             active: false,
             disabled: false
           }, {
-            name: 'Italic',
+            icon: 'italic',
             command: 'italic',
             active: false,
             disabled: false
           }, {
-            name: 'H1',
+            name: 1,
+            icon: 'header',
             command: 'h1',
             active: false,
             disabled: false
           }, {
-            name: 'H2',
+            name: 2,
+            icon: 'header',
             command: 'h2',
             active: false,
             disabled: false
           }, {
-            name: 'H3',
+            name: 3,
+            icon: 'header',
             command: 'h3',
             active: false,
             disabled: false
           }
         ];
+
+        /**
+         *
+         */
+        scope.state = {
+          visble: false
+        };
 
         /**
          *
@@ -107,16 +130,73 @@ angular.module('hg.components.textEditor', [
             button.active = selection.range && command.queryState(button.value);
             button.disabled = !(selection.range && command.queryEnabled());
 
+            repositionToolbar();
+
             scope.$applyAsync();
           }
         });
 
         //
-        utils
-        .getTemplate('/dist/components/text-editor/text-editor-toolbar.html')
-        .then(function(tTpl) {
-          toolbar = $compile(angular.element(tTpl))(scope);
-          el[0].parentNode.appendChild(toolbar[0]);
+        function repositionToolbar() {
+          var selection = new textEditor.api.Selection()
+            , rangeRect
+            , rangeMidPoint;
+
+          if (!selection.range) return;
+
+          rangeRect = selection.range.getBoundingClientRect();
+          rangeMidPoint = rangeRect.left + (rangeRect.width / 2);
+
+          if (!selection.range.collapsed) {
+            toolbar[0].style.top = rangeRect.top - toolbarRect.height + 'px';
+            toolbar[0].style.left = rangeMidPoint - (toolbarRect.width / 2) + 'px';
+
+            $timeout(showToolbar);
+          } else {
+            hideToolbar();
+          }
+        }
+
+        function showToolbar() {
+          toolbar.addClass('toolbar-insert');
+          toolbar.addClass('toolbar-visible');
+        }
+
+        function hideToolbar() {
+          toolbar.removeClass('toolbar-insert');
+          toolbar.removeClass('toolbar-visible');
+        }
+
+        //
+        var clicks = 0;
+        textEditor.el.addEventListener('mouseup', function() {
+          var selection = new textEditor.api.Selection();
+
+          clicks++;
+          if (clicks === 1) {
+            $timeout(function(){
+              if (clicks === 1) {
+                if (!selection.range.collapsed) {
+                  repositionToolbar();
+                } else {
+                  hideToolbar();
+                }
+              } else {
+                repositionToolbar();
+              }
+              clicks = 0;
+            }, 300);
+          }
+        });
+
+        //
+        document.addEventListener('mouseup', function(event) {
+          if (utils.isChild(textEditor.el, event.target) ||
+              utils.isChild(toolbar[0], event.target)) {
+            return false;
+          }
+
+          hideToolbar();
         });
       }
     };
