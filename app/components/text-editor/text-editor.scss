@@ -14,9 +14,8 @@
   animation-duration: $transition-time-base;
   animation-fill-mode: forwards;
 
-  &.toolbar-insert { animation-name: standardAppear; }
-
   &.toolbar-visible {
+    animation-name: standardAppear;
     visibility: visible;
     @include transition((top, left));
   }

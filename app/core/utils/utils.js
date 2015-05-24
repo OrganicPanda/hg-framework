@@ -28,18 +28,23 @@ angular.module('hg.core.utils', [
     /**
      *
      */
-    this.isChild = function(parent, child, checkEquality) {
-      if (!parent || !child) return false;
-      if (checkEquality && parent === child) return true;
+    this.isChild = function(parent, child) {
+      function containCheck(aParent) {
+        if (!aParent || !child) return false;
 
-      var node = child.parentNode;
+        var node = child.parentNode;
 
-      while (node !== null) {
-        if (node === parent) return true;
-        node = node.parentNode;
+        while (node !== null) {
+          if (node === aParent) return true;
+          node = node.parentNode;
+        }
+
+        return false;
       }
 
-      return false;
+      return angular.isArray(parent)
+        ? parent.some(containCheck)
+        : containCheck(parent);
     };
 
     /**
