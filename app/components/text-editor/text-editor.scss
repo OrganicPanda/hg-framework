@@ -19,4 +19,31 @@
     visibility: visible;
     @include transition((top, left));
   }
+
+  .toolbar-btn-group {
+    display: block;
+    margin: 0;
+  }
+
+  .toolbar-tip {
+    position: absolute;
+    bottom: -$text-editor-tooltip;
+    left: 50%;
+    margin-left: -$text-editor-tooltip;
+    clip: rect(
+      $text-editor-tooltip
+      $text-editor-tooltip * 2
+      $text-editor-tooltip * 2
+      0
+    );
+
+    &::before {
+      content: "";
+      display: block;
+      width: $text-editor-tooltip * 2;
+      height: $text-editor-tooltip * 2;
+      background-color: $dark-base;
+      transform: rotate(45deg) scale(.5);
+    }
+  }
 }

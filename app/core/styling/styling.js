@@ -42,5 +42,6 @@ angular.module('hg.core.styling', [])
     'screen-sm-min': 768,
     'screen-md-min': 992,
     'screen-lg-min': 1200,
+    'text-editor-tooltip': 10,
     'line-height': 20
   });

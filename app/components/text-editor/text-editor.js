@@ -49,7 +49,7 @@ angular.module('hg.components.textEditor', [
    * @description
    *
    */
-  .directive('hgTextEditor', function($compile, $timeout, TextEditor, utils) {
+  .directive('hgTextEditor', function($compile, $timeout, SASS, TextEditor, utils) {
     return {
       scope: {
         config: '=hgTextEditor'
@@ -118,6 +118,7 @@ angular.module('hg.components.textEditor', [
             .execute(value);
         };
 
+
         // Set up the listeners to update the buttons depending on what
         // is selected.
         scope.buttons.forEach(function(button) {
@@ -142,6 +143,7 @@ angular.module('hg.components.textEditor', [
           }
         });
 
+
         // Linking up the content
         scope.$watch(function() {
           return ngModel.$modelValue;
@@ -154,20 +156,28 @@ angular.module('hg.components.textEditor', [
           ngModel.$render();
         });
 
+
         // Build the toolbar
-        utils
-          .getTemplate('/dist/components/text-editor/text-editor-toolbar.html')
-          .then(function(tTpl) {
-            toolbar = $compile(angular.element(tTpl))(scope);
+        // * First timeout: The width of the toolbar is altered by the icon
+        //   if the icon font isn't loaded then we do not get a corrected width.
+        //
+        // * Second timeout: Need to wait for the element inserted into the DOM.
+        $timeout(function() {
+          utils
+            .getTemplate('/dist/components/text-editor/text-editor-toolbar.html')
+            .then(function(tTpl) {
+              toolbar = $compile(angular.element(tTpl))(scope);
 
-            document.body
-              .querySelector(scope.config.toolbarLocation)
-              .appendChild(toolbar[0]);
+              document.body
+                .querySelector(scope.config.toolbarLocation)
+                .appendChild(toolbar[0]);
 
-            $timeout(function() {
-              toolbarRect = toolbar[0].getBoundingClientRect();
+              $timeout(function() {
+                toolbarRect = toolbar[0].getBoundingClientRect();
+              });
             });
-          });
+        });
+
 
         // Show the toolbar, visibility is handed by CSS.
         function showToolbar() {
@@ -182,23 +192,29 @@ angular.module('hg.components.textEditor', [
         // Positions the toolbar over the current selection range.
         function repositionToolbar() {
           var selection = new textEditor.api.Selection()
-            , rangeRect
-            , rangeMidPoint;
+            , rangeRect;
 
           if (!selection.range) return;
 
           rangeRect = selection.range.getBoundingClientRect();
-          rangeMidPoint = rangeRect.left + (rangeRect.width / 2);
 
           if (!selection.range.collapsed) {
-            toolbar[0].style.top = rangeRect.top - toolbarRect.height + 'px';
-            toolbar[0].style.left = rangeMidPoint - (toolbarRect.width / 2) + 'px';
+            toolbar[0].style.top =
+              rangeRect.top -
+              toolbarRect.height -
+              SASS['text-editor-tooltip'] + 'px';
+
+            toolbar[0].style.left =
+              rangeRect.left +
+              (rangeRect.width / 2) -
+              (toolbarRect.width / 2) + 'px';
 
             $timeout(showToolbar);
           } else {
             hideToolbar();
           }
         }
+
 
         // This is the main listener for handling the visibility of the
         // toolbar. For single clicks it will hide the toolbar, except when
@@ -226,6 +242,7 @@ angular.module('hg.components.textEditor', [
           }
         });
 
+
         // Anywhere else in the document that is not the edit area or the
         // toolbar, then hide the toolbar.
         document.addEventListener('mouseup', hideClick);
@@ -234,6 +251,7 @@ angular.module('hg.components.textEditor', [
             hideToolbar();
           }
         }
+
 
         // Clean up when the scope is destroyed
         scope.$on('$destroy', function() {
