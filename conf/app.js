@@ -1,3 +1,4 @@
 module.exports = {
-  nameSpace: 'hg'
+  nameSpace: 'hg',
+  appName: 'hg-framework'
 };
