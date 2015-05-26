@@ -30,32 +30,37 @@ module.exports = function(grunt) {
     var vendorScripts = vendor('script');
     var vendorStylesheets = vendor('stylesheet');
 
-    utils.forEachModule(function(module) {
-      var moduleScript
-        , moduleScriptTpl
-        , moduleStylesheet;
+    if (utils.arg('production')) {
+      appScripts.push(conf.locations.dest + '/hg-framework.min.js');
+      appStylesheets.push(conf.locations.dest + '/hg-framework.min.css');
+    } else {
+      utils.forEachModule(function(module) {
+        var moduleScript
+          , moduleScriptTpl
+          , moduleStylesheet;
 
-      if (utils.arg('nomin')) {
-        moduleScript = module.name + '.js';
-        moduleScriptTpl = module.name + '-tpl.js';
-        moduleStylesheet = module.name + '.css';
-      } else {
-        moduleScript = module.name + '.min.js';
-        moduleStylesheet = module.name + '.min.css';
-      }
+        if (utils.arg('nomin')) {
+          moduleScript = module.name + '.js';
+          moduleScriptTpl = module.name + '-tpl.js';
+          moduleStylesheet = module.name + '.css';
+        } else {
+          moduleScript = module.name + '.min.js';
+          moduleStylesheet = module.name + '.min.css';
+        }
 
-      if (~module.files.js.indexOf(moduleScript)) {
-        appScripts.push(module.dest + '/' + moduleScript);
-      }
+        if (~module.files.js.indexOf(moduleScript)) {
+          appScripts.push(module.dest + '/' + moduleScript);
+        }
 
-      if (moduleScriptTpl && ~module.files.js.indexOf(moduleScriptTpl)) {
-        appScripts.push(module.dest + '/' + moduleScriptTpl);
-      }
+        if (moduleScriptTpl && ~module.files.js.indexOf(moduleScriptTpl)) {
+          appScripts.push(module.dest + '/' + moduleScriptTpl);
+        }
 
-      if (~module.files.css.indexOf(moduleStylesheet)) {
-        appStylesheets.push(module.dest + '/' + moduleStylesheet);
-      }
-    }, conf.locations.dest);
+        if (~module.files.css.indexOf(moduleStylesheet)) {
+          appStylesheets.push(module.dest + '/' + moduleStylesheet);
+        }
+      }, conf.locations.dest);
+    }
 
     appScripts = appScripts.map(createScript).join('\n');
     appStylesheets = appStylesheets.map(createStylesheet).join('\n');

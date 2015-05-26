@@ -104,8 +104,10 @@ angular.module( 'hg.components.table', [
       if (angular.isString(this.source)) {
         Restangular
           .one(this.source)
-          .get()
+          .getList()
           .then(function(data) {
+            that.data.rows = that.format(data);
+            defer.resolve(that.data);
             console.log(data);
           });
       }

@@ -7,6 +7,7 @@ module.exports = function(grunt) {
     'html2js',
     'ngAnnotate',
     'uglify',
+    'concat',
     'sass',
     'autoprefixer',
     'cssmin',
@@ -23,6 +24,7 @@ module.exports = function(grunt) {
   config.html2js = require('./grunt/html2js');
   config.ngAnnotate = require('./grunt/ng-annotate');
   config.uglify = require('./grunt/uglify');
+  config.concat = require('./grunt/concat');
   config.sass = require('./grunt/sass');
   config.autoprefixer = require('./grunt/autoprefixer');
   config.cssmin = require('./grunt/cssmin');
@@ -40,6 +42,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-ng-annotate');
   grunt.loadNpmTasks('grunt-html2js');
   grunt.loadNpmTasks('grunt-contrib-uglify');
+  grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-sass');
   grunt.loadNpmTasks('grunt-autoprefixer');
   grunt.loadNpmTasks('grunt-contrib-cssmin');

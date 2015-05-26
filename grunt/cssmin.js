@@ -14,5 +14,11 @@ module.exports = (function() {
     config[module.nameSpace].files[dest] = src;
   });
 
+  config.dist = {
+    files: {
+      'dist/hg-framework.min.css': 'dist/**/*.min.css'
+    }
+  };
+
   return config;
 })();

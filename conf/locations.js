@@ -1,6 +1,7 @@
 module.exports = {
   src: 'app',
   dest: 'dist',
+  data: 'data',
   vendor: 'vendor',
   layout: {
     src: 'app/core/layout/layout-tpl.html',

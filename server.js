@@ -15,7 +15,7 @@ app.use('/' + conf.locations.dest
 app.use('/' + conf.locations.vendor
   , express.static(__dirname + '/vendor'));
 
-app.use('/data'
+app.use('/' + conf.locations.data
   , express.static(__dirname + '/data'));
 
 app.use('/*'
