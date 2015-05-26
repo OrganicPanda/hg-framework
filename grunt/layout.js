@@ -2,13 +2,10 @@ var path = require('path')
   , utils = require('../lib/utils')
   , conf = require('../conf');
 
-function vendor(type) {
-  return conf.layout.vendor
-    .filter(function(item) { return item[type]; })
-    .map(function(item) {
-      return conf.locations[conf.locations.vendor] +
-        '/' + item.name + '/' + item[type];
-    });
+function vendorise(list) {
+  return list.map(function(item) {
+    return path.join(conf.locations.vendor, item);
+  });
 }
 
 function createScript(src) {
@@ -27,8 +24,8 @@ module.exports = function(grunt) {
     var templateContent = grunt.file.read(templateSrc);
     var appScripts = [];
     var appStylesheets = [];
-    var vendorScripts = vendor('script');
-    var vendorStylesheets = vendor('stylesheet');
+    var vendorScripts = vendorise(conf.layout.vendor.scripts);
+    var vendorStylesheets = vendorise(conf.layout.vendor.stylesheets);
 
     if (utils.arg('production')) {
       appScripts.push(conf.locations.dest + '/hg-framework.min.js');
