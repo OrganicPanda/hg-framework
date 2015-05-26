@@ -49,14 +49,12 @@ angular.module('hg.components.textEditor', [
    * @description
    *
    */
-  .directive('hgTextEditor', function($compile, $timeout, SASS, TextEditor, utils) {
+  .directive('hgTextEditor'
+      , function($compile, $timeout, SASS, TextEditor, utils) {
     return {
-      scope: {
-        config: '=hgTextEditor'
-      },
       require: 'ngModel',
       link: function(scope, el, attr, ngModel) {
-        var textEditor = new TextEditor(el[0])
+        var textEditor
           , toolbar
           , toolbarRect;
 
@@ -109,67 +107,124 @@ angular.module('hg.components.textEditor', [
         };
 
 
+        /*
+         * --------------------------
+         * Text editor initialisation
+         * --------------------------
+         */
+
+        // Kicks it all off.
+        utils
+          .getTemplate('/dist/components/text-editor/text-editor-toolbar.html')
+          .then(initEditor);
+
+        // Initialises the editor
+        function initEditor(toolbarTemplate) {
+          textEditor = new TextEditor(el[0]);
+          buildToolbar(toolbarTemplate);
+        }
+
+        // Builds the toolbar from the template.
+        function buildToolbar(template) {
+          toolbar = $compile(angular.element(template))(scope);
+          $timeout(function() {
+            document.body.appendChild(toolbar[0]);
+
+            $timeout(function() {
+              toolbarRect = toolbar[0].getBoundingClientRect();
+              initEventListeners();
+            });
+          });
+        }
+
         // Set up the listeners to update the buttons depending on what
         // is selected.
-        scope.buttons.forEach(function(button) {
-          textEditor.el.addEventListener('keyup', updateUi);
-          textEditor.el.addEventListener('mouseup', updateUi);
+        function initEventListeners() {
+          scope.buttons.forEach(function(button) {
+            textEditor.el.addEventListener('keyup', updateUi);
+            textEditor.el.addEventListener('mouseup', updateUi);
 
-          textEditor.el.addEventListener('focus', updateUi);
-          textEditor.el.addEventListener('blur', updateUi);
+            textEditor.el.addEventListener('focus', updateUi);
+            textEditor.el.addEventListener('blur', updateUi);
 
-          textEditor.on('content-changed', updateUi);
+            textEditor.on('content-changed', updateUi);
 
-          function updateUi() {
-            var command = textEditor.getCommand(button.command);
-            var selection = new textEditor.api.Selection();
+            function updateUi() {
+              var command = textEditor.getCommand(button.command);
+              var selection = new textEditor.api.Selection();
 
-            button.active = command.queryState(button.value);
-            button.disabled = !command.queryEnabled();
+              button.active = command.queryState(button.value);
+              button.disabled = !command.queryEnabled();
 
-            if (selection.range && !selection.range.collapsed) {
-              repositionToolbar();
+              if (selection.range && !selection.range.collapsed) {
+                repositionToolbar();
+              }
+
+              scope.$applyAsync();
             }
+          });
 
-            scope.$applyAsync();
+          // Linking up the content
+          scope.$watch(function() {
+            return ngModel.$modelValue;
+          }, function(newVal) {
+            textEditor.setHTML(newVal);
+          });
+
+          textEditor.on('content-changed', function() {
+            ngModel.$setViewValue(textEditor.getHTML());
+            ngModel.$render();
+          });
+
+          // This is the main listener for handling the visibility of the
+          // toolbar. For single clicks it will hide the toolbar, except when
+          // it is a drag selection. Double clicks it will show and reposition
+          // the toolbar
+          var clicks = 0;
+          textEditor.el.addEventListener('mouseup', function() {
+            var selection = new textEditor.api.Selection();
+            clicks++;
+
+            if (clicks === 1) {
+              $timeout(function(){
+                if (clicks === 1) {
+                  if (selection.range.collapsed) {
+                    hideToolbar();
+                  } else {
+                    repositionToolbar();
+                  }
+                } else {
+                  repositionToolbar();
+                }
+
+                clicks = 0;
+                scope.$applyAsync();
+              }, 300);
+            }
+          });
+
+          // Anywhere else in the document that is not the edit area or the
+          // toolbar, then hide the toolbar.
+          document.addEventListener('mouseup', hideClick);
+          function hideClick(event) {
+            if (!utils.isChild([textEditor.el, toolbar[0]], event.target)) {
+              hideToolbar();
+            }
           }
-        });
+
+          // Clean up when the scope is destroyed
+          scope.$on('$destroy', function() {
+            toolbar.remove();
+            document.removeEventListener('mosueup', hideClick);
+          });
+        }
 
 
-        // Linking up the content
-        scope.$watch(function() {
-          return ngModel.$modelValue;
-        }, function(newVal) {
-          textEditor.setHTML(newVal);
-        });
-
-        textEditor.on('content-changed', function() {
-          ngModel.$setViewValue(textEditor.getHTML());
-          ngModel.$render();
-        });
-
-
-        // Build the toolbar
-        // * First timeout: The width of the toolbar is altered by the icon
-        //   if the icon font isn't loaded then we do not get a corrected width.
-        //
-        // * Second timeout: Need to wait for the element inserted into the DOM.
-        $timeout(function() {
-          utils
-            .getTemplate('/dist/components/text-editor/text-editor-toolbar.html')
-            .then(function(tTpl) {
-              toolbar = $compile(angular.element(tTpl))(scope);
-
-              document.body
-                .querySelector(scope.config.toolbarLocation)
-                .appendChild(toolbar[0]);
-
-              $timeout(function() {
-                toolbarRect = toolbar[0].getBoundingClientRect();
-              });
-            });
-        });
-
+        /*
+         * -----------------------
+         * Toolbar state modifiers.
+         * -----------------------
+         */
 
         // Show the toolbar, visibility is handed by CSS.
         function showToolbar() {
@@ -194,62 +249,20 @@ angular.module('hg.components.textEditor', [
             toolbar[0].style.top =
               rangeRect.top -
               toolbarRect.height -
-              SASS['text-editor-tooltip'] + 'px';
+              SASS['text-editor-tooltip'] +
+              window.pageYOffset + 'px';
 
             toolbar[0].style.left =
               rangeRect.left +
               (rangeRect.width / 2) -
-              (toolbarRect.width / 2) + 'px';
+              (toolbarRect.width / 2) +
+              window.pageXOffset + 'px';
 
             $timeout(showToolbar);
           } else {
             hideToolbar();
           }
         }
-
-
-        // This is the main listener for handling the visibility of the
-        // toolbar. For single clicks it will hide the toolbar, except when
-        // it is a drag selection. Double clicks it will show and reposition
-        // the toolbar
-        var clicks = 0;
-        textEditor.el.addEventListener('mouseup', function() {
-          var selection = new textEditor.api.Selection();
-          clicks++;
-
-          if (clicks === 1) {
-            $timeout(function(){
-              if (clicks === 1) {
-                if (selection.range.collapsed) {
-                  hideToolbar();
-                } else {
-                  repositionToolbar();
-                }
-              } else {
-                repositionToolbar();
-              }
-
-              clicks = 0;
-            }, 300);
-          }
-        });
-
-
-        // Anywhere else in the document that is not the edit area or the
-        // toolbar, then hide the toolbar.
-        document.addEventListener('mouseup', hideClick);
-        function hideClick(event) {
-          if (!utils.isChild([textEditor.el, toolbar[0]], event.target)) {
-            hideToolbar();
-          }
-        }
-
-
-        // Clean up when the scope is destroyed
-        scope.$on('$destroy', function() {
-          toolbar.remove();
-          document.removeEventListener('mosueup', hideClick);
-        });
       }
     };
   });
