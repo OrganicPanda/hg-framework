@@ -156,9 +156,7 @@ angular.module('hg.components.textEditor', [
               button.active = command.queryState(button.value);
               button.disabled = !command.queryEnabled();
 
-              if (selection.range && !selection.range.collapsed) {
-                repositionToolbar();
-              }
+              repositionToolbar();
 
               scope.$applyAsync();
             }
