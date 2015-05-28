@@ -32,7 +32,9 @@ angular.module('hg.components.dialog', [
         content: utils.getTemplate(this.config.templateUrl, this.config.template),
         wrapper: utils.getTemplate('/dist/components/dialog/dialog.html')
       }).then(function(tpls) {
-        this.element = $compile(angular.element(tpls.wrapper.replace('<template>', tpls.content)))(this.getScope())[0];
+        return tpls.wrapper.replace('<template>', tpls.content);
+      }).then(function(tpl) {
+        this.element = $compile(angular.element(tpl))(this.getScope())[0];
 
         $controller(this.config.controller, {
           $scope: this.getScope(),
