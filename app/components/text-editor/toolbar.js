@@ -78,7 +78,6 @@ angular.module('hg.components.textEditor')
     Toolbar.prototype.insert = function() {
       if (!document.body.contains(this.element)) {
         document.body.appendChild(this.element);
-        $timeout(this.refreshOffsetData.bind(this), 0);
       }
     };
 
@@ -94,14 +93,8 @@ angular.module('hg.components.textEditor')
     /**
      *
      */
-    Toolbar.prototype.refreshOffsetData = function() {
-      this.offset = this.element.getBoundingClientRect();
-    };
-
-    /**
-     *
-     */
     Toolbar.prototype.attachEventListeners = function() {
+      window.addEventListener('resize', this.checkVisibilityAndPosition.bind(this));
       document.addEventListener('mouseup', this.checkVisibilityAndPosition.bind(this));
       this.editor.el.addEventListener('keyup', this.checkVisibilityAndPosition.bind(this));
     };
@@ -110,6 +103,7 @@ angular.module('hg.components.textEditor')
      *
      */
     Toolbar.prototype.removeEventListeners = function() {
+      window.removeEventListener('resize', this.checkVisibilityAndPosition.bind(this));
       document.removeEventListener('mouseup', this.checkVisibilityAndPosition.bind(this));
       this.editor.el.removeEventListener('keyup', this.checkVisibilityAndPosition.bind(this));
     };
@@ -142,13 +136,12 @@ angular.module('hg.components.textEditor')
     /**
      *
      */
-    Toolbar.prototype.checkButtonStates = function() {
-      this.config.buttons.forEach(function(button) {
-        var command = this.editor.getCommand(button.command);
+    Toolbar.prototype.getOffset = function() {
+      if (!this.offset) {
+        this.offset = this.element.getBoundingClientRect();
+      }
 
-        button.active = command.queryState(button.value);
-        button.disabled = !command.queryEnabled();
-      }, this);
+      return this.offset;
     };
 
     /**
@@ -171,6 +164,18 @@ angular.module('hg.components.textEditor')
     /**
      *
      */
+    Toolbar.prototype.checkButtonStates = function() {
+      this.config.buttons.forEach(function(button) {
+        var command = this.editor.getCommand(button.command);
+
+        button.active = command.queryState(button.value);
+        button.disabled = !command.queryEnabled();
+      }, this);
+    };
+
+    /**
+     *
+     */
     Toolbar.prototype.show = function() {
       this.element.classList.add('toolbar-visible');
     };
@@ -187,17 +192,18 @@ angular.module('hg.components.textEditor')
      */
     Toolbar.prototype.reposition = function(range) {
       var rangeRect = range.getBoundingClientRect();
+      var toolbarRect = this.getOffset();
 
       this.element.style.top =
         rangeRect.top -
-        this.offset.height -
+        toolbarRect.height -
         this.config.yOffset +
         window.pageYOffset + 'px';
 
       this.element.style.left =
         rangeRect.left +
         (rangeRect.width / 2) -
-        (this.offset.width / 2) -
+        (toolbarRect.width / 2) -
         this.config.xOffset +
         window.pageXOffset + 'px';
     };
