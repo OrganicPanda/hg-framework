@@ -2,12 +2,12 @@ require.config({
   appDir: '',
   baseUrl: './vendor',
   paths: {
-    'scribe': './scribe/scribe',
-    'scribe-plugin-sanitizer': './scribe-plugin-sanitizer/scribe-plugin-sanitizer',
-    'scribe-plugin-inline-styles-to-elements': './scribe-plugin-inline-styles-to-elements/scribe-plugin-inline-styles-to-elements',
-    'scribe-plugin-heading-command': './scribe-plugin-heading-command/scribe-plugin-heading-command',
-    'scribe-plugin-blockquote-command': './scribe-plugin-blockquote-command/scribe-plugin-blockquote-command',
-    'scribe-plugin-formatter-plain-text-convert-new-lines-to-html': './scribe-plugin-formatter-plain-text-convert-new-lines-to-html/scribe-plugin-formatter-plain-text-convert-new-lines-to-html'
+    'scribe': 'scribe/scribe',
+    'scribe-plugin-sanitizer': 'scribe-plugin-sanitizer/scribe-plugin-sanitizer',
+    'scribe-plugin-inline-styles-to-elements': 'scribe-plugin-inline-styles-to-elements/scribe-plugin-inline-styles-to-elements',
+    'scribe-plugin-heading-command': 'scribe-plugin-heading-command/scribe-plugin-heading-command',
+    'scribe-plugin-blockquote-command': 'scribe-plugin-blockquote-command/scribe-plugin-blockquote-command',
+    'scribe-plugin-formatter-plain-text-convert-new-lines-to-html': 'scribe-plugin-formatter-plain-text-convert-new-lines-to-html/scribe-plugin-formatter-plain-text-convert-new-lines-to-html'
   }
 });
 
