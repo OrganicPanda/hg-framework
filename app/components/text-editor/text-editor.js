@@ -49,12 +49,14 @@ angular.module('hg.components.textEditor', [
    * @description
    *
    */
-  .directive('hgTextEditor', function(TextEditor, TextEditorToolbar) {
+  .directive('hgTextEditor', function(SASS, TextEditor, TextEditorToolbar) {
     return {
       require: 'ngModel',
       link: function(scope, el, attr, ngModel) {
         var textEditor = new TextEditor(el[0])
-          , toolbar = new TextEditorToolbar(textEditor);
+          , toolbar = new TextEditorToolbar(textEditor, {
+              yOffset: SASS['text-editor-tooltip']
+            });
 
         // Linking up the content
         scope.$watch(function() {

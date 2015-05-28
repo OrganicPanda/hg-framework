@@ -4,19 +4,21 @@ angular.module('hg.components.textEditor')
    *
    */
   .factory('TextEditorToolbar'
-      , function($compile, $timeout, $rootScope, SASS, utils) {
+      , function($compile, $timeout, $rootScope, utils) {
     var templateUrl = '/dist/components/text-editor/text-editor-toolbar.html';
 
     /**
      *
      */
-    function Toolbar(editor) {
+    function Toolbar(editor, config) {
       this.editor = editor;
       this.element = null;
       this.scope = null;
       this.offset = null;
 
-      this.config = {
+      this.config = angular.extend({
+        yOffset: 0,
+        xOffset: 0,
         buttons: [
           {
             icon: 'bold',
@@ -38,7 +40,7 @@ angular.module('hg.components.textEditor')
             command: 'h3'
           }
         ]
-      };
+      }, config);
 
       this.build();
     }
@@ -189,13 +191,14 @@ angular.module('hg.components.textEditor')
       this.element.style.top =
         rangeRect.top -
         this.offset.height -
-        SASS['text-editor-tooltip'] +
+        this.config.yOffset +
         window.pageYOffset + 'px';
 
       this.element.style.left =
         rangeRect.left +
         (rangeRect.width / 2) -
-        (this.offset.width / 2) +
+        (this.offset.width / 2) -
+        this.config.xOffset +
         window.pageXOffset + 'px';
     };
 
