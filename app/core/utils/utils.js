@@ -5,15 +5,27 @@ angular.module('hg.core.utils', [
   /**
    *
    */
-  .service('utils', function($q, $templateCache, $window, SASS) {
+  .service('utils', function($q, $http, $templateCache, $window, SASS) {
 
     /**
      *
      */
     this.getTemplate = function(url, html) {
-      var deferred = $q.defer();
+      var deferred = $q.defer()
+        , template = $templateCache.get(url);
 
-      deferred.resolve(html || $templateCache.get(url));
+      if (html || template) {
+        deferred.resolve(html || template);
+      } else {
+        $http.get(url, { cache: true })
+          .success(function(partial) {
+            $templateCache.put(url, partial);
+            deferred.resolve(partial);
+          })
+          .error(function() {
+            deferred.reject();
+          });
+      }
 
       return deferred.promise;
     };
@@ -23,28 +35,6 @@ angular.module('hg.core.utils', [
      */
     this.forEachEl = function(selector, cb, el) {
       [].forEach.call((el || document).querySelectorAll(selector), cb);
-    };
-
-    /**
-     *
-     */
-    this.isChild = function(parent, child) {
-      function containCheck(aParent) {
-        if (!aParent || !child) return false;
-
-        var node = child.parentNode;
-
-        while (node !== null) {
-          if (node === aParent) return true;
-          node = node.parentNode;
-        }
-
-        return false;
-      }
-
-      return angular.isArray(parent)
-        ? parent.some(containCheck)
-        : containCheck(parent);
     };
 
     /**
