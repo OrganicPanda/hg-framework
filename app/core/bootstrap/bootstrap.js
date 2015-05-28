@@ -17,18 +17,14 @@ require([
   scribePluginFormatterPlainTextConvertNewLinesToHtml
 
 ) {
-  (function(window, document) {
-    window.Scribe = Scribe;
-    window.Scribe.plugins = {
-      sanitizer: scribePluginSanitizer,
-      inlineStyles: scribePluginInlineStyles,
-      headingCommand: scribePluginHeadingCommand,
-      blockquoteCommand: scribePluginBlockquoteCommand,
-      newLinesToHTML: scribePluginFormatterPlainTextConvertNewLinesToHtml
-    };
+  window.Scribe = Scribe;
+  window.Scribe.plugins = {
+    sanitizer: scribePluginSanitizer,
+    inlineStyles: scribePluginInlineStyles,
+    headingCommand: scribePluginHeadingCommand,
+    blockquoteCommand: scribePluginBlockquoteCommand,
+    newLinesToHTML: scribePluginFormatterPlainTextConvertNewLinesToHtml
+  };
 
-    angular.element(document).ready(function() {
-      angular.bootstrap(document, ['hg']);
-    });
-  })(window, document);
+  angular.bootstrap(document, ['hg']);
 });
