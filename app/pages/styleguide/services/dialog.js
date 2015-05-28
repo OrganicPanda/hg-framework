@@ -1,16 +1,14 @@
 angular.module('hg.pages.styleguide')
 
-  .controller('HgStyleGuideDialogCtrl', function($scope, dialog) {
+  .controller('HgStyleGuideDialogCtrl', function($scope, Dialog) {
     $scope.launchDialog = function(size, backdrop) {
-      dialog.show({
+      new Dialog({
         controller: 'HgDemoDialogCtrl',
         templateUrl: '/dist/pages/styleguide/services/dialog-example.html',
         title: 'Are you sure?',
         size: size,
         blackOut: true,
         closeClick: backdrop
-      }).then(function(response) {
-
       });
     };
   })

@@ -1,6 +1,7 @@
 <div class="notification"
      ng-click="$$remove()">
   <i class="notification-icon icon text-{{ config.type }}"
+     ng-if="::config.type"
      ng-class="::{ 'icon-info': config.type === 'info',
                    'icon-check': config.type === 'success',
                    'icon-exclamation-circle': config.type === 'warning',
