@@ -3,7 +3,6 @@ var utils = require('../lib/utils');
 module.exports = (function() {
   var config = {
     options: {
-      sourcemap: true,
       noCache: true
     }
   };
