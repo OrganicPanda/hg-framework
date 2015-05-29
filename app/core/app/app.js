@@ -49,5 +49,8 @@ angular.module('hg.components', [
  * Pages sub-modules
  */
 angular.module('hg.pages', [
-  'hg.pages.styleguide'
+  'hg.pages.core',
+  'hg.pages.css',
+  'hg.pages.directives',
+  'hg.pages.services'
 ]);

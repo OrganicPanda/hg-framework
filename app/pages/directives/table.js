@@ -1,4 +1,4 @@
-angular.module('hg.pages.styleguide')
+angular.module('hg.pages.directives')
 
   .controller('HgStyleGuideTableCtrl', function($scope, $filter, Demo, Table) {
     /**

@@ -30,7 +30,7 @@ angular.module('hg.core.config', [
     $urlMatcherFactoryProvider.strictMode(false);
 
     // Redirect to 404 page if URL not found.
-    $urlRouterProvider.when('/', '/styleguide');
+    $urlRouterProvider.when('/', '/core');
     $urlRouterProvider.otherwise('/');
 
     //

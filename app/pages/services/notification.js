@@ -1,4 +1,4 @@
-angular.module('hg.pages.styleguide')
+angular.module('hg.pages.services')
 
   .controller('HgStyleGuideNotificationCtrl', function($scope, Notification) {
     $scope.notify = function(message, type, persist) {
