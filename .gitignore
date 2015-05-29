@@ -3,7 +3,11 @@
 .bin
 npm-debug.log
 
-/dist
+/dist/components
+/dist/core
+/dist/models
+/dist/pages
+
 /public/index.html
 /node_modules
 /vendor
