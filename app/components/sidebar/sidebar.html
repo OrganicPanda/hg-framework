@@ -1,7 +1,57 @@
 <div class="sidebar">
-  <div class="sidebar-header">
-
+  <div class="sidebar-title">
+    <h3>hg-framework</h3>
   </div>
 
-  <div hg-sidebar-menu="menu.children"></div>
+  <div class="profile">
+    <div class="grid grid-no-gutters grid-middle grid-xs-fit">
+      <div class="grid-cell grid-xs-shrink">
+        <img class="profile-img tn tn-round"
+             src="/assets/profile.jpeg">
+      </div>
+
+      <div class="grid-cell">
+        <h4 class="profile-primary"><strong>Harrison Hogg</strong></h4>
+        <div class="profile-secondary">Loves the web</div>
+      </div>
+    </div>
+  </div>
+
+  <nav class="menu">
+    <ul class="menu-list">
+      <li class="menu-list-item"
+          ng-if="$state.current.data.levelUp">
+        <a class="menu-link"
+           ui-sref="{{ $state.current.data.levelUp.name }}">
+          <div class="grid grid-no-gutters grid-middle grid-xs-fit">
+            <div class="grid-cell">
+              Back
+            </div>
+
+            <div class="grid-cell grid-xs-shrink">
+              <i class="icon icon-chevron-left"></i>
+            </div>
+          </div>
+        </a>
+      </li>
+
+      <li class="menu-list-item"
+          ng-repeat="item in $state.current.data.siblings | orderBy:'data.index'"
+          ng-if="item.data.name"
+          ng-class="{ 'active': $state.current === item }">
+        <a class="menu-link"
+           ui-sref="{{ item.abstract ? item.data.levelDown.name : item.name }}">
+          <div class="grid grid-no-gutters grid-middle grid-xs-fit">
+            <div class="grid-cell">
+              {{:: item.data.name }}
+            </div>
+
+            <div class="grid-cell grid-xs-shrink">
+              <i class="icon icon-{{ item.data.icon }}"></i>
+            </div>
+          </div>
+        </a>
+      </li>
+    </ul>
+  </nav>
 </div>

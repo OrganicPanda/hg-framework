@@ -11,6 +11,7 @@ angular.module('hg.pages.css', [
         url: '/css',
         templateUrl: '/dist/pages/css/css.html',
         data: {
+          index: 2,
           name: 'CSS'
         }
       })

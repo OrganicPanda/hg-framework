@@ -1,6 +1,5 @@
 angular.module('hg.pages.core', [
   'ui.router',
-  'ipsum',
 
   'hg.pages.core.tpl'
 ])
@@ -13,6 +12,7 @@ angular.module('hg.pages.core', [
         url: '/core',
         templateUrl: '/dist/pages/core/core.html',
         data: {
+          index: 1,
           name: 'Core'
         }
       })

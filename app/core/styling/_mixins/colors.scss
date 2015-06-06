@@ -1,9 +1,13 @@
 /* The ideal text color
  * ========================================================================== */
-@function textColor($color) {
+@function textColor($color, $level: light) {
   @if (lightness($color) > 80) {
-    @return $dark-base;
+    @if ($level == dark) { @return $dark-dark; }
+    @if ($level == base) { @return $dark-base; }
+    @if ($level == light) { @return $dark-light; }
   } @else {
-    @return $white-base;
+    @if ($level == dark) { @return $light-dark; }
+    @if ($level == base) { @return $light-base; }
+    @if ($level == light) { @return $light-light; }
   }
 }

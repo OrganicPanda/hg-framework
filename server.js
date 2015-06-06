@@ -18,6 +18,9 @@ app.use('/' + conf.locations.vendor
 app.use('/' + conf.locations.data
   , express.static(__dirname + '/data'));
 
+app.use('/assets'
+  , express.static(__dirname + '/public/assets'));
+
 app.use('/*'
   , express.static(__dirname + '/public'));
 

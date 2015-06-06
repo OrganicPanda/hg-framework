@@ -3,7 +3,6 @@
  */
 angular.module('hg', [
   // Vendors
-  'ipsum',
   'ui.router',
 
   // App modules
@@ -19,6 +18,7 @@ angular.module('hg', [
 angular.module('hg.core', [
   'hg.core.config',
   'hg.core.constants',
+  'hg.core.layout',
   'hg.core.styling',
   'hg.core.utils'
 ]);
@@ -52,5 +52,6 @@ angular.module('hg.pages', [
   'hg.pages.core',
   'hg.pages.css',
   'hg.pages.directives',
+  'hg.pages.landing',
   'hg.pages.services'
 ]);

@@ -1,9 +1,5 @@
 angular.module('hg.core.constants', [])
 
-  .constant('MENU_ORDER', [
-    'styleguide'
-  ])
-
   // Notification
   .constant('NOTIFY_DELAY', 3000)
 

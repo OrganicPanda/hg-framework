@@ -1,25 +1,10 @@
-.container {
-  margin: 0 auto;
-  padding: 0 $spacing-grid;
-  max-width: $screen-lg-min;
-}
-
 .grid {
   display: flex;
   flex-wrap: wrap;
   margin: 0 $spacing-grid $spacing-grid;
 
-  &:last-child { margin: 0 $spacing-grid; }
-
-  /**
-   * Grid directly below the container or panel-body should
-   * have negative margins to bring them back into line.
-   */
-  .container &,
-  .panel-body & {
-    margin: 0 -#{$spacing-grid} $spacing-grid;
-
-    &:last-child { margin: 0 -#{$spacing-grid}; }
+  &:last-child {
+    margin: 0 $spacing-grid;
   }
 
   > .grid-cell {
@@ -29,35 +14,42 @@
     &:first-child { padding-left: $spacing-grid; }
     &:last-child  { padding-right: $spacing-grid; }
   }
+}
 
-  /**
-   * Guttered
-   */
 
-  &.grid-no-gutters {
+/**
+ * Grid directly below the container or panel-body should
+ * have negative margins to bring them back into line.
+ */
+.container > .grid,
+.panel-body > .grid {
+  margin: 0 -#{$spacing-grid} $spacing-grid;
+
+  &:last-child {
+    margin: 0 -#{$spacing-grid};
+  }
+}
+
+
+/**
+ * No Guttered
+ */
+.grid.grid-no-gutters {
+  &,
+  &:last-child {
     margin: 0;
-
-    &:last-child { margin: 0; }
-
-    > .grid-cell {
-      padding: 0;
-    }
   }
 
-  /**
-   * Cell shrinker
-   */
-
-  > .grid-shrink {
-    flex-basis: auto;
-    flex-shrink: 1;
-    flex-grow: 0;
+  > .grid-cell {
+    padding: 0;
   }
+}
 
-  /**
-   * Vertical Alignment
-   */
 
+/**
+ * Vertical Alignment
+ */
+.grid {
   // All cells
   &.grid-top    { align-items: flex-start; }
   &.grid-middle { align-items: center; }
@@ -69,14 +61,32 @@
     &.grid-middle { align-self: center; }
     &.grid-bottom { align-self: flex-end; }
   }
+}
 
-  /**
-   * Responsive and Size modifiers
-   */
 
-  //
-  @mixin makeResponsiveClasses($size) {
-    @include screenMoreThan($size) {
+/**
+ * Responsive and Size modifiers
+ */
+// By default when in mobile view let's make
+// all grid cells go full width. This is
+// likely to be the desired behaviour.
+@include screenLessThan(xs) {
+  .grid {
+    > .grid-cell {
+      flex: 0 0 100%;
+      padding: 0 $spacing-grid $spacing-grid;
+
+      &:last-child {
+        padding-bottom: 0;
+      }
+    }
+  }
+}
+
+//
+@mixin makeResponsiveGrid($size) {
+  @include gridBreakpoint($size) {
+    .grid {
       > .grid-cell {
         &.grid-#{$size}-25 { width: 25%; flex: none; }
         &.grid-#{$size}-50 { width: 50%; flex: none; }
@@ -84,27 +94,43 @@
 
         &.grid-#{$size}-33 { width: 33.3333%; flex: none; }
         &.grid-#{$size}-66 { width: 66.6666%; flex: none; }
+
+        // TODO: Find a way to get rid of the !important here.
+        &.grid-#{$size}-shrink {
+          flex-basis: auto !important;
+          flex-shrink: 1 !important;
+          flex-grow: 0 !important;
+        }
       }
 
-      &.grid-#{$size}-fit > .grid-cell { flex: 1; }
-      &.grid-#{$size}-full > .grid-cell { @include fullWidth(); }
+      &.grid-#{$size}-fit > .grid-cell {
+        flex: 1;
+      }
+
+      &.grid-#{$size}-full > .grid-cell {
+        flex: 0 0 100%;
+        padding: 0 $spacing-grid $spacing-grid;
+
+        &:last-child {
+          padding-bottom: 0;
+        }
+      }
     }
   }
-
-  //
-  @mixin fullWidth() {
-    padding: 0 $spacing-grid $spacing-grid;
-    flex: 0 0 100%;
-
-    &:last-child { padding-bottom: 0; }
-  }
-
-  // For small screen back to 100% width
-  @include screenLessThan(sm) {
-    > .grid-cell { @include fullWidth(); }
-  }
-
-  @include makeResponsiveClasses(sm);
-  @include makeResponsiveClasses(md);
-  @include makeResponsiveClasses(lg);
 }
+
+//
+@mixin gridBreakpoint($size) {
+  @if $size == xs {
+    @content
+  } @else {
+    @include screenMoreThan($size) {
+      @content
+    }
+  }
+}
+
+@include makeResponsiveGrid(xs);
+@include makeResponsiveGrid(sm);
+@include makeResponsiveGrid(md);
+@include makeResponsiveGrid(lg);

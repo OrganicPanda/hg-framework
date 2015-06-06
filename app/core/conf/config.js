@@ -13,14 +13,14 @@ require.config({
 
 angular.module('hg.core.config', [
   'ui.router',
-  'restangular'
+
+  'hg.core.utils'
 ])
 
   /**
    *
    */
-  .config(function($locationProvider, $urlRouterProvider
-      , $urlMatcherFactoryProvider, RestangularProvider) {
+  .config(function($locationProvider, $urlRouterProvider, $urlMatcherFactoryProvider) {
 
     // Enable HTML5 Mode
     // https://docs.angularjs.org/guide/$location
@@ -30,25 +30,18 @@ angular.module('hg.core.config', [
     $urlMatcherFactoryProvider.strictMode(false);
 
     // Redirect to 404 page if URL not found.
-    $urlRouterProvider.when('/', '/core');
     $urlRouterProvider.otherwise('/');
-
-    //
-    // RestangularProvider.setBaseUrl('http://localhost:3000');
-    // RestangularProvider.addResponseInterceptor(function(data, operation) {
-    //   var extractedData;
-
-    //   if (operation === 'getList' && data.items) {
-    //     extractedData = data.items;
-    //     extractedData.pageInfo = data.pageInfo;
-    //   } else {
-    //     extractedData = data;
-    //   }
-
-    //   return extractedData;
-    // });
   })
 
-  .run(function($rootScope, $state) {
+  /**
+   *
+   */
+  .run(function($rootScope, $state, stateExt) {
+
+    // Having $state on scope is very helpful.
     $rootScope.$state = $state;
+
+    // States do have a relationship but the child and sibling
+    // states are not accessible, so we add them here.
+    $state.get().forEach(stateExt.addStateRelationships);
   });

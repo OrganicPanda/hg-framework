@@ -1,7 +1,7 @@
 $spacing-base:          15px; // #JS#
-$spacing-xs:            $spacing-base / 2;
+$spacing-xs:            floor($spacing-base / 4);
 $spacing-sm:            floor($spacing-base / 2);
-$spacing-lg:            $spacing-base * 2;
+$spacing-lg:            floor($spacing-base * 2);
 
 $spacing-grid:          $spacing-lg;
 
@@ -14,8 +14,8 @@ $screen-xs-max:         ($screen-sm-min - 1);
 $screen-sm-max:         ($screen-md-min - 1);
 $screen-md-max:         ($screen-lg-min - 1);
 
-$sidebar-open:          220px;
-$sidebar-closed:        70px;
+$sidebar-width:         260px;
+$topbar-height:         ($spacing-base * 4);
 
 $form-sm:               100px;
 $form-md:               200px;

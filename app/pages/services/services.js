@@ -15,8 +15,8 @@ angular.module('hg.pages.services', [
         url: '/services',
         templateUrl: '/dist/pages/services/services.html',
         data: {
-          name: 'Services',
-          icon: null
+          index: 4,
+          name: 'Services'
         }
       })
 

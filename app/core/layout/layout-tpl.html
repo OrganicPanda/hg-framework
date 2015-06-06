@@ -9,13 +9,30 @@
     <!-- #stylesheets_vendor# -->
     <!-- #stylesheets_app# -->
   </head>
-  <body class="layout">
+
+  <body ng-controller="HgLayoutCtrl"
+        ng-class="{ 'layout-open': layoutState.open }">
+
+    {{ $stateParams }}
+    <div class="layout-top">
+      <div hg-topbar></div>
+    </div>
+
     <div class="layout-side">
       <div hg-sidebar></div>
     </div>
 
     <div class="layout-main">
-      <div hg-topbar></div>
+      <a class="layout-toggle"
+         ng-href="#"
+         ng-click="toggleLayout()">
+        <i class="icon icon-bars icon-2x"></i>
+      </a>
+
+      <a class="layout-overlay"
+         ng-href="#"
+         ng-click="toggleLayout()"></a>
+
       <div ui-view></div>
     </div>
 

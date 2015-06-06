@@ -14,7 +14,6 @@ module.exports = {
       'angular-ui-router/release/angular-ui-router.min.js',
       'highcharts/adapters/standalone-framework.js',
       'highcharts/highcharts.js',
-      'angular-ipsum/dist/ipsum.min.js',
       'lodash/dist/lodash.underscore.min.js',
       'restangular/dist/restangular.min.js',
       'requirejs/require.js',

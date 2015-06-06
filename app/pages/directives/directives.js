@@ -15,6 +15,7 @@ angular.module('hg.pages.directives', [
         url: '/directives',
         templateUrl: '/dist/pages/directives/directives.html',
         data: {
+          index: 3,
           name: 'Directives'
         }
       })

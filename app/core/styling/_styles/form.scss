@@ -35,7 +35,13 @@
   .addon {
     padding: $spacing-base;
     line-height: $line-height;
-    @include transition((color, border-color, outline-color, background-color));
+
+    @include transition((
+      color,
+      border-color,
+      outline-color,
+      background-color
+    ));
   }
 
   .input,
@@ -104,7 +110,12 @@
       font-size: $font-size-sm;
       text-align: center;
       border: $border-thin;
-      @include transition((color, border-color, background-color));
+
+      @include transition((
+        color,
+        border-color,
+        background-color
+      ));
     }
 
     &:hover {

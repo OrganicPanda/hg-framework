@@ -1,0 +1,12 @@
+img {
+  width: 100%;
+  vertical-align: middle;
+}
+
+.tn {
+  border: $border-thin;
+
+  &.tn-round {
+    border-radius: 50%;
+  }
+}

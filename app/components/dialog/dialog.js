@@ -53,7 +53,9 @@ angular.module('hg.components.dialog', [
       if (!this.scope) {
         this.scope = $rootScope.$new();
         this.scope.config = this.config;
-        this.scope.$$close = this.close.bind(this);
+        this.scope.$$close = this.config.closeClick
+          ? this.close.bind(this)
+          : angular.noop;
       }
 
       return this.scope;

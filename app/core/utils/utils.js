@@ -1,4 +1,6 @@
 angular.module('hg.core.utils', [
+  'ui.router',
+
   'hg.core.styling'
 ])
 

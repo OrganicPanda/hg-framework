@@ -6,7 +6,7 @@ angular.module('hg.pages.directives')
      */
     $scope.data = {};
     $scope.data.table = new Table({
-      source: 'data/table.json',
+      source: 'assets/table.json',
       options: {
         pagination: {
           enabled: false
