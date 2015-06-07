@@ -23,28 +23,22 @@ angular.module('hg.core.utils')
 
     //
     function getParentState(state) {
-      var id = splitId(state.name);
-
       return filterStates(function(fState) {
-        return splitId(fState.name).self === id.parent;
+        return splitId(fState.name).self === splitId(state.name).parent;
       })[0] || null;
     }
 
     //
     function getSiblingStates(state) {
-      var id = splitId(state.name);
-
       return filterStates(function(fState) {
-        return splitId(fState.name).parent === id.parent;
+        return splitId(fState.name).parent === splitId(state.name).parent;
       });
     }
 
     //
     function getChildrenStates(state) {
-      var id = splitId(state.name);
-
       return filterStates(function(fState) {
-        return splitId(fState.name).parent === id.self;
+        return splitId(fState.name).parent === splitId(state.name).self;
       });
     }
 
