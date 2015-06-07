@@ -43,6 +43,18 @@ p {
   }
 }
 
+a {
+  color: inherit;
+  font-style: inherit;
+  text-decoration: inherit;
+
+  &:hover {
+    color: $primary-base;
+    text-decoration: none;
+  }
+}
+
+
 strong,
 .strong {
   font-weight: $font-weight-bold;
