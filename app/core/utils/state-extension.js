@@ -48,22 +48,6 @@ angular.module('hg.core.utils')
       });
     }
 
-    //
-    function levelUp(state) {
-      if (!state.data.parent) return null;
-
-      return state.data.parent.data.siblings.filter(function(fState) {
-        return !fState.abstract;
-      })[0];
-    }
-
-    //
-    function levelDown(state) {
-      return state.data.children.filter(function(fState) {
-        return !fState.abstract;
-      })[0] || null;
-    }
-
     /**
      *
      */
@@ -75,8 +59,5 @@ angular.module('hg.core.utils')
       state.data.parent = getParentState(state);
       state.data.siblings = getSiblingStates(state);
       state.data.children = getChildrenStates(state);
-
-      state.data.levelUp = levelUp(state);
-      state.data.levelDown = levelDown(state);
     };
   });

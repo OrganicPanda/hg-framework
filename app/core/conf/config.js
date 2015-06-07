@@ -20,7 +20,7 @@ angular.module('hg.core.config', [
   /**
    *
    */
-  .config(function($locationProvider, $urlRouterProvider, $urlMatcherFactoryProvider) {
+  .config(function($locationProvider, $urlRouterProvider, $urlMatcherFactoryProvider, $animateProvider) {
 
     // Enable HTML5 Mode
     // https://docs.angularjs.org/guide/$location
@@ -31,6 +31,11 @@ angular.module('hg.core.config', [
 
     // Redirect to 404 page if URL not found.
     $urlRouterProvider.otherwise('/');
+
+    // We don't want ng-animate hijacking everything so
+    // only elements with .hg-animate class will be
+    // considered.
+    $animateProvider.classNameFilter(/hg-animate/);
   })
 
   /**

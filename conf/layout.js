@@ -11,6 +11,7 @@ module.exports = {
     ],
     scripts: [
       'angular/angular.min.js',
+      'angular-animate/angular-animate.min.js',
       'angular-ui-router/release/angular-ui-router.min.js',
       'highcharts/adapters/standalone-framework.js',
       'highcharts/highcharts.js',

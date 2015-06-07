@@ -3,6 +3,7 @@
  */
 angular.module('hg', [
   // Vendors
+  'ngAnimate',
   'ui.router',
 
   // App modules

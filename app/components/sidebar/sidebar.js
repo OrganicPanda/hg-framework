@@ -1,9 +1,6 @@
 angular.module( 'hg.components.sidebar', [
   'ui.router',
-  'hg.core.constants',
-  'hg.core.utils',
-  'hg.components.sidebar.tpl',
-  'hg.components.sticky'
+  'hg.components.sidebar.tpl'
 ])
 
   /**
@@ -40,14 +37,14 @@ angular.module( 'hg.components.sidebar', [
      *
      */
     $scope.levelUp = function() {
-      $scope.menu = $state.current.data.parent;
+      $scope.menu = $scope.menu.data.parent;
     };
 
     /**
      *
      */
     $scope.levelDown = function(state) {
-      $scope.menu = state;
+      $scope.menu = state.data.children[0];
     };
 
 
