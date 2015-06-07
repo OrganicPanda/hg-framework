@@ -1,0 +1,54 @@
+<nav class="menu">
+  <ul class="menu-list">
+    <li class="menu-list-item"
+        ng-if="menu.data.levelUp">
+      <a class="menu-link"
+         ng-href="#"
+         ng-click="levelUp()">
+        <div class="grid grid-no-gutters grid-middle grid-xs-fit">
+          <div class="grid-cell">
+            Back
+          </div>
+
+          <div class="grid-cell grid-xs-shrink">
+            <i class="icon icon-chevron-left"></i>
+          </div>
+        </div>
+      </a>
+    </li>
+
+    <li class="menu-list-item"
+        ng-repeat="item in menu.data.siblings | orderBy:'data.index'"
+        ng-if="item.data.name"
+        ng-class="{ 'active': $state.current === item || $state.includes(item) }">
+      <a class="menu-link"
+         ng-href="#"
+         ng-if="item.abstract"
+         ng-click="levelDown(item.data.children[0])">
+        <div class="grid grid-no-gutters grid-middle grid-xs-fit">
+          <div class="grid-cell">
+            {{:: item.data.name }}
+          </div>
+
+          <div class="grid-cell grid-xs-shrink">
+            <i class="icon icon-{{ item.data.icon }}"></i>
+          </div>
+        </div>
+      </a>
+
+      <a class="menu-link"
+         ng-if="!item.abstract"
+         ui-sref="{{ item.name }}">
+        <div class="grid grid-no-gutters grid-middle grid-xs-fit">
+          <div class="grid-cell">
+            {{:: item.data.name }}
+          </div>
+
+          <div class="grid-cell grid-xs-shrink">
+            <i class="icon icon-{{ item.data.icon }}"></i>
+          </div>
+        </div>
+      </a>
+    </li>
+  </ul>
+</nav>
