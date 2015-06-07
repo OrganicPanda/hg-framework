@@ -80,7 +80,6 @@ body {
   ));
 }
 
-
 .layout-main {
   margin: 0 0 0 $sidebar-width;
   padding: ($topbar-height + $spacing-grid) 0 $spacing-grid;
@@ -117,7 +116,6 @@ body {
     background-color
   ));
 }
-
 
 @include screenLessThan(sm) {
   .layout-top {
@@ -156,4 +154,18 @@ body {
       background-color: fade-out($dark-base, 0.2);
     }
   }
+}
+
+/**
+ * UI View Animate
+ */
+[ui-view] {
+  @include transition((
+    opacity
+  ));
+
+  &.ng-enter { opacity: 0; }
+  &.ng-leave,
+  &.ng-enter.ng-enter-active { opacity: 1; }
+  &.ng-leave.ng-leave-active { opacity: 0; }
 }
