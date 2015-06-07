@@ -1,0 +1,29 @@
+/**
+ * Hiding and showing for certain screen sizes
+ */
+@mixin hideAt($size) {
+  .hide-at-#{$size} {
+    @include screenLessThan($size) {
+      display: none!important;
+    }
+  }
+}
+
+@mixin showAt($size) {
+  .show-at-#{$size} {
+    @include screenMoreThan($size) {
+      display: none!important;
+    }
+  }
+}
+
+@include hideAt(sm);
+@include hideAt(xs);
+@include hideAt(md);
+@include hideAt(lg);
+
+@include showAt(sm);
+@include showAt(xs);
+@include showAt(md);
+@include showAt(lg);
+

@@ -1,12 +1,13 @@
 //
 @mixin screenLessThan($size) {
-  $max: false;
+  $min: false;
 
-  @if $size == xs { $max: $screen-xs-max; }
-  @if $size == sm { $max: $screen-sm-max; }
-  @if $size == md { $max: $screen-md-max; }
+  @if $size == xs { $min: $screen-xs-min; }
+  @if $size == sm { $min: $screen-sm-min; }
+  @if $size == md { $min: $screen-md-min; }
+  @if $size == lg { $min: $screen-lg-min; }
 
-  @media (max-width: $max) {
+  @media (max-width: $min) {
     @content;
   }
 }
@@ -24,36 +25,3 @@
     @content;
   }
 }
-
-
-
-
-
-// //
-// @mixin screenOnlyFor($size) {
-//   $min: false;
-//   $max: false;
-
-//   @if $size == xs {                       $max: $screen-xs-max; }
-//   @if $size == sm { $min: $screen-sm-min; $max: $screen-sm-max; }
-//   @if $size == md { $min: $screen-md-min; $max: $screen-md-max; }
-//   @if $size == lg { $min: $screen-lg-min; }
-
-//   @if not $max and $min {
-//     @media (min-width: $min) {
-//       @content;
-//     }
-//   }
-
-//   @if not $min and $max {
-//     @media (max-width: $max) {
-//       @content;
-//     }
-//   }
-
-//   @if $min and $max {
-//     @media (min-width: $min) and (max-width: $max) {
-//       @content;
-//     }
-//   }
-// }

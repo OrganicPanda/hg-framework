@@ -62,6 +62,14 @@ angular.module('hg.pages.css', [
         data: {
           name: 'Panels'
         }
+      })
+
+      .state('css.utility', {
+        url: '/utility',
+        templateUrl: '/dist/pages/css/utility.html',
+        data: {
+          name: 'Utility'
+        }
       });
 
     $urlRouterProvider.when(

@@ -5,12 +5,12 @@
       <a class="menu-link"
          ng-href="#"
          ng-click="levelUp()">
-        <div class="grid grid-no-gutters grid-middle grid-xs-fit">
+        <div class="grid grid-no-gutters grid-middle grid-supress">
           <div class="grid-cell">
             Back
           </div>
 
-          <div class="grid-cell grid-xs-shrink">
+          <div class="grid-cell grid-cell-shrink">
             <i class="icon icon-chevron-left"></i>
           </div>
         </div>
@@ -25,12 +25,12 @@
          ng-href="#"
          ng-if="item.abstract"
          ng-click="levelDown(item)">
-        <div class="grid grid-no-gutters grid-middle grid-xs-fit">
+        <div class="grid grid-no-gutters grid-middle grid-supress">
           <div class="grid-cell">
             {{:: item.data.name }}
           </div>
 
-          <div class="grid-cell grid-xs-shrink">
+          <div class="grid-cell grid-cell-shrink">
             <i class="icon icon-{{ item.data.icon }}"></i>
           </div>
         </div>
@@ -39,12 +39,12 @@
       <a class="menu-link"
          ng-if="!item.abstract"
          ui-sref="{{ item.name }}">
-        <div class="grid grid-no-gutters grid-middle grid-xs-fit">
+        <div class="grid grid-no-gutters grid-middle grid-supress">
           <div class="grid-cell">
             {{:: item.data.name }}
           </div>
 
-          <div class="grid-cell grid-xs-shrink">
+          <div class="grid-cell grid-cell-shrink">
             <i class="icon icon-{{ item.data.icon }}"></i>
           </div>
         </div>

@@ -49,24 +49,6 @@
   }
 }
 
-/**
- *
- */
-@mixin hideButtonText($size) {
-  @include screenLessThan($size) {
-    .btn-hide-text-at-#{$size} {
-      .btn-text {
-        display: none;
-      }
-    }
-  }
-}
-
-@include hideButtonText(xs);
-@include hideButtonText(sm);
-@include hideButtonText(md);
-@include hideButtonText(lg);
-
 
 /**
  * Button colouring

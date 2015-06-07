@@ -72,6 +72,7 @@ body {
   height: 100%;
   z-index: $zindex-sidebar;
   overflow: hidden;
+  background-color: $sidebar-color;
   color: textColor($sidebar-color);
 
   @include transition((
@@ -159,13 +160,12 @@ body {
 /**
  * UI View Animate
  */
-[ui-view] {
+[ui-view].ng-animate {
   @include transition((
     opacity
   ));
 
   &.ng-enter { opacity: 0; }
-  &.ng-leave,
   &.ng-enter.ng-enter-active { opacity: 1; }
-  &.ng-leave.ng-leave-active { opacity: 0; }
+  &.ng-leave { display: none; }
 }
