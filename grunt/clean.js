@@ -1,7 +1,10 @@
-var utils = require('../lib/utils');
+var utils = require('../lib/utils')
+  , conf = require('../conf');
 
 module.exports = (function() {
-  var config = {};
+  var config = {
+    all: utils.location(conf.locations.dest)
+  };
 
   utils.forEachModule(function(module) {
     if (!module.files.all.length) return;

@@ -1,0 +1,48 @@
+@import "../../core/styling/variables";
+@import "../../core/styling/mixins";
+
+@mixin makeColorBox($class, $color) {
+  .color-box.#{$class} {
+    background-color: $color;
+    color: textColor($color);
+  }
+}
+
+.color-box {
+  display: flex;
+  height: 60px;
+  align-items: center;
+  justify-content: center;
+}
+
+@include makeColorBox(light-light, $light-light);
+@include makeColorBox(light-base,  $light-base);
+@include makeColorBox(light-dark,  $light-dark);
+
+@include makeColorBox(dark-light, $dark-light);
+@include makeColorBox(dark-base,  $dark-base);
+@include makeColorBox(dark-dark,  $dark-dark);
+
+@include makeColorBox(primary-light, $primary-light);
+@include makeColorBox(primary-base,  $primary-base);
+@include makeColorBox(primary-dark,  $primary-dark);
+
+@include makeColorBox(secondary-light, $secondary-light);
+@include makeColorBox(secondary-base,  $secondary-base);
+@include makeColorBox(secondary-dark,  $secondary-dark);
+
+@include makeColorBox(success-light, $success-light);
+@include makeColorBox(success-base,  $success-base);
+@include makeColorBox(success-dark,  $success-dark);
+
+@include makeColorBox(info-light, $info-light);
+@include makeColorBox(info-base,  $info-base);
+@include makeColorBox(info-dark,  $info-dark);
+
+@include makeColorBox(warning-light, $warning-light);
+@include makeColorBox(warning-base,  $warning-base);
+@include makeColorBox(warning-dark,  $warning-dark);
+
+@include makeColorBox(danger-light, $danger-light);
+@include makeColorBox(danger-base,  $danger-base);
+@include makeColorBox(danger-dark,  $danger-dark);

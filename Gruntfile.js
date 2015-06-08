@@ -2,7 +2,7 @@ module.exports = function(grunt) {
   var config = {};
 
   var defaultTasks = [
-    'clean',
+    'clean:all',
     'sharedVars',
     'html2js',
     'ngAnnotate',
