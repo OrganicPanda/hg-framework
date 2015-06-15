@@ -18,10 +18,8 @@ body {
 }
 
 body {
-  overflow-x: hidden;
-  background-color: $sidebar-color;
+  background-color: $background-color;
 }
-
 
 /**
  * Content container
@@ -38,121 +36,128 @@ body {
  * Main Application Layout
  */
 
-.layout-top {
-  position: fixed;
-  padding: 0 0 0 #{$sidebar-width};
-  top: 0;
-  left: 0;
-  height: $topbar-height;
-  width: 100%;
-  z-index: $zindex-topbar;
-  overflow: hidden;
-  background-color: $sidebar-color;
-  color: textColor($sidebar-color);
-
-  @include transition((
-    margin,
-    transform
-  ));
-
-  // Because of the fixed height, ensure
-  // that the contents is vertically aligned.
-  display: flex;
-  > * {
-    flex-grow: 1;
-    align-self: center;
+.sidebar-layout {
+  body {
+    overflow-x: hidden;
+    background-color: $sidebar-color;
   }
-}
 
-.layout-side {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: $sidebar-width;
-  height: 100%;
-  z-index: $zindex-sidebar;
-  overflow: hidden;
-  background-color: $sidebar-color;
-  color: textColor($sidebar-color);
-
-  @include transition((
-    margin,
-    transform
-  ));
-}
-
-.layout-main {
-  margin: 0 0 0 $sidebar-width;
-  padding: ($topbar-height + $spacing-grid) 0 $spacing-grid;
-  min-height: 100vh;
-  background-color: $background-color;
-
-  @include transition((
-    margin,
-    padding,
-    transform
-  ));
-}
-
-.layout-toggle {
-  position: fixed;
-  top: $spacing-base;
-  left: $spacing-lg;
-
-  @include transition((
-    color
-  ));
-}
-
-.layout-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  visibility: hidden;
-  background-color: transparent;
-
-  @include transition((
-    background-color
-  ));
-}
-
-@include screenLessThan(sm) {
   .layout-top {
-    margin-top: -$topbar-height;
+    position: fixed;
+    padding: 0 0 0 #{$sidebar-width};
+    top: 0;
+    left: 0;
+    height: $topbar-height;
+    width: 100%;
+    z-index: $zindex-topbar;
+    overflow: hidden;
+    background-color: $sidebar-color;
+    color: textColor($sidebar-color);
+
+    @include transition((
+      margin,
+      transform
+    ));
+
+    // Because of the fixed height, ensure
+    // that the contents is vertically aligned.
+    display: flex;
+    > * {
+      flex-grow: 1;
+      align-self: center;
+    }
   }
 
   .layout-side {
-    margin-left: -$sidebar-width;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: $sidebar-width;
+    height: 100%;
+    z-index: $zindex-sidebar;
+    overflow: hidden;
+    background-color: $sidebar-color;
+    color: textColor($sidebar-color);
+
+    @include transition((
+      margin,
+      transform
+    ));
   }
 
   .layout-main {
-    margin: 0;
-    padding: $topbar-height 0 $spacing-grid;
+    margin: 0 0 0 $sidebar-width;
+    padding: ($topbar-height + $spacing-grid) 0 $spacing-grid;
+    min-height: 100vh;
+    background-color: $background-color;
+
+    @include transition((
+      margin,
+      padding,
+      transform
+    ));
   }
 
-  .layout-open {
+  .layout-toggle {
+    position: fixed;
+    top: $spacing-base;
+    left: $spacing-lg;
+
+    @include transition((
+      color
+    ));
+  }
+
+  .layout-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    visibility: hidden;
+    background-color: transparent;
+
+    @include transition((
+      background-color
+    ));
+  }
+
+  @include screenLessThan(sm) {
     .layout-top {
-      margin-top: 0;
+      margin-top: -$topbar-height;
     }
 
     .layout-side {
-      margin-left: 0;
+      margin-left: -$sidebar-width;
     }
 
     .layout-main {
-      transform: translate3d($sidebar-width, $topbar-height, 0);
+      margin: 0;
+      padding: $topbar-height 0 $spacing-grid;
     }
 
-    .layout-toggle {
-      color: transparent;
-    }
+    .layout-open {
+      .layout-top {
+        margin-top: 0;
+      }
 
-    .layout-overlay {
-      visibility: visible;
-      z-index: $zindex-overlay;
-      background-color: fade-out($dark-base, 0.2);
+      .layout-side {
+        margin-left: 0;
+      }
+
+      .layout-main {
+        transform: translate3d($sidebar-width, $topbar-height, 0);
+      }
+
+      .layout-toggle {
+        color: transparent;
+      }
+
+      .layout-overlay {
+        visibility: visible;
+        z-index: $zindex-overlay;
+        background-color: fade-out($dark-base, 0.2);
+      }
     }
   }
 }
