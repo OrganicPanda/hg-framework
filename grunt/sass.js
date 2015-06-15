@@ -1,11 +1,7 @@
 var utils = require('../lib/utils');
 
 module.exports = (function() {
-  var config = {
-    options: {
-      noCache: true
-    }
-  };
+  var config = {};
 
   utils.forEachModule(function(module) {
     if (!module.hasCSS) return;
